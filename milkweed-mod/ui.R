@@ -13,17 +13,19 @@ sidebar <- dashboardSidebar( width = 300,
                              # sidebarMenu ----
                              sidebarMenu(
                                
+                               tags$a(href = "https://sbbotanicgarden.org/",
                                tags$img(src = "santa-barbara-botanic-garden.jpeg", 
                                         alt = "The logo of the santa barabara botanic garden with a white background and green image.",
-                                        style = "max-width: 100%;"),
-                               tags$h6(tags$em("Logo Source:", tags$a(href = "https://sbbotanicgarden.org/", "SBBG")),
+                                        style = "max-width: 100%;")),
+                               tags$h6(tags$em("Source:", tags$a(href = "https://sbbotanicgarden.org/", "SBBG")),
                                        style = "text-align: center;"),
                                
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
                                menuItem(text = "Habitat Suitability Model", tabName = "habitatsuit", icon = icon("leaf")),
                                menuItem(text = "Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
-                               menuItem(text = "Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location"))
+                               menuItem(text = "Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
+                               menuItem(text = "Data", tabName = "data", icon = icon("database"))
                                
                              ) # END sidebarMenu
                              
@@ -146,16 +148,16 @@ body <- dashboardBody(
               ), # END leaflet box
               
             ), # END fluidRow 1
+            
+            # second fluidRow ----
+            fluidRow(
               
-              # second fluidRow ----
-              fluidRow(
-                
-                # model parameter box ----
-                box(width = 12,
-                    
-                    "model parameters used to calculate this model"
-                    
-                ) # END model parameter box
+              # model parameter box ----
+              box(width = 12,
+                  
+                  "model parameters used to calculate this model"
+                  
+              ) # END model parameter box
               
             ) # END fluidRow 2
             
@@ -246,7 +248,19 @@ body <- dashboardBody(
               
             ) # END fluidRow
             
-    ) # END sitefinder locations tabItem
+    ), # END sitefinder locations tabItem
+    
+    # data tabItem ----
+    tabItem(tabName = "data",
+            
+            # data info box ----
+            box(width = NULL,
+                
+                "data information here, and information about technical documentation, use markdown text for this"
+                
+            ) # END data info box
+            
+    ) # END data tabItem
     
   ) # END tabItems
   
