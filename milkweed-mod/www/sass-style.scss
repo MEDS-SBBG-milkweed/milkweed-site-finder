@@ -1,0 +1,44 @@
+// import & define fonts vars
+@import url('https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap');
+$font-family-serif: 'Karma', serif;
+$font-family-sans-serif: 'Prompt', sans-serif;
+
+// colors vars
+$green: #8ca376;
+$blue: #525cd1; 
+$orange: #E59C5E;
+$yellow: #f0eaa5;
+$white: #f1f7eb;
+
+// css
+
+body {
+  background-color: $green; 
+  color: $white; 
+}
+
+h2 {
+  letter-spacing: 5px;
+  font-family: $font-family-serif;
+}
+
+h4 {
+  color: $blue;
+  font-family: $font-family-serif;
+}
+
+p {
+  font-family: $font-family-sans-serif;
+}
+
+a {
+  color: $orange;
+}
+
+.navbar-default {
+  background-color: $yellow;
+}
+
+.btn.default.active {
+  background-color: $green;
+}
