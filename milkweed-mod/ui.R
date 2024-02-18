@@ -40,46 +40,30 @@ body <- dashboardBody(
     # welcome tabItem ----
     tabItem(tabName = "home",
             
-            # left-hand column ----
-            column(width = 6,
-                   
-                   # background info box ----
-                   box(width = NULL,
-                       
-                       "background info here, use markdown text for this "
-                       
-                   ), # END background info box
-                   
-            ), # END left-hand column
+            # first fluid row ----
+            fluidRow(
+              
+              # background info box ----
+              box(width = 12,
+                  
+                  title = tagList(icon("star")),
+                  includeMarkdown("text/background-info.md")
+                  
+              ) # END background info box
+              
+            ), # END first fluid row
             
-            # right-hand column ----
-            column(width = 6,
-                   
-                   # first fluidRow ----
-                   fluidRow(
-                     
-                     # data source box ----
-                     box(width = NULL,
-                         
-                         "data information? or should we make a new tab?, use markdown text for this"
-                         
-                     ) # END data source box
-                     
-                   ), # END first fluidRow
-                   
-                   # second fluidRow ----
-                   fluidRow(
-                     
-                     # disclaimer box ----
-                     box(width = NULL,
-                         
-                         "disclaimer here, use markdown text here"
-                         
-                     ) # END disclaimer box
-                     
-                   ) # END second fluidRow
-                   
-            ) # END right-hand column
+            # second fluidRow ----
+            fluidRow(
+              
+              # disclaimer box ----
+              box(width = NULL,
+                  
+                  "disclaimer here, use markdown text here"
+                  
+              ) # END disclaimer box
+              
+            ) # END second fluidRow
             
     ), # END welcome tabItem
     
