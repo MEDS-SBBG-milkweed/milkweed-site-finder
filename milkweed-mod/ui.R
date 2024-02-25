@@ -111,7 +111,7 @@ body <- dashboardBody(
             # habitat suitability info box ----
             box(width = NULL,
                 
-                "description for what model is showing and instructions for slider inputs, use markdown text for this "
+                includeMarkdown("text/overview-habitat-suitability.md")
                 
             ), # END habitat suitability info box
             
@@ -155,7 +155,7 @@ body <- dashboardBody(
             # site access info box ----
             box(width = NULL,
                 
-                "description for what model is showing and instructions for pickerInput, use markdown text for this "
+                includeMarkdown("text/overview-site-accessibility.md")
                 
             ), # END habitat suitability info box
             
@@ -191,7 +191,7 @@ body <- dashboardBody(
             # sitefinder info box ----
             box(width = NULL,
                 
-                "description for what map is showing and what inputs needs to be entered, use markdown text for this "
+                includeMarkdown("text/overview-site-finder.md")
                 
             ), # END sitefinder info box
             
@@ -241,7 +241,7 @@ body <- dashboardBody(
             # data info box ----
             box(width = NULL,
                 
-                "data information here, and information about technical documentation, use markdown text for this"
+                includeMarkdown("text/overview-data.md")
                 
             ) # END data info box
             
