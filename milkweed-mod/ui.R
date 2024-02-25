@@ -57,9 +57,10 @@ body <- dashboardBody(
             fluidRow(
               
               # disclaimer box ----
-              box(width = NULL,
+              box(width = 12,
                   
-                  "disclaimer here, use markdown text here"
+                  title = tagList(icon("triangle-exclamation")),
+                  includeMarkdown("text/disclaimer.md")
                   
               ) # END disclaimer box
               
@@ -73,7 +74,7 @@ body <- dashboardBody(
             # milkweed locations info box ----
             box(width = NULL,
                 
-                "description for what map is showing, use markdown text for this "
+                includeMarkdown("text/overview-milkweed-locations.md")
                 
             ), # END milkweed locations info box
             
