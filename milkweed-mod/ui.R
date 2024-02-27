@@ -78,30 +78,31 @@ body <- dashboardBody(
                 
             ), # END milkweed locations info box
             
-            # fluidRow ----
-            fluidRow(
+            # milkweed locations sidebar layout
+            sidebarLayout(
               
-              # input box ----
-              box(width = 4,
-                  
-                  "species selector pickerInput here"
-                  
-              ), # END input box
+              sidebarPanel(
+                # species type checkbox Group Buttons ----
+                checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
+                                     choices = c("all species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
+                                     selected = c("all"), 
+                                     individual = FALSE,
+                                     justified = FALSE,
+                                     size = "normal",
+                                     direction = "horizontal",
+                                     checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                                      no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+              ),
               
-            ), # END fluid row
-            
-            # fluid row ----
-            fluidRow(
+              mainPanel(
+                
+                
+                # plot output will go here
+                
+                
+              )
               
-              # leaflet box ----
-              box(width = 8,
-                  
-                  "leaflet output here, with markers showing centroids of site surveys that have occurred"
-                  
-              ) # END leaflet box
-              
-            ) # END fluidRow
-            
+            )
             
     ), # END milkweed locations tabItem
     
