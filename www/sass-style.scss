@@ -1,0 +1,88 @@
+// import 2 fonts
+@import url('https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap');
+
+// fonts
+$font-family-serif: 'Karma', serif;
+$font-family-sans-serif: 'Prompt', sans-serif;
+
+// colors
+$light-green: #55FF76;
+$dark-green: #244E2A; 
+$gray: #3B3B3D;
+$yellow: #F1E709;
+$white: #FFFFFF;
+
+// element selectors
+
+body {
+  background-color: $green; 
+  color: $white; 
+}
+
+h2 {
+  letter-spacing: 5px;
+  font-family: $font-family-serif;
+}
+
+h4 {
+  color: $blue;
+  font-family: $font-family-serif;
+}
+
+p {
+  font-family: $font-family-sans-serif;
+}
+
+a {
+  color: $orange;
+}
+
+// class selectors
+
+.navbar-default {
+  background-color: $yellow;
+}
+
+.btn.default.active {
+  background-color: $green;
+}
+
+/* logo */
+        .skin-blue .main-header .logo {
+                              background-color: #f4b943;
+                              }
+
+/* logo when hovered */
+        .skin-blue .main-header .logo:hover {
+                              background-color: #f4b943;
+                              }
+
+/* navbar (rest of the header) */
+        .skin-blue .main-header .navbar {
+                              background-color: #f4b943;
+                              }        
+
+/* main sidebar */
+        .skin-blue .main-sidebar {
+                              background-color: #f4b943;
+                              }
+
+/* active selected tab in the sidebarmenu */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+                              background-color: #ff0000;
+                              }
+
+/* other links in the sidebarmenu */
+        .skin-blue .main-sidebar .sidebar .sidebar-menu a{
+                              background-color: #00ff00;
+                              color: #000000;
+                              }
+
+/* other links in the sidebarmenu when hovered */
+         .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+                              background-color: #ff69b4;
+                              }
+/* toggle button when hovered  */                    
+         .skin-blue .main-header .navbar .sidebar-toggle:hover{
+                              background-color: #ff69b4;
+                              }

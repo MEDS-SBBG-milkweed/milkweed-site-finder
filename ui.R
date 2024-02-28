@@ -34,6 +34,11 @@ sidebar <- dashboardSidebar( width = 300,
 #..........................dashboardBody.........................
 body <- dashboardBody(
   
+  # link stylesheet
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "sass-style.css"),
+  ),
+  
   # tabItems ----
   tabItems(
     
@@ -46,7 +51,7 @@ body <- dashboardBody(
               # background info box ----
               box(width = 12,
                   
-                  title = tagList(icon("star")),
+                  title = tagList(icon("play")),
                   includeMarkdown("text/background-info.md")
                   
               ) # END background info box
@@ -84,7 +89,7 @@ body <- dashboardBody(
               sidebarPanel(
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("all species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
+                                     choices = c("All Species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
                                      selected = c("all"), 
                                      individual = FALSE,
                                      justified = FALSE,
@@ -116,24 +121,38 @@ body <- dashboardBody(
                 
             ), # END habitat suitability info box
             
-            # fluidRow ----
-            fluidRow(
+            # habitat suitability sidebar layout
+            sidebarLayout(
               
-              # input box ----
-              box(width = 4,
-                  
-                  "species pickerInput here, message indicating you must choose 1 species"
-                  
-              ), # END input box
+              sidebarPanel(
+                # species type checkbox Group Buttons ----
+                checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
+                                     choices = c("All Species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
+                                     selected = c("all"), 
+                                     individual = FALSE,
+                                     justified = FALSE,
+                                     size = "normal",
+                                     direction = "horizontal",
+                                     checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                                      no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+              ),
               
-              # leaflet box ----
-              box(width = 8,
-                  
-                  "model output here showing modeled habitat suitability here"
-                  
-              ), # END leaflet box
+              mainPanel(
+                
+                
+                # plot output will go here
+                
+                
+              ) # END mainPanel
               
-            ), # END fluidRow 1
+            ), # END habitat suitability sidebar panel
+            
+            # leaflet box ----
+            box(width = 8,
+                
+                "model output here showing modeled habitat suitability here"
+                
+            ), # END leaflet box
             
             # second fluidRow ----
             fluidRow(
@@ -199,12 +218,32 @@ body <- dashboardBody(
             # fluidRow ----
             fluidRow(
               
-              # input box ----
-              box(width = 4,
+              # habitat suitability sidebar layout
+              sidebarLayout(
+                
+                sidebarPanel(
+                  # species type checkbox Group Buttons ----
+                  checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
+                                       choices = c("All Species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
+                                       selected = c("all"), 
+                                       individual = FALSE,
+                                       justified = FALSE,
+                                       size = "normal",
+                                       direction = "horizontal",
+                                       checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                                        no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                ),
+                
+                mainPanel(
                   
-                  "species pickerInput here, user must select at least 1 species"
                   
-              ), # END input box
+                  # plot output will go here
+                  
+                  
+                ) # END mainPanel
+                
+              ), # END habitat suitability sidebar panel
+              
               
               # input box ----
               box(width = 4,
