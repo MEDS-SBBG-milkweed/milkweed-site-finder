@@ -11,12 +11,13 @@ $dark-green: #244E2A;
 $gray: #3B3B3D;
 $yellow: #F1E709;
 $white: #FFFFFF;
+$light-gray: #ECECEC;
 
 // element selectors
 
 body {
-  background-color: $green; 
-  color: $white; 
+  background-color: $light-gray; 
+  color: $gray; 
 }
 
 h2 {
@@ -25,7 +26,12 @@ h2 {
 }
 
 h4 {
-  color: $blue;
+  color: $light-green;
+  font-family: $font-family-serif;
+}
+
+h6 {
+  color: $light-green;
   font-family: $font-family-serif;
 }
 
@@ -34,55 +40,69 @@ p {
 }
 
 a {
-  color: $orange;
+  color: $yellow;
+}
+
+.main-header .logo {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: $light-green;
 }
 
 // class selectors
 
 .navbar-default {
-  background-color: $yellow;
+  background-color: $dark-green;
 }
 
 .btn.default.active {
-  background-color: $green;
+  background-color: $dark-green;
 }
 
 /* logo */
         .skin-blue .main-header .logo {
-                              background-color: #f4b943;
+                              background-color: $dark-green;
                               }
 
 /* logo when hovered */
         .skin-blue .main-header .logo:hover {
-                              background-color: #f4b943;
+                              background-color: $dark-green;
                               }
 
 /* navbar (rest of the header) */
         .skin-blue .main-header .navbar {
-                              background-color: #f4b943;
+                              background-color: $dark-green;
                               }        
 
 /* main sidebar */
         .skin-blue .main-sidebar {
-                              background-color: #f4b943;
+                              background-color: $dark-green;
                               }
 
 /* active selected tab in the sidebarmenu */
         .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
-                              background-color: #ff0000;
+                              background-color: $dark-green;
+                              text-decoration: underline;
                               }
 
 /* other links in the sidebarmenu */
         .skin-blue .main-sidebar .sidebar .sidebar-menu a{
-                              background-color: #00ff00;
-                              color: #000000;
+                              background-color: $dark-green;
+                              color: $light-green;
                               }
 
 /* other links in the sidebarmenu when hovered */
          .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
-                              background-color: #ff69b4;
+                              background-color: $dark-green;
+                              text-decoration: underline;
                               }
 /* toggle button when hovered  */                    
          .skin-blue .main-header .navbar .sidebar-toggle:hover{
-                              background-color: #ff69b4;
+                              background-color: $dark-green;
                               }
+
+ /* body */
+          .content-wrapper, .right-side {
+            background-color: $light-gray;
+                                }

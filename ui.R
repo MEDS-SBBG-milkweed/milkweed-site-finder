@@ -3,7 +3,7 @@ header <- dashboardHeader(
   
   # add title ----
   title = "Milkweed Habitat in Los Padres National Forest",
-  titleWidth = 400
+  titleWidth = 600
   
 ) # END dashboardHeader
 
@@ -14,11 +14,11 @@ sidebar <- dashboardSidebar( width = 300,
                              sidebarMenu(
                                
                                tags$a(href = "https://sbbotanicgarden.org/",
-                               tags$img(src = "santa-barbara-botanic-garden.jpeg", 
+                               tags$img(src = "SBBG_workcard-projects-1.jpg", 
                                         alt = "The logo of the santa barabara botanic garden with a white background and green image.",
                                         style = "max-width: 100%;")),
-                               tags$h6(tags$em("Source:", tags$a(href = "https://sbbotanicgarden.org/", "SBBG")),
-                                       style = "text-align: center;"),
+                               # tags$h6(tags$em("Source:", tags$a(href = "https://sbbotanicgarden.org/", "SBBG")),
+                               #         style = "text-align: center;"),
                                
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
