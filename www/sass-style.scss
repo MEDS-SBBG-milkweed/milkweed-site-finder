@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap');
 
 // fonts
-$font-family-serif: 'Karma', serif;
-$font-family-sans-serif: 'Prompt', sans-serif;
+$font-family-serif: 'Times New Roman', serif;
+$font-family-sans-serif: 'Times New Roman', sans-serif;
 
 // colors
 $light-green: #55FF76;
@@ -20,6 +20,11 @@ body {
   color: $gray; 
 }
 
+h1 {
+  color: $gray;
+  font-family: $font-family-sans-serif;
+}
+
 h2 {
   letter-spacing: 5px;
   font-family: $font-family-serif;
@@ -33,6 +38,7 @@ h4 {
 h6 {
   color: $light-green;
   font-family: $font-family-serif;
+  font-size: 22px;
 }
 
 p {
@@ -40,13 +46,15 @@ p {
 }
 
 a {
-  color: $yellow;
+  font-family: $font-family-serif;
+  font-size: 17px;
+  color: $light-green;
 }
 
 .main-header .logo {
-  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-family: $font-family-serif;
+  font-size: 22px;
   font-weight: bold;
-  font-size: 18px;
   color: $light-green;
 }
 
@@ -63,6 +71,7 @@ a {
 /* logo */
         .skin-blue .main-header .logo {
                               background-color: $dark-green;
+                              color: $light-green;
                               }
 
 /* logo when hovered */
@@ -90,6 +99,7 @@ a {
         .skin-blue .main-sidebar .sidebar .sidebar-menu a{
                               background-color: $dark-green;
                               color: $light-green;
+                              font-family: $font-family-serif;
                               }
 
 /* other links in the sidebarmenu when hovered */
@@ -106,3 +116,32 @@ a {
           .content-wrapper, .right-side {
             background-color: $light-gray;
                                 }
+/* box body */                            
+.box-body {
+  background-color: $white;
+}
+
+/* box header */                            
+.box-header {
+  background-color: $white;
+}
+
+/* picker input boxes exterior */                            
+form.well {
+  background-color: $white;
+}
+
+/* picker input boxes interior */
+.well .shiny-input-container{
+  background-color: $white;
+}
+
+/* navbar picker (3 lines)  for hover*/
+.skin-blue .main-header .navbar a.sidebar-toggle:hover{
+  color:$light-green;
+}
+
+/* navbar picker (3 lines)  for non-hover*/
+.skin-blue .main-header .navbar a.sidebar-toggle{
+  color:$light-green;
+}
