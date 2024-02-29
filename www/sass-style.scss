@@ -1,5 +1,34 @@
 // import 2 fonts
 @import url('https://fonts.googleapis.com/css2?family=Karma&family=Prompt:wght@200&display=swap');
+@font-face {
+  font-family: 'SBBG-body-thin';
+  font-style: normal;
+  src: url("fonts/ebec98131cf900cb698e.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'SBBG-body-thick';
+  font-style: normal;
+  src: url("fonts/edfac2e6370304cd74ae.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'SBBG-body-italic';
+  font-style: normal;
+  src: url("fonts/5cfb33b712cbdaf9310b.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'SBBG-title';
+  font-style: normal;
+  src: url("fonts/ab9aea6faeaea5115410.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'SBBG-body-bold';
+  font-style: normal;
+  src: url("fonts/bace964bccc02d90d74e.woff2") format('woff2');
+}
 
 // fonts
 $font-family-serif: 'Times New Roman', serif;
@@ -22,37 +51,37 @@ body {
 
 h1 {
   color: $gray;
-  font-family: $font-family-sans-serif;
+  font-family: 'SBBG-body-bold';
 }
 
 h2 {
   letter-spacing: 5px;
-  font-family: $font-family-serif;
+  font-family: 'SBBG-body-bold';
 }
 
 h4 {
   color: $light-green;
-  font-family: $font-family-serif;
+  font-family: 'SBBG-body-bold';
 }
 
 h6 {
   color: $light-green;
-  font-family: $font-family-serif;
+  font-family: 'SBBG-title';
   font-size: 22px;
 }
 
 p {
-  font-family: $font-family-sans-serif;
+  font-family: 'SBBG-body-thin';
 }
 
 a {
-  font-family: $font-family-serif;
+  font-family: 'SBBG-body-thin';
   font-size: 17px;
   color: $light-green;
 }
 
 .main-header .logo {
-  font-family: $font-family-serif;
+  font-family: 'SBBG-title';
   font-size: 22px;
   font-weight: bold;
   color: $light-green;
@@ -99,7 +128,7 @@ a {
         .skin-blue .main-sidebar .sidebar .sidebar-menu a{
                               background-color: $dark-green;
                               color: $light-green;
-                              font-family: $font-family-serif;
+                              font-family: 'SBBG-title';
                               }
 
 /* other links in the sidebarmenu when hovered */
