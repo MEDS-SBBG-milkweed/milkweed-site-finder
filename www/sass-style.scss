@@ -51,12 +51,12 @@ body {
 
 h1 {
   color: $gray;
-  font-family: 'SBBG-body-bold';
+  font-family: 'SBBG-body-thin';
 }
 
 h2 {
   letter-spacing: 5px;
-  font-family: 'SBBG-body-bold';
+  font-family: 'SBBG-body-thin';
 }
 
 h4 {
@@ -65,9 +65,9 @@ h4 {
 }
 
 h6 {
-  color: $light-green;
-  font-family: 'SBBG-title';
-  font-size: 22px;
+  color: $gray;
+  font-family: 'SBBG-body-thin';
+  font-size: 8px;
 }
 
 p {

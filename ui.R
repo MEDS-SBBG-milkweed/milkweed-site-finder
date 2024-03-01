@@ -45,13 +45,22 @@ body <- dashboardBody(
     # welcome tabItem ----
     tabItem(tabName = "home",
             
+            
             # first fluid row ----
             fluidRow(
               
               # background info box ----
               box(width = 12,
                   
-                  title = tagList(icon("play")),
+                  title = tags$h1("Welcome to the Milkweed Site Finder Dashboard"),
+                  
+                  # insert image of milkweed
+                  tags$img(src = "monarch_milkweed.jpeg", 
+                           alt = "Imqage of a monarch butterfly on a milkweed plant.",
+                           style = "max-width: 100%;"),
+                  tags$h6(tags$em(tags$h6(href = "https://www.nps.gov/articles/000/milkweed-and-monarchs.htm", "Yehyun Kim, Friends of Acadia.")),
+                          style = "text-align: left;"), # END image of milkweed
+                  
                   includeMarkdown("text/background-info.md")
                   
               ) # END background info box
@@ -147,25 +156,25 @@ body <- dashboardBody(
               
             ), # END habitat suitability sidebar panel
             
-            # leaflet box ----
-            box(width = 8,
-                
-                "model output here showing modeled habitat suitability here"
-                
-            ), # END leaflet box
-            
-            # second fluidRow ----
-            fluidRow(
-              
-              # model parameter box ----
-              box(width = 12,
-                  
-                  "model parameters used to calculate this model"
-                  
-              ) # END model parameter box
-              
-            ) # END fluidRow 2
-            
+            # # leaflet box ----
+            # box(width = 8,
+            # 
+            #     "model output here showing modeled habitat suitability here"
+            # 
+            # ), # END leaflet box
+# 
+#             # second fluidRow ----
+#             fluidRow(
+# 
+#               # model parameter box ----
+#               box(width = 12,
+# 
+#                   "model parameters used to calculate this model"
+# 
+#               ) # END model parameter box
+# 
+#             ) # END fluidRow
+#             
     ), # END habitat suitability tabItem
     
     
@@ -248,30 +257,33 @@ body <- dashboardBody(
               # input box ----
               box(width = 4,
                   
-                  "accessibility sliderInputs here, user must enter index number for accessibility"
-                  
-              ), # END input box
-              
-              # leaflet box ----
-              box(width = 8,
-                  
-                  "interactive map here that you can zoom to the area you want soecified"
-                  
-              ) # END leaflet box
-              
-            ), # END fluidRow
-            
-            # fluidRow ----
-            fluidRow(
-              
-              # input box ----
-              box(width = 4,
-                  
-                  "reactive datatable output here that lists coordinates based off of zoom and slider inputs"
+                  # Input: Accessibility Slider ----
+                  sliderInput("integer", "Accessibility Index:",
+                              min = 0, max = 1,
+                              value = 0.8, step = 0.1)
                   
               ) # END input box
               
-            ) # END fluidRow
+            #   # leaflet box ----
+            #   box(width = 8,
+            #       
+            #       "interactive map here that you can zoom to the area you want specified"
+            #       
+            #   ) # END leaflet box
+            #   
+            # ), # END fluidRow
+            # 
+            # # fluidRow ----
+            # fluidRow(
+            #   
+            #   # input box ----
+            #   box(width = 4,
+            #       
+            #       "reactive datatable output here that lists coordinates based off of zoom and slider inputs"
+            #       
+            #   ) # END input box
+            #   
+             ) # END fluidRow
             
     ), # END sitefinder locations tabItem
     
