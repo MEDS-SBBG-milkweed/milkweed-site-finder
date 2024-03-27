@@ -1,1 +1,1 @@
-All information gathered throughout this dashboard is based off of data from the Santa Barbara Botanic Garden field surveys from 2023. This dashboard will be maintained by the Santa Barbara Botanic Garden IT team.
+All information gathered throughout this dashboard is based off of data collected by the Santa Barbara Botanic Garden field surveys in 2023. Plant and seed collection on Forest Service land is not permissible without a plant collection permit from the Los Padres National Forest.
