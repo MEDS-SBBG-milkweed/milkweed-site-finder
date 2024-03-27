@@ -98,7 +98,7 @@ body <- dashboardBody(
               sidebarPanel(
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("All Species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
+                                     choices = c("All Species", "Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
                                      selected = c("all"), 
                                      individual = FALSE,
                                      justified = FALSE,
@@ -108,13 +108,16 @@ body <- dashboardBody(
                                                       no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
               ),
               
-              mainPanel(
-                
-                
-                # plot output will go here
-                
-                
-              )
+              # leaflet box ----
+              box(width = 8,
+                  
+                  title = tags$strong("Monitored lakes within Fish Creek Watershed:"),
+                  
+                  # leaflet output ----
+                  leafletOutput(outputId = "survey_map_output") |> 
+                    withSpinner(type = 1, color = "#4287f5")
+                  
+              ) # END leaflet box
               
             )
             
@@ -156,12 +159,12 @@ body <- dashboardBody(
               
             ), # END habitat suitability sidebar panel
             
-            # # leaflet box ----
-            # box(width = 8,
-            # 
-            #     "model output here showing modeled habitat suitability here"
-            # 
-            # ), # END leaflet box
+            # leaflet box ----
+            box(width = 8,
+
+                "model output here showing modeled habitat suitability here"
+
+            ), # END leaflet box
 # 
 #             # second fluidRow ----
 #             fluidRow(
