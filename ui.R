@@ -98,7 +98,7 @@ body <- dashboardBody(
               sidebarPanel(
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("All Species", "Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                     choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
                                      selected = c("all"), 
                                      individual = FALSE,
                                      justified = FALSE,
@@ -111,7 +111,7 @@ body <- dashboardBody(
               # leaflet box ----
               box(width = 8,
                   
-                  title = tags$strong("Monitored lakes within Fish Creek Watershed:"),
+                  title = tags$strong("Milkweed Survey Locations from 2023 surveys:"),
                   
                   # leaflet output ----
                   leafletOutput(outputId = "survey_map_output") |> 

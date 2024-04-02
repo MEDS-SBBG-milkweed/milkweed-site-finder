@@ -1,7 +1,7 @@
 # Define server logic required to draw a histogram
 function(input, output, session) {
 
-    # filter lake data ----
+    # filter survey data ----
     filtered_milkweed_df <- reactive ({
 
       milkweed_yes |>
