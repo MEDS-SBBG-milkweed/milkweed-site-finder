@@ -96,10 +96,12 @@ body <- dashboardBody(
             sidebarLayout(
               
               sidebarPanel(
+                
+                width = 12,
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
                                      choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
-                                     selected = c("all"), 
+                                     select = "Asclepias californica", 
                                      individual = FALSE,
                                      justified = FALSE,
                                      size = "normal",
@@ -109,7 +111,7 @@ body <- dashboardBody(
               ),
               
               # leaflet box ----
-              box(width = 8,
+              box(width = 12,
                   
                   title = tags$strong("Milkweed Survey Locations from 2023 surveys:"),
                   

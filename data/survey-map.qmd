@@ -50,7 +50,7 @@ leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
               fill = FALSE,
               color = "black",
               weight = 2) %>%
-  leaflet::addLegend("bottomleft", pal = pal, values = milkweed_yes$milkweed_sp,
+  leaflet::addLegend("topright", pal = pal, values = milkweed_yes$milkweed_sp,
                      title = "Milkweed Species",
                      opacity = 0.8) %>%
   addScaleBar()

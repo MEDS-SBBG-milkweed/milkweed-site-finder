@@ -174,3 +174,10 @@ form.well {
 .skin-blue .main-header .navbar a.sidebar-toggle{
   color:$light-green;
 }
+
+/* checkbox button styling*/
+.btn.active {
+  background: $yellow;
+  color: $yellow ;
+  border: $yellow;
+}

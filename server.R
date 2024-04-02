@@ -35,7 +35,7 @@ function(input, output, session) {
                     weight = 2) %>%
         
         # format legend
-        leaflet::addLegend("bottomleft", pal = pal, values = filtered_milkweed_df()$milkweed_sp,
+        leaflet::addLegend("topright", pal = pal, values = filtered_milkweed_df()$milkweed_sp,
                            title = "Milkweed Species",
                            opacity = 0.8) %>%
         addScaleBar()
