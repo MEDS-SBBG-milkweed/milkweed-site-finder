@@ -107,7 +107,7 @@ body <- dashboardBody(
                                      size = "normal",
                                      direction = "horizontal",
                                      checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                      no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                                                      no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
               ),
               
               # leaflet box ----
