@@ -13,7 +13,7 @@ function(input, output, session) {
     output$survey_map_output <- renderLeaflet({
       
       # map elements
-      colors <- c("#F9761D","#D6566B", "#822681", "#3D358B")
+      colors <- c("Asclepias californica" = "#F9761D","Asclepias vestita" = "#D6566B","Asclepias eriocarpa" = "#822681","Asclepias erosa" = "#3D358B")
       pal <- colorFactor(colors, domain =filtered_milkweed_df()$milkweed_sp, reverse = TRUE)
       
       
@@ -22,12 +22,12 @@ function(input, output, session) {
         
         # add markers
         addCircleMarkers(data = filtered_milkweed_df(),
-                         radius = 2, 
-                         color = ~pal(filtered_milkweed_df()$milkweed_sp), 
-                         fill = TRUE, 
+                         radius = 2,
+                         color = ~pal(filtered_milkweed_df()$milkweed_sp),
+                         fill = TRUE,
                          fillColor = ~pal(filtered_milkweed_df()$milkweed_sp),
                          opacity = 0.8) %>%
-        
+             
         # add polygons
         addPolygons(data = lpnf_boundary,
                     fill = FALSE,
