@@ -1,4 +1,4 @@
-# Define server logic required to draw a histogram
+# 
 function(input, output, session) {
 
     # filter survey data ----
@@ -9,7 +9,7 @@ function(input, output, session) {
 
     })
     
-    # build leaflet map ----
+    # build leaflet map for survey locations ----
     output$survey_map_output <- renderLeaflet({
       
       # map elements

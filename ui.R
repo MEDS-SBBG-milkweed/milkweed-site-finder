@@ -135,32 +135,26 @@ body <- dashboardBody(
                 
             ), # END habitat suitability info box
             
-            # habitat suitability sidebar layout
-            sidebarLayout(
-              
-              sidebarPanel(
-                # species type checkbox Group Buttons ----
-                checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("All Species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
-                                     selected = c("all"), 
-                                     individual = FALSE,
-                                     justified = FALSE,
-                                     size = "normal",
-                                     direction = "horizontal",
-                                     checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                      no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
-              ),
               
               mainPanel(
                 
                 
-                # plot output will go here
+                # californica model output ----
+                # leaflet box ----
+                box(width = 12,
+                    
+                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    
+                    #leaflet output for californica ----
+                    californica_leaflet
+                    
+                    
+                ) # END leaflet box
                 
                 
-              ) # END mainPanel
+              ), # END mainPanel
               
-            ), # END habitat suitability sidebar panel
-            
+
             # leaflet box ----
             box(width = 8,
 
