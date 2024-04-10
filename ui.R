@@ -140,8 +140,8 @@ body <- dashboardBody(
                 
                 
                 # californica model output ----
-                # leaflet box ----
-                box(width = 12,
+                # leaflet box 1 ----
+                box(width = 6,
                     
                     title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
                     
@@ -149,7 +149,43 @@ body <- dashboardBody(
                     californica_leaflet
                     
                     
-                ) # END leaflet box
+                ), # END leaflet box 1
+                
+                # californica model output ----
+                # leaflet box 2 ----
+                box(width = 6,
+                    
+                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    
+                    #leaflet output for californica ----
+                    californica_leaflet
+                    
+                    
+                ), # END leaflet box 2
+                
+                # californica model output ----
+                # leaflet box 3 ----
+                box(width = 6,
+                    
+                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    
+                    #leaflet output for californica ----
+                    californica_leaflet
+                    
+                    
+                ), # END leaflet box 3
+                
+                # californica model output ----
+                # leaflet box 4 ----
+                box(width = 6,
+                    
+                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    
+                    #leaflet output for californica ----
+                    californica_leaflet
+                    
+                    
+                ) # END leaflet box 4
                 
                 
               ), # END mainPanel
