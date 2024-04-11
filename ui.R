@@ -320,9 +320,9 @@ body <- dashboardBody(
 
                   "reactive datatable output here that lists coordinates based off of zoom and slider inputs"
 
-              ) # END input box
+              ), # END input box
               
-              # downloadButton('downloadData', 'Download data')
+              downloadButton("download1")
 
              ) # END fluidRow
             
