@@ -138,6 +138,8 @@ body <- dashboardBody(
               
               mainPanel(
                 
+              # fluidRow 1 ----
+              fluidRow(
                 
                 # californica model output ----
                 # leaflet box 1 ----
@@ -163,6 +165,11 @@ body <- dashboardBody(
                     
                 ), # END leaflet box 2
                 
+              ), # END FluidRow 1
+              
+              # FluidRow 2 ----
+              fluidRow(
+                
                 # californica model output ----
                 # leaflet box 3 ----
                 box(width = 6,
@@ -171,7 +178,6 @@ body <- dashboardBody(
                     
                     #leaflet output for californica ----
                     californica_leaflet
-                    
                     
                 ), # END leaflet box 3
                 
@@ -187,6 +193,7 @@ body <- dashboardBody(
                     
                 ) # END leaflet box 4
                 
+              )
                 
               ), # END mainPanel
               
@@ -258,26 +265,25 @@ body <- dashboardBody(
                 includeMarkdown("text/overview-site-finder.md")
                 
             ), # END sitefinder info box
-            
-            # fluidRow ----
-            fluidRow(
               
-              # habitat suitability sidebar layout
+              # milkweed locations sidebar layout
               sidebarLayout(
                 
                 sidebarPanel(
+                  
+                  width = 12,
                   # species type checkbox Group Buttons ----
                   checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                       choices = c("All Species", "A. californica", "A. vestita", "A. eriocarpa", "A. erosa"),
-                                       selected = c("all"), 
+                                       choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                       select = "Asclepias californica", 
                                        individual = FALSE,
                                        justified = FALSE,
                                        size = "normal",
                                        direction = "horizontal",
                                        checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                        no = icon("circle-xmark", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                                                        no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
                 ),
-                
+              
                 mainPanel(
                   
                   
@@ -297,27 +303,27 @@ body <- dashboardBody(
                               min = 0, max = 1,
                               value = 0.8, step = 0.1)
                   
+              ), # END input box
+              
+              # leaflet box ----
+              box(width = 8,
+
+                  "interactive map here that you can zoom to the area you want specified"
+
+              ), # END leaflet box
+
+            # fluidRow ----
+            fluidRow(
+
+              # input box ----
+              box(width = 4,
+
+                  "reactive datatable output here that lists coordinates based off of zoom and slider inputs"
+
               ) # END input box
               
-            #   # leaflet box ----
-            #   box(width = 8,
-            #       
-            #       "interactive map here that you can zoom to the area you want specified"
-            #       
-            #   ) # END leaflet box
-            #   
-            # ), # END fluidRow
-            # 
-            # # fluidRow ----
-            # fluidRow(
-            #   
-            #   # input box ----
-            #   box(width = 4,
-            #       
-            #       "reactive datatable output here that lists coordinates based off of zoom and slider inputs"
-            #       
-            #   ) # END input box
-            #   
+              # downloadButton('downloadData', 'Download data')
+
              ) # END fluidRow
             
     ), # END sitefinder locations tabItem
