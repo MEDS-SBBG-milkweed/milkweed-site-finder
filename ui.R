@@ -276,6 +276,12 @@ body <- dashboardBody(
                                        direction = "horizontal",
                                        checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
                                                         no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                  
+                  
+                  # Input: Accessibility Slider ----
+                  sliderInput("integer", "Accessibility Index:",
+                              min = 0, max = 1,
+                              value = 0.8, step = 0.1)
                 ),
               
                 mainPanel(
@@ -288,16 +294,6 @@ body <- dashboardBody(
                 
               ), # END habitat suitability sidebar panel
               
-              
-              # input box ----
-              box(width = 4,
-                  
-                  # Input: Accessibility Slider ----
-                  sliderInput("integer", "Accessibility Index:",
-                              min = 0, max = 1,
-                              value = 0.8, step = 0.1)
-                  
-              ), # END input box
               
               # leaflet box ----
               box(width = 8,
