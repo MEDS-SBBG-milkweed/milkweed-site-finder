@@ -26,33 +26,15 @@ sass(
 
 # LOAD IN DATA FOR LEAFLET SURVEY LOCATIONS ----
 # survey data
-milkweed_data_raw <- st_read(here("~/../../capstone/milkweedmod/data/milkweed_polygon_data/"))
+milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location_centroids/")
 
 # California National Forest boundaries
-boundary <- st_read(here("~/../../capstone/milkweedmod/data/lpnf_boundary_data/S_USA_AdministrativeForest.gdb/"))
-trails <- st_read(here("~/../../capstone/milkweedmod/data/2023_Regional_Trails_and_Roads_lines/2023_Regional_Trails_and_Roads_lines.shp"))
+lpnf_boundary <- st_read("data_processed/lpnf_boundary/lpnf_boundary_buffered/")
 
-
-# filter boundary
-lpnf_boundary <- boundary %>% 
-  filter(FORESTNAME %in% c("Los Padres National Forest")) %>%
-  st_transform("EPSG:4326")
-
-# filter data for mapping
-milkweed_map <- milkweed_data_raw |> 
-  janitor::clean_names() |> 
-  # st_transform(crs(envs_Ac)) %>%
-  dplyr::select(milkweed_p, milkweed_sp) %>%
-  st_centroid() %>%
-  st_transform("EPSG:4326")
-
-milkweed_yes <- milkweed_map %>%
-  filter(milkweed_p == "yes",
-         milkweed_sp != "Asclepias sp.")
 
 # LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----
 # Asclepias Californica model
-californica <- rast(here("~/../../capstone/milkweedmod/data/models/californica_bioclim_canopy_dem.tif"))
+californica <- rast("data_processed/sdm_outputs/californica_bioclim_canopy_dem.tif")
 
 # static californica output
 # leaflet output ----
@@ -72,16 +54,11 @@ californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMa
   # map model prediction raster and transfer polygon
   # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
   addRasterImage(californica, colors = rasPal, opacity = 0.7,
-                 method = "ngb")
+                 method = "ngb") %>% 
 ##add transfer polygon (user drawn area)
-# addPolygons(data = lpnf_north, fill = FALSE,
-#             weight = 2, color = "black", group = 'xfer')  %>%
+addPolygons(data = lpnf_boundary, fill = FALSE,
+            weight = 2, color = "black", group = 'xfer')
 # addCircleMarkers(data = occs_Ac, lat = ~latitude, lng = ~longitude,
 #                  radius = 2, color = 'black', fill = TRUE, fillColor = "black",
 #                  fillOpacity = 0.2, weight = 2) %>%
-# ##Add model prediction
-#
-# addPolygons(data = lpnf_south,
-#             fill = FALSE,
-#             color = "black",
-#             weight = 2)
+

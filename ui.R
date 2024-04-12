@@ -145,7 +145,7 @@ body <- dashboardBody(
                 # leaflet box 1 ----
                 box(width = 6,
                     
-                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    title = tags$strong("Asclepias Californica:"),
                     
                     #leaflet output for californica ----
                     californica_leaflet
@@ -157,7 +157,7 @@ body <- dashboardBody(
                 # leaflet box 2 ----
                 box(width = 6,
                     
-                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    title = tags$strong("Asclepias Californica:"),
                     
                     #leaflet output for californica ----
                     californica_leaflet
@@ -174,7 +174,7 @@ body <- dashboardBody(
                 # leaflet box 3 ----
                 box(width = 6,
                     
-                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    title = tags$strong("Asclepias Californica:"),
                     
                     #leaflet output for californica ----
                     californica_leaflet
@@ -185,7 +185,7 @@ body <- dashboardBody(
                 # leaflet box 4 ----
                 box(width = 6,
                     
-                    title = tags$strong("Milkweed Habitat Suitability Model for Asclepias Californica:"),
+                    title = tags$strong("Asclepias Californica:"),
                     
                     #leaflet output for californica ----
                     californica_leaflet
@@ -234,10 +234,19 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 4,
+              box(width = 12,
                   
-                  "pickerInput here, have model output pre-selected and user can choose whether they want to categorize by roads or by trail access"
-                  
+                  # species type checkbox Group Buttons ----
+                  checkboxGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
+                                       choices = c("Trails", "Roads", "Canopy Cover", "Land Ownership", "Slope"),
+                                       select = "Roads", 
+                                       individual = FALSE,
+                                       justified = FALSE,
+                                       size = "normal",
+                                       direction = "horizontal",
+                                       checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                                        no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+              
               ) # END input box
               
             ), # END fluidRow
@@ -245,12 +254,20 @@ body <- dashboardBody(
             # fluidRow ----
             fluidRow(
               
-              # leaflet box ----
-              box(width = 8,
+              # leaflet box 1 with accessibility index ----
+              box(width = 6,
                   
-                  "model output here, with site access model applied to map of Los Padres NF"
+                  # "model output here, with site access model applied to map of Los Padres NF"
+                  californica_leaflet
                   
-              ) # END leaflet box
+              ), # END leaflet box
+              
+              # leaflet box 2 with static index loaded
+              box(width = 6,
+                  
+                  # "model output here, with site access model applied to map of Los Padres NF"
+                  californica_leaflet
+              ),
               
             ) # END fluidRow
             
@@ -266,7 +283,7 @@ body <- dashboardBody(
                 
             ), # END sitefinder info box
               
-              # milkweed locations sidebar layout
+              # sitefinder sidebar layout
               sidebarLayout(
                 
                 sidebarPanel(
