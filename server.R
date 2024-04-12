@@ -36,7 +36,11 @@ function(input, output, session) {
           # format legend
           leaflet::addLegend("topright", pal = pal, values = filtered_milkweed_df()$milkweed_sp,
                              title = "Milkweed Species",
-                             opacity = 0.8) %>%
+                             opacity = 0.8) %>% 
+          
+          # # set view over LPNF # default appears to be best option so far
+          # setView(lng = -119.547729, lat = 34.556335, zoom = 7.5) %>% 
+        
           addScaleBar()
       
     })

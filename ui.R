@@ -236,6 +236,8 @@ body <- dashboardBody(
                   
                   # "model output here, with site access model applied to map of Los Padres NF"
                   californica_leaflet
+                  # infrastructure for incorporating a selectable raster stack
+                  # mainPanel(leafletOutput("map", width = "100%"))
                   
               ), # END leaflet box
               
@@ -244,6 +246,7 @@ body <- dashboardBody(
                   
                   # "model output here, with site access model applied to map of Los Padres NF"
                   californica_leaflet
+                  
               ), # END box with static leaflet
               
             ) # END fluidRow
