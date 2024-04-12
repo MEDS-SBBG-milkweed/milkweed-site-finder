@@ -36,6 +36,9 @@ lpnf_boundary <- st_read("data_processed/lpnf_boundary/lpnf_boundary_buffered/")
 # Asclepias Californica model
 californica <- rast("data_processed/sdm_outputs/californica_bioclim_canopy_dem.tif")
 
+# load in legend functionality for leaflet models
+source("R/addLegend_decreasing.R")
+
 # static californica output
 # leaflet output ----
 #Get values of prediction
@@ -48,9 +51,9 @@ legendPal <- colorNumeric(rasCols, mapPredVals_Ac, na.color = 'transparent')
 rasPal <- colorNumeric(rasCols, mapPredVals_Ac, na.color = 'transparent')
 
 californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
-  # addLegend_decreasing("bottomleft", pal = legendPal, values = mapXferVals_Ac, layerId = "xfer",
-  #                      labFormat = reverseLabel(), decreasing = FALSE,
-  #                      title = "<em>Asclepias californica</em><br>Predicted Suitability<br>") %>%
+  addLegend_decreasing("bottomleft", pal = legendPal, values = mapPredVals_Ac,
+                       labFormat = reverseLabel(), decreasing = TRUE,
+                       title = "<em>Asclepias californica</em><br>Predicted Suitability<br>") %>%
   # map model prediction raster and transfer polygon
   # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
   addRasterImage(californica, colors = rasPal, opacity = 0.7,

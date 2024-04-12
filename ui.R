@@ -135,88 +135,65 @@ body <- dashboardBody(
                 
             ), # END habitat suitability info box
             
+            
+            # fluidRow 1 ----
+            fluidRow(
               
-              mainPanel(
-                
-              # fluidRow 1 ----
-              fluidRow(
-                
-                # californica model output ----
-                # leaflet box 1 ----
-                box(width = 6,
-                    
-                    title = tags$strong("Asclepias Californica:"),
-                    
-                    #leaflet output for californica ----
-                    californica_leaflet
-                    
-                    
-                ), # END leaflet box 1
-                
-                # californica model output ----
-                # leaflet box 2 ----
-                box(width = 6,
-                    
-                    title = tags$strong("Asclepias Californica:"),
-                    
-                    #leaflet output for californica ----
-                    californica_leaflet
-                    
-                    
-                ), # END leaflet box 2
-                
-              ), # END FluidRow 1
+              # californica model output ----
+              # leaflet box 1 ----
+              box(width = 6,
+                  
+                  title = tags$strong("Asclepias Californica:"),
+                  
+                  #leaflet output for californica ----
+                  californica_leaflet
+                  
+                  
+              ), # END leaflet box 1
               
-              # FluidRow 2 ----
-              fluidRow(
-                
-                # californica model output ----
-                # leaflet box 3 ----
-                box(width = 6,
-                    
-                    title = tags$strong("Asclepias Californica:"),
-                    
-                    #leaflet output for californica ----
-                    californica_leaflet
-                    
-                ), # END leaflet box 3
-                
-                # californica model output ----
-                # leaflet box 4 ----
-                box(width = 6,
-                    
-                    title = tags$strong("Asclepias Californica:"),
-                    
-                    #leaflet output for californica ----
-                    californica_leaflet
-                    
-                    
-                ) # END leaflet box 4
-                
-              )
-                
-              ), # END mainPanel
+              # californica model output ----
+              # leaflet box 2 ----
+              box(width = 6,
+                  
+                  title = tags$strong("Asclepias Californica:"),
+                  
+                  #leaflet output for californica ----
+                  californica_leaflet
+                  
+                  
+              ), # END leaflet box 2
               
-
-            # leaflet box ----
-            box(width = 8,
-
-                "model output here showing modeled habitat suitability here"
-
-            ), # END leaflet box
-# 
-#             # second fluidRow ----
-#             fluidRow(
-# 
-#               # model parameter box ----
-#               box(width = 12,
-# 
-#                   "model parameters used to calculate this model"
-# 
-#               ) # END model parameter box
-# 
-#             ) # END fluidRow
-#             
+            ), # END FluidRow 1
+            
+            # FluidRow 2 ----
+            fluidRow(
+              
+              # californica model output ----
+              # leaflet box 3 ----
+              box(width = 6,
+                  
+                  title = tags$strong("Asclepias Californica:"),
+                  
+                  #leaflet output for californica ----
+                  californica_leaflet
+                  
+              ), # END leaflet box 3
+              
+              # californica model output ----
+              # leaflet box 4 ----
+              box(width = 6,
+                  
+                  title = tags$strong("Asclepias Californica:"),
+                  
+                  #leaflet output for californica ----
+                  californica_leaflet
+                  
+                  
+              ) # END leaflet box 4
+              
+            ), # END FluidRow2
+            
+            
     ), # END habitat suitability tabItem
     
     
@@ -267,7 +244,7 @@ body <- dashboardBody(
                   
                   # "model output here, with site access model applied to map of Los Padres NF"
                   californica_leaflet
-              ),
+              ), # END box with static leaflet
               
             ) # END fluidRow
             
