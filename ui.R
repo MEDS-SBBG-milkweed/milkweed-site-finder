@@ -143,7 +143,7 @@ body <- dashboardBody(
               # leaflet box 1 ----
               box(width = 6,
                   
-                  title = tags$strong("Asclepias Californica:"),
+                  title = tags$em("Asclepias californica:"),
                   
                   #leaflet output for californica ----
                   californica_leaflet
@@ -155,7 +155,7 @@ body <- dashboardBody(
               # leaflet box 2 ----
               box(width = 6,
                   
-                  title = tags$strong("Asclepias Californica:"),
+                  title = tags$em("Asclepias californica:"),
                   
                   #leaflet output for californica ----
                   californica_leaflet
@@ -172,7 +172,7 @@ body <- dashboardBody(
               # leaflet box 3 ----
               box(width = 6,
                   
-                  title = tags$strong("Asclepias Californica:"),
+                  title = tags$em("Asclepias californica:"),
                   
                   #leaflet output for californica ----
                   californica_leaflet
@@ -183,7 +183,7 @@ body <- dashboardBody(
               # leaflet box 4 ----
               box(width = 6,
                   
-                  title = tags$strong("Asclepias Californica:"),
+                  title = tags$em("Asclepias californica:"),
                   
                   #leaflet output for californica ----
                   californica_leaflet
@@ -193,7 +193,31 @@ body <- dashboardBody(
               
             ), # END FluidRow2
             
+            # habitat suitability info box ----
+            box(width = NULL,
+                
+                # replace this with text that describes what all the plots together
+                includeMarkdown("text/overview-habitat-suitability.md")
+                
+            ),
             
+            # fluidRow 3 ----
+            fluidRow(
+            
+            # leaflet box 4 ----
+            box(width = 12,
+                
+                title = tags$em("Asclepias californica:"),
+                
+                #leaflet output for californica ----
+                californica_leaflet
+                
+                
+            ) # END leaflet box 4
+            
+            ) # END fluid row3
+            
+         
     ), # END habitat suitability tabItem
     
     
@@ -215,7 +239,7 @@ body <- dashboardBody(
                   
                   # species type checkbox Group Buttons ----
                   checkboxGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
-                                       choices = c("Trails", "Roads", "Canopy Cover", "Land Ownership", "Slope"),
+                                       choices = c("Trails", "Roads", "Canopy", "Land", "Slope"),
                                        select = "Roads", 
                                        individual = FALSE,
                                        justified = FALSE,
@@ -234,10 +258,9 @@ body <- dashboardBody(
               # leaflet box 1 with accessibility index ----
               box(width = 6,
                   
-                  # "model output here, with site access model applied to map of Los Padres NF"
-                  californica_leaflet
-                  # infrastructure for incorporating a selectable raster stack
-                  # mainPanel(leafletOutput("map", width = "100%"))
+                  # "model output here, with site access model applied to map of Los Padres NF" ----
+                  leafletOutput(outputId = "accessibility_layer_output") |> 
+                    withSpinner(type = 1, color = "#4287f5")
                   
               ), # END leaflet box
               

@@ -1,0 +1,88 @@
+```{r}
+rst1 = matrix(runif(400, 0, 1),20, 20)# for suitability layer
+rst2 = matrix(rnorm(400, 800, 50), 20, 20)# for precipitation
+rst3 = matrix(rnorm(400, 27, 2.5), 20, 20)# for mean temperature
+rst4 = matrix(rnorm(400, 38, 1.5), 20, 20)# for max. temperature
+rst5 = matrix(rnorm(400, 21, 0.5), 20, 20)# for min. temperature
+
+suit1 = raster(rst1)
+precip1 = raster(rst2)
+mean.T = raster(rst3)
+max.T = raster(rst4)
+min.T = raster(rst5)
+
+# stack the raster layers
+s1 = stack(suit1, precip1, mean.T, max.T, min.T)
+
+# create extent and assign projection
+extent(s1) = c(68,82,23,38)
+projection(s1) <- CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
+
+f2 <- function(x){
+  x1 = x[1]
+  x2 = x[2]
+  x3 = x[3]
+  x4 = x[4]
+  x5 = x[5]
+  ifelse(is.na(x1)== T, NA, ifelse(x2 >= 700 & x2 <= 880 & x3 <= 28 &
+                                     x4 <= 40 & x5 <= 22, x1, NA))
+}
+s_new = overlay(s1, fun = f2)
+
+
+The shiny app code:
+
+ui <- fluidPage(
+  tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
+  titlePanel('Cactus Suitability'),
+  #leafletOutput("map", width = "100%", height = "100%"),
+  sidebarLayout(
+    sidebarPanel(sliderInput('l2', 'Precip', min = 640
+                             ,max = 950 
+                             ,value = c(700,800)
+                             ,step = 25),
+                 sliderInput('l3', 'Mean Temperature (C)', min = 20
+                             ,max = 34
+                             ,value = c(20,25), step = 1),
+                 sliderInput('l4', 'Max Temperature (C)', min = 32
+                             ,max = 43
+                             ,value = c(35,40), step = 1),
+                 sliderInput('l5', 'Min Temperature (C)', min = 19
+                             ,max = 23
+                             ,value = c(19, 20), step = 0.5)),
+                 
+    mainPanel(leafletOutput("map", width = "100%"))
+  )
+  
+)
+
+#shiny server
+server <- function(input, output, session){
+  filteredData <- reactive({
+    calc(s1, fun = function(x){
+      x1 = x[1]
+      x2 = x[2]
+      x3 = x[3]
+      x4 = x[4]
+      x5 = x[5]
+      ifelse(is.na(x1)== T, NA, ifelse(x2 > input$l2[1] & x2 < input$l2[2] 
+                                       & x3 > input$l3[1] & x3 < input$l3[2] 
+                                       & x4 > input$l4[1] & x4 < input$l4[2]
+                                       & x5 > input$l5[1] & x5 < input$l5[2],
+                                       x1, NA))
+    })
+  })
+  
+  pal <- colorNumeric("RdYlBu", values(s1[[1]]), 
+                      na.color = "transparent")
+  output$map <- renderLeaflet({
+    leaflet() %>% addProviderTiles('Esri.WorldImagery') %>%
+      addRasterImage(filteredData(), colors = pal, opacity = 1) %>%
+      addLegend(position = "bottomright", pal = pal, values = values(s1[[1]]),
+                opacity = 1)
+  })
+}
+
+shinyApp(ui, server)
+```
+

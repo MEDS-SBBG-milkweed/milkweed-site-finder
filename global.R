@@ -26,7 +26,10 @@ sass(
 
 # LOAD IN DATA FOR LEAFLET SURVEY LOCATIONS ----
 # survey data
-milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location_centroids/")
+milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location_centroids/all_species_points.shp") %>% 
+  filter(mlkwd_s != "Asclepias sp.") %>% 
+  sf::st_transform('+proj=longlat +datum=WGS84')
+
 
 # California National Forest boundaries
 lpnf_boundary <- st_read("data_processed/lpnf_boundary/lpnf_boundary_buffered/")
@@ -65,3 +68,31 @@ addPolygons(data = lpnf_boundary, fill = FALSE,
 #                  radius = 2, color = 'black', fill = TRUE, fillColor = "black",
 #                  fillOpacity = 0.2, weight = 2) %>%
 
+# LOAD IN DATA FOR Site Accessibility ----
+Roads <- rast("data_processed/site_accessibility_outputs/roads.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+Trails <- rast("data_processed/site_accessibility_outputs/trails.tif") %>%
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+Slope <- rast("data_processed/site_accessibility_outputs/slope.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+Land <- rast("data_processed/site_accessibility_outputs/trails.tif") %>%
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+Canopy <- rast("data_processed/site_accessibility_outputs/slope.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+names(Canopy) <- "Canopy"
+names(Land) <- "Land"
+names(Roads) <- "Roads"
+names(Trails) <- "Trails"
+names(Slope) <- "Slope"
+
+stack <- stack(Roads, Trails, Slope, Canopy, Land)
