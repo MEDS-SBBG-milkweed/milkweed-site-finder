@@ -70,30 +70,38 @@ addPolygons(data = lpnf_boundary, fill = FALSE,
 
 
 # LOAD IN DATA FOR Site Accessibility ----
+
+# load roads data ----
 Roads <- rast("data_processed/site_accessibility_outputs/roads.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+# load trails data ----
 Trails <- rast("data_processed/site_accessibility_outputs/trails.tif") %>%
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+# load slope data ----
 Slope <- rast("data_processed/site_accessibility_outputs/slope.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+# load land ownership data ----
 Land <- rast("data_processed/site_accessibility_outputs/trails.tif") %>%
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+# load canopy cover data ----
 Canopy <- rast("data_processed/site_accessibility_outputs/slope.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+# rename raster layers so they retain their names within the raster stack
 names(Canopy) <- "Canopy"
 names(Land) <- "Land"
 names(Roads) <- "Roads"
 names(Trails) <- "Trails"
 names(Slope) <- "Slope"
 
+# create raster stack to iterate through
 stack <- stack(Roads, Trails, Slope, Canopy, Land)
