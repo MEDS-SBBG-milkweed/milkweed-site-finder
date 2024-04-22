@@ -68,6 +68,7 @@ addPolygons(data = lpnf_boundary, fill = FALSE,
 #                  radius = 2, color = 'black', fill = TRUE, fillColor = "black",
 #                  fillOpacity = 0.2, weight = 2) %>%
 
+
 # LOAD IN DATA FOR Site Accessibility ----
 Roads <- rast("data_processed/site_accessibility_outputs/roads.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 

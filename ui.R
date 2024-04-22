@@ -238,10 +238,10 @@ body <- dashboardBody(
               box(width = 12,
                   
                   # species type checkbox Group Buttons ----
-                  checkboxGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
+                  radioGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
                                        choices = c("Trails", "Roads", "Canopy", "Land", "Slope"),
-                                       select = "Roads", 
-                                       individual = FALSE,
+                                       selected = "Roads", 
+                                       individual = TRUE,
                                        justified = FALSE,
                                        size = "normal",
                                        direction = "horizontal",
