@@ -100,9 +100,9 @@ body <- dashboardBody(
                 width = 12,
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
-                                     select = "Asclepias californica", 
-                                     individual = FALSE,
+                                     choices = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
+                                     # select = "Asclepias californica", 
+                                     individual = TRUE,
                                      justified = FALSE,
                                      size = "normal",
                                      direction = "horizontal",
