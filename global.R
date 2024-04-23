@@ -44,6 +44,9 @@ eriocarpa <- rast("data_processed/sdm_outputs/eriocarpa_sdm.tif")
 erosa <- rast("data_processed/sdm_outputs/erosa_sdm.tif")
 # Asclepias vestita model
 vestita <- rast("data_processed/sdm_outputs/vestita_sdm.tif")
+# Asclepias species model
+all <- rast("data_processed/sdm_outputs/max_suitable_sdm.tif")
+
 # load in legend functionality for leaflet models
 source("R/addLegend_decreasing.R")
 
@@ -140,6 +143,30 @@ erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
   #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
+
+# static all suitable output ----
+# leaflet output 
+# get values of prediction
+mapPredVals_all <- getRasterVals(all) # change for different types
+
+# define colors and legend  
+rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
+
+legendPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
+rasPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
+
+all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+  addLegend_decreasing("bottomleft", pal = legendPal_all, values = mapPredVals_all,
+                       labFormat = reverseLabel(), decreasing = TRUE,
+                       title = "<em>Asclepias species</em><br>Predicted Suitability<br>") %>%
+  # map model prediction raster and transfer polygon
+  addRasterImage(all, colors = rasPal_all, opacity = 0.7,
+                 method = "ngb") %>% 
+  #add transfer polygon (user drawn area)
+  addPolygons(data = lpnf_boundary, fill = FALSE,
+              weight = 2, color = "black", group = 'xfer')
+
+
 
 # LOAD IN DATA FOR Site Accessibility ----
 

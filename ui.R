@@ -100,7 +100,7 @@ body <- dashboardBody(
                 width = 12,
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
+                                     choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
                                      # select = "Asclepias californica", 
                                      individual = TRUE,
                                      justified = FALSE,
@@ -197,7 +197,7 @@ body <- dashboardBody(
             box(width = NULL,
                 
                 # replace this with text that describes what all the plots together
-                includeMarkdown("text/overview-habitat-suitability.md")
+                includeMarkdown("text/habitat_suitability_all.md")
                 
             ),
             
@@ -207,10 +207,10 @@ body <- dashboardBody(
             # leaflet box 4 ----
             box(width = 12,
                 
-                title = tags$em("Asclepias californica:"),
+                title = tags$em("Asclepias sp:"),
                 
-                #leaflet output for californica ----
-                californica_leaflet
+                #leaflet output for all of the species ----
+                all_leaflet
                 
                 
             ) # END leaflet box 4
@@ -268,7 +268,7 @@ body <- dashboardBody(
               box(width = 6,
                   
                   # "model output here, with site access model applied to map of Los Padres NF"
-                  californica_leaflet
+                  all_leaflet
                   
               ), # END box with static leaflet
               
@@ -294,7 +294,7 @@ body <- dashboardBody(
                   width = 12,
                   # species type checkbox Group Buttons ----
                   checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                       choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                       choices = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
                                        select = "Asclepias californica", 
                                        individual = FALSE,
                                        justified = FALSE,

@@ -11,10 +11,11 @@ function(input, output, session) {
     
     # build leaflet map for survey locations ----
     output$survey_map_output <- renderLeaflet({
-     
-      colors <- c("Asclepias californica" = "#F9761D", "Asclepias vestita" = "#D6566B", "Asclepias eriocarpa" = "#822681", "Asclepias erosa" = "#3D358B")
 
-      pal <- colorFactor(colors, domain = filtered_milkweed_df()$mlkwd_s)
+      # set colors for each species
+      pal <- colorFactor(palette = c("#F9761D", "#D6566B", "#822681", "#3D358B"), 
+                    levels = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                    domain = filtered_milkweed_df()$mlkwd_s)
  
         leaflet() %>% 
           addProviderTiles(providers$Esri.WorldTopoMap) %>%
