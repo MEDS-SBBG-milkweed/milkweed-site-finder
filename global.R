@@ -36,38 +36,110 @@ lpnf_boundary <- st_read("data_processed/lpnf_boundary/lpnf_boundary_buffered/")
 
 
 # LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----
-# Asclepias Californica model
+# Asclepias californica model
 californica <- rast("data_processed/sdm_outputs/californica_bioclim_canopy_dem.tif")
-
+# Asclepias eriocarpa model
+eriocarpa <- rast("data_processed/sdm_outputs/californica_bioclim_canopy_dem.tif")
+# Asclepias erosa model
+erosa <- rast("data_processed/sdm_outputs/erosa_sdm.tif")
+# Asclepias vestita model
+vestita <- rast("data_processed/sdm_outputs/vestita_sdm.tif")
 # load in legend functionality for leaflet models
 source("R/addLegend_decreasing.R")
 
+
+
+# LOAD Habitat Suitability Maps ----
+
 # static californica output
-# leaflet output ----
+# leaflet output
 #Get values of prediction
-mapPredVals_Ac <- getRasterVals(californica) # change for different types
+mapPredVals_californica <- getRasterVals(californica) # change for different types
 # 
 # #Define colors and legend  
 rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 
-legendPal <- colorNumeric(rasCols, mapPredVals_Ac, na.color = 'transparent')
-rasPal <- colorNumeric(rasCols, mapPredVals_Ac, na.color = 'transparent')
+legendPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
+rasPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
 
 californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
-  addLegend_decreasing("bottomleft", pal = legendPal, values = mapPredVals_Ac,
+  addLegend_decreasing("bottomleft", pal = legendPal_californica, values = mapPredVals_californica,
                        labFormat = reverseLabel(), decreasing = TRUE,
                        title = "<em>Asclepias californica</em><br>Predicted Suitability<br>") %>%
   # map model prediction raster and transfer polygon
   # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
-  addRasterImage(californica, colors = rasPal, opacity = 0.7,
+  addRasterImage(californica, colors = rasPal_californica, opacity = 0.7,
                  method = "ngb") %>% 
-##add transfer polygon (user drawn area)
+#add transfer polygon (user drawn area)
 addPolygons(data = lpnf_boundary, fill = FALSE,
             weight = 2, color = "black", group = 'xfer')
-# addCircleMarkers(data = occs_Ac, lat = ~latitude, lng = ~longitude,
-#                  radius = 2, color = 'black', fill = TRUE, fillColor = "black",
-#                  fillOpacity = 0.2, weight = 2) %>%
 
+# static eriocarpa output ----
+# leaflet output
+#Get values of prediction
+mapPredVals_eriocarpa <- getRasterVals(eriocarpa) # change for different types
+# 
+# #Define colors and legend  
+rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
+
+legendPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
+rasPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
+
+eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+  addLegend_decreasing("bottomleft", pal = legendPal_eriocarpa, values = mapPredVals_eriocarpa,
+                       labFormat = reverseLabel(), decreasing = TRUE,
+                       title = "<em>Asclepias eriocarpa</em><br>Predicted Suitability<br>") %>%
+  # map model prediction raster and transfer polygon
+  # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
+  addRasterImage(eriocarpa, colors = rasPal_eriocarpa, opacity = 0.7,
+                 method = "ngb") %>% 
+  #add transfer polygon (user drawn area)
+  addPolygons(data = lpnf_boundary, fill = FALSE,
+              weight = 2, color = "black", group = 'xfer')
+
+# static vestita output ----
+# leaflet output 
+# get values of prediction
+mapPredVals_vestita <- getRasterVals(vestita) # change for different types
+
+# define colors and legend  
+rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
+
+legendPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
+rasPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
+
+vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+  addLegend_decreasing("bottomleft", pal = legendPal_vestita, values = mapPredVals_vestita,
+                       labFormat = reverseLabel(), decreasing = TRUE,
+                       title = "<em>Asclepias vestita</em><br>Predicted Suitability<br>") %>%
+  # map model prediction raster and transfer polygon
+  addRasterImage(vestita, colors = rasPal_vestita, opacity = 0.7,
+                 method = "ngb") %>% 
+  #add transfer polygon (user drawn area)
+  addPolygons(data = lpnf_boundary, fill = FALSE,
+              weight = 2, color = "black", group = 'xfer')
+
+# static erosa output ----
+# leaflet output 
+# get values of prediction
+mapPredVals_erosa <- getRasterVals(erosa) # change for different types
+
+# define colors and legend  
+rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
+
+legendPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
+rasPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
+
+erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+  addLegend_decreasing("bottomleft", pal = legendPal_erosa, values = mapPredVals_erosa,
+                       labFormat = reverseLabel(), decreasing = TRUE,
+                       title = "<em>Asclepias erosa</em><br>Predicted Suitability<br>") %>%
+  # map model prediction raster and transfer polygon
+  addRasterImage(erosa, colors = rasPal_erosa, opacity = 0.7,
+                 method = "ngb") %>% 
+  #add transfer polygon (user drawn area)
+  addPolygons(data = lpnf_boundary, fill = FALSE,
+              weight = 2, color = "black", group = 'xfer')
 
 # LOAD IN DATA FOR Site Accessibility ----
 

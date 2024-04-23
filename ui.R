@@ -155,10 +155,10 @@ body <- dashboardBody(
               # leaflet box 2 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias californica:"),
+                  title = tags$em("Asclepias eriocarpa:"),
                   
                   #leaflet output for californica ----
-                  californica_leaflet
+                  eriocarpa_leaflet
                   
                   
               ), # END leaflet box 2
@@ -172,10 +172,10 @@ body <- dashboardBody(
               # leaflet box 3 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias californica:"),
+                  title = tags$em("Asclepias vestita:"),
                   
                   #leaflet output for californica ----
-                  californica_leaflet
+                  vestita_leaflet
                   
               ), # END leaflet box 3
               
@@ -183,10 +183,10 @@ body <- dashboardBody(
               # leaflet box 4 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias californica:"),
+                  title = tags$em("Asclepias erosa:"),
                   
                   #leaflet output for californica ----
-                  californica_leaflet
+                  erosa_leaflet
                   
                   
               ) # END leaflet box 4
