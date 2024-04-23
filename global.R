@@ -37,9 +37,9 @@ lpnf_boundary <- st_read("data_processed/lpnf_boundary/lpnf_boundary_buffered/")
 
 # LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----
 # Asclepias californica model
-californica <- rast("data_processed/sdm_outputs/californica_bioclim_canopy_dem.tif")
+californica <- rast("data_processed/sdm_outputs/californica_sdm.tif")
 # Asclepias eriocarpa model
-eriocarpa <- rast("data_processed/sdm_outputs/californica_bioclim_canopy_dem.tif")
+eriocarpa <- rast("data_processed/sdm_outputs/eriocarpa_sdm.tif")
 # Asclepias erosa model
 erosa <- rast("data_processed/sdm_outputs/erosa_sdm.tif")
 # Asclepias vestita model
