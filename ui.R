@@ -286,55 +286,46 @@ body <- dashboardBody(
                 
             ), # END sitefinder info box
               
-              # sitefinder sidebar layout
-              sidebarLayout(
-                
-                sidebarPanel(
-                  
-                  width = 12,
+            # fluidRow ----
+            fluidRow(
+              
+              # input box ----
+              box(width = 12,
+    
                   # species type checkbox Group Buttons ----
-                  checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                       choices = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
-                                       select = "Asclepias californica", 
-                                       individual = FALSE,
-                                       justified = FALSE,
-                                       size = "normal",
-                                       direction = "horizontal",
-                                       checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                        no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                  radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
+                                       choiceNames = c("<em>Asclepias californica</em>", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                       choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
+                                    selected = "Asclepias.californica", 
+                                    individual = TRUE,
+                                    justified = FALSE,
+                                    size = "normal",
+                                    direction = "horizontal",
+                                    checkIcon = list(yes = icon("circle-dot", lib = "font-awesome"), 
+                                                     no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
                   
-                  
-                  # Input: Accessibility Slider ----
-                  sliderInput("integer", "Accessibility Index:",
-                              min = 0, max = 1,
-                              value = 0.8, step = 0.1)
-                ),
+              ) # END input box
               
-                mainPanel(
-                  
-                  
-                  # plot output will go here
-                  
-                  
-                ) # END mainPanel
+            ), # END fluidRow
+  
+    
+            
+            # leaflet box ----
+            box(width = 12,
                 
-              ), # END habitat suitability sidebar panel
-              
-              
-              # leaflet box ----
-              box(width = 8,
-
-                  "interactive map here that you can zoom to the area you want specified"
-
-              ), # END leaflet box
-
+                # "model output here, with site access model applied to map of Los Padres NF" ----
+                leafletOutput(outputId = "priority_species_output") |> 
+                  withSpinner(type = 1, color = "#4287f5")
+                
+            ), # END leaflet box
+  
             # fluidRow ----
             fluidRow(
 
               # input box ----
-              box(width = 4,
+              box(width = 12,
 
-                  "reactive datatable output here that lists coordinates based off of zoom and slider inputs"
+                  DT::dataTableOutput("priority_species_table")
 
               ), # END input box
               

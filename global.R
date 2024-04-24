@@ -204,3 +204,61 @@ names(Slope) <- "Slope"
 
 # create raster stack to iterate through
 stack <- stack(Roads, Trails, Slope, Canopy, Land)
+
+# LOAD IN DATA for Site Finder Priority Outputs ----
+# Asclepias californica model
+californica_priority <- rast("data_processed/priority_outputs/californica_priority.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+# Asclepias eriocarpa model
+eriocarpa_priority <- rast("data_processed/priority_outputs/eriocarpa_priority.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+# Asclepias erosa model
+erosa_priority <- rast("data_processed/priority_outputs/erosa_priority.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+# Asclepias vestita model
+vestita_priority <- rast("data_processed/priority_outputs/vestita_priority.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+# rename raster layers so they retain their names within the raster stack
+names(californica_priority) <- "Asclepias californica"
+names(eriocarpa_priority) <- "Asclepias eriocarpa"
+names(erosa_priority) <- "Asclepias erosa"
+names(vestita_priority) <- "Asclepias vestita"
+
+# create raster stack to iterate through
+priority_stack <- stack(californica_priority, eriocarpa_priority, erosa_priority, vestita_priority)
+
+# extract data frames from each species priorty output
+priority_stack_df <- raster::as.data.frame(priority_stack, xy=TRUE) %>%
+  rename(Longitude = x, Latitude = y) %>%
+  drop_na()
+
+
+# # california priority data table
+# californica_priority_df <- raster::as.data.frame(californica_priority, xy=TRUE) %>%
+#   rename(`Priority Score` = californica_sdm, Longitude = x, Latitude = y) %>%
+#   drop_na() %>%
+#   mutate("Species" = "A. californica")
+# 
+# # eriocarpa priority data table
+# eriocarpa_priority_df <- raster::as.data.frame(eriocarpa_priority, xy=TRUE) %>%
+#   rename(`Priority Score` = eriocarpa_sdm, Longitude = x, Latitude = y) %>%
+#   drop_na() %>%
+#   mutate("Species" = "A. eriocarpa")
+# 
+# # eriocarpa priority data table
+# erosa_priority_df <- raster::as.data.frame(erosa_priority, xy=TRUE) %>%
+#   rename(`Priority Score` = erosa_sdm, Longitude = x, Latitude = y) %>%
+#   drop_na() %>%
+#   mutate("Species" = "A. erosa")
+# 
+# # vestita priority data table
+# vestita_priority_df <- raster::as.data.frame(vestita_priority, xy=TRUE) %>%
+#   rename(`Priority Score` = vestita_sdm, Longitude = x, Latitude = y) %>%
+#   drop_na() %>%
+#   mutate("Species" = "A. vestita")
+# 

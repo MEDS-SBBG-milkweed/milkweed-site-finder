@@ -56,7 +56,7 @@ function(input, output, session) {
       })
     
 
-    # filter raster info data ----
+    # filter raster site accessibility info data ----
     filtered_access_raster <- reactive ({
 
       stack %>% 
@@ -76,6 +76,31 @@ function(input, output, session) {
 
     })
     
+    # filter priority sites info data ----
+    filtered_priority_raster <- reactive ({
+      
+      priority_stack %>% 
+        raster::subset(input$priority_species_input)
+      
+    })
     
+    # build leaflet map for site accessibility raster layers ----
+    output$priority_species_output <- renderLeaflet({
+      
+      leaflet() %>%
+        addProviderTiles(providers$Esri.WorldTopoMap) %>%
+        
+        # add markers
+        addRasterImage(filtered_priority_raster())
+      
+    })
+    
+    # build leaflet map for site accessibility raster layers ----
+    output$priority_species_table <- DT::renderDataTable({
+
+        DT::datatable(
+          priority_stack_df)
+      
+    })
 }
 
