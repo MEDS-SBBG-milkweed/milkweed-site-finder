@@ -182,6 +182,13 @@ form.well {
   border: $yellow;
 }
 
+/* checkbox button styling*/
+.btn:focus {
+  background: $yellow;
+  color: $gray;
+  border: $yellow;
+}
+
 /* download button styling*/
 .btn-default {
     background-color: #f4f4f4;

@@ -18,7 +18,7 @@ function(input, output, session) {
                     domain = filtered_milkweed_df()$mlkwd_s)
  
         leaflet() %>% 
-          addProviderTiles(providers$Esri.WorldTopoMap) %>%
+          addProviderTiles(providers$Esri.WorldTerrain) %>%
           
           # add markers
           addCircleMarkers(data = filtered_milkweed_df(),
@@ -60,7 +60,7 @@ function(input, output, session) {
     filtered_access_raster <- reactive ({
 
       stack %>% 
-        raster::subset(input$accessibility_layer_input)
+        raster::subset(input$accessibility_layer_input) 
 
     })
 
@@ -69,10 +69,15 @@ function(input, output, session) {
 
 
       leaflet() %>%
-        addProviderTiles(providers$Esri.WorldTopoMap) %>%
+        addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add markers
         addRasterImage(filtered_access_raster())
+        
+        # format legend
+        # leaflet::addLegend("bottomleft", pal = filtered_access_raster(), values = filtered_access_raster(),
+        #                    title = "filtered_access_raster()",
+        #                    opacity = 0.8) 
 
     })
     
@@ -88,7 +93,7 @@ function(input, output, session) {
     output$priority_species_output <- renderLeaflet({
       
       leaflet() %>%
-        addProviderTiles(providers$Esri.WorldTopoMap) %>%
+        addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add markers
         addRasterImage(filtered_priority_raster())

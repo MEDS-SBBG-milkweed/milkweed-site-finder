@@ -100,7 +100,8 @@ body <- dashboardBody(
                 width = 12,
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choices = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                     choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
+                                     choiceValues = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
                                      # select = "Asclepias californica", 
                                      individual = TRUE,
                                      justified = FALSE,
@@ -267,8 +268,8 @@ body <- dashboardBody(
               # leaflet box 2 with static index loaded
               box(width = 6,
                   
-                  # "model output here, with site access model applied to map of Los Padres NF"
-                  all_leaflet
+                  # site accessibility index applied to map of Los Padres NF
+                  accessibility_index_leaflet
                   
               ), # END box with static leaflet
               
@@ -294,7 +295,7 @@ body <- dashboardBody(
     
                   # species type checkbox Group Buttons ----
                   radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
-                                       choiceNames = c("<em>Asclepias californica</em>", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                       choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
                                        choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
                                     selected = "Asclepias.californica", 
                                     individual = TRUE,

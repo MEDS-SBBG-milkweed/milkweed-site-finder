@@ -65,10 +65,10 @@ rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 legendPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
 rasPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
 
-californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_californica, values = mapPredVals_californica,
                        labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "<em>Asclepias californica</em><br>Predicted Suitability<br>") %>%
+                       title = "Predicted Suitability") %>%
   # map model prediction raster and transfer polygon
   # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
   addRasterImage(californica, colors = rasPal_californica, opacity = 0.7,
@@ -88,10 +88,10 @@ rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 legendPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
 rasPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
 
-eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_eriocarpa, values = mapPredVals_eriocarpa,
                        labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "<em>Asclepias eriocarpa</em><br>Predicted Suitability<br>") %>%
+                       title = "Predicted Suitability") %>%
   # map model prediction raster and transfer polygon
   # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
   addRasterImage(eriocarpa, colors = rasPal_eriocarpa, opacity = 0.7,
@@ -111,10 +111,10 @@ rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 legendPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
 rasPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
 
-vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_vestita, values = mapPredVals_vestita,
                        labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "<em>Asclepias vestita</em><br>Predicted Suitability<br>") %>%
+                       title = "Predicted Suitability") %>%
   # map model prediction raster and transfer polygon
   addRasterImage(vestita, colors = rasPal_vestita, opacity = 0.7,
                  method = "ngb") %>% 
@@ -133,10 +133,10 @@ rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 legendPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
 rasPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
 
-erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_erosa, values = mapPredVals_erosa,
                        labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "<em>Asclepias erosa</em><br>Predicted Suitability<br>") %>%
+                       title = "Predicted Suitability") %>%
   # map model prediction raster and transfer polygon
   addRasterImage(erosa, colors = rasPal_erosa, opacity = 0.7,
                  method = "ngb") %>% 
@@ -155,10 +155,10 @@ rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 legendPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
 rasPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
 
-all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
+all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_all, values = mapPredVals_all,
                        labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "<em>Asclepias species</em><br>Predicted Suitability<br>") %>%
+                       title = "Predicted Suitability") %>%
   # map model prediction raster and transfer polygon
   addRasterImage(all, colors = rasPal_all, opacity = 0.7,
                  method = "ngb") %>% 
@@ -171,27 +171,28 @@ all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap) %>%
 # LOAD IN DATA FOR Site Accessibility ----
 
 # load roads data ----
-Roads <- rast("data_processed/site_accessibility_outputs/roads.tif") %>% 
+Roads <- rast("data_processed/site_accessibility_outputs/roads_rescaled.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load trails data ----
-Trails <- rast("data_processed/site_accessibility_outputs/trails.tif") %>%
+Trails <- rast("data_processed/site_accessibility_outputs/trails_rescaled.tif") %>%
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load slope data ----
-Slope <- rast("data_processed/site_accessibility_outputs/slope.tif") %>% 
+Slope <- rast("data_processed/site_accessibility_outputs/slope_rescaled.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load land ownership data ----
-Land <- rast("data_processed/site_accessibility_outputs/trails.tif") %>%
+Land <- rast("data_processed/site_accessibility_outputs/ownership_rescaled.tif") %>%
   project('+proj=longlat +datum=WGS84') %>% 
-  raster()
+  raster() %>% 
+  mask(lpnf_boundary)
 
 # load canopy cover data ----
-Canopy <- rast("data_processed/site_accessibility_outputs/slope.tif") %>% 
+Canopy <- rast("data_processed/site_accessibility_outputs/canopy_rescaled.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
@@ -204,6 +205,35 @@ names(Slope) <- "Slope"
 
 # create raster stack to iterate through
 stack <- stack(Roads, Trails, Slope, Canopy, Land)
+
+# load total site accessibility data ----
+index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
+
+# static total accessibility index output ----
+# leaflet output 
+# get values of prediction
+mapPredVals_index <- getRasterVals(index) # change for different types
+
+# define colors and legend  
+rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
+
+legendPal_index <- colorNumeric(rasCols, mapPredVals_index, na.color = 'transparent')
+rasPal_index <- colorNumeric(rasCols, mapPredVals_index, na.color = 'transparent')
+
+accessibility_index_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
+  addLegend_decreasing("bottomleft", pal = legendPal_index, values = mapPredVals_index,
+                       labFormat = reverseLabel(), decreasing = TRUE,
+                       title = "Accessibility Index") %>%
+  # map model prediction raster and transfer polygon
+  addRasterImage(all, colors = rasPal_index, opacity = 0.7,
+                 method = "ngb") %>% 
+  #add transfer polygon (user drawn area)
+  addPolygons(data = lpnf_boundary, fill = FALSE,
+              weight = 2, color = "black", group = 'xfer')
+
+
 
 # LOAD IN DATA for Site Finder Priority Outputs ----
 # Asclepias californica model
@@ -237,28 +267,3 @@ priority_stack_df <- raster::as.data.frame(priority_stack, xy=TRUE) %>%
   rename(Longitude = x, Latitude = y) %>%
   drop_na()
 
-
-# # california priority data table
-# californica_priority_df <- raster::as.data.frame(californica_priority, xy=TRUE) %>%
-#   rename(`Priority Score` = californica_sdm, Longitude = x, Latitude = y) %>%
-#   drop_na() %>%
-#   mutate("Species" = "A. californica")
-# 
-# # eriocarpa priority data table
-# eriocarpa_priority_df <- raster::as.data.frame(eriocarpa_priority, xy=TRUE) %>%
-#   rename(`Priority Score` = eriocarpa_sdm, Longitude = x, Latitude = y) %>%
-#   drop_na() %>%
-#   mutate("Species" = "A. eriocarpa")
-# 
-# # eriocarpa priority data table
-# erosa_priority_df <- raster::as.data.frame(erosa_priority, xy=TRUE) %>%
-#   rename(`Priority Score` = erosa_sdm, Longitude = x, Latitude = y) %>%
-#   drop_na() %>%
-#   mutate("Species" = "A. erosa")
-# 
-# # vestita priority data table
-# vestita_priority_df <- raster::as.data.frame(vestita_priority, xy=TRUE) %>%
-#   rename(`Priority Score` = vestita_sdm, Longitude = x, Latitude = y) %>%
-#   drop_na() %>%
-#   mutate("Species" = "A. vestita")
-# 
