@@ -237,19 +237,19 @@ accessibility_index_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.Wor
 
 # LOAD IN DATA for Site Finder Priority Outputs ----
 # Asclepias californica model
-californica_priority <- rast("data_processed/priority_outputs/californica_priority.tif") %>% 
+californica_priority <- rast("data_processed/priority_sites_outputs/californica_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 # Asclepias eriocarpa model
-eriocarpa_priority <- rast("data_processed/priority_outputs/eriocarpa_priority.tif") %>% 
+eriocarpa_priority <- rast("data_processed/priority_sites_outputs/eriocarpa_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 # Asclepias erosa model
-erosa_priority <- rast("data_processed/priority_outputs/erosa_priority.tif") %>% 
+erosa_priority <- rast("data_processed/priority_sites_outputs/erosa_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 # Asclepias vestita model
-vestita_priority <- rast("data_processed/priority_outputs/vestita_priority.tif") %>% 
+vestita_priority <- rast("data_processed/priority_sites_outputs/vestita_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
