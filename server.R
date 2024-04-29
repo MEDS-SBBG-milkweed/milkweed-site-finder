@@ -46,16 +46,6 @@ function(input, output, session) {
       
     })
     
-    # download button on site finder
-    output$downloadData <- downloadHandler(
-      filename = function() { 
-        paste("dataset-", Sys.Date(), ".csv", sep="")
-      },
-      content = function(file) {
-        write.csv(mtcars, file)
-      })
-    
-
     # filter raster site accessibility info data ----
     filtered_access_raster <- reactive ({
 
@@ -104,8 +94,23 @@ function(input, output, session) {
     output$priority_species_table <- DT::renderDataTable({
 
         DT::datatable(
-          priority_stack_df)
+          priority_stack_df,
+          extensions = 'Buttons', 
+          options = list(scrollX=TRUE, lengthMenu = c(5,10,15),
+                         paging = TRUE, searching = TRUE,
+                         fixedColumns = TRUE, autoWidth = TRUE,
+                         ordering = TRUE, dom = 'tB',
+                         buttons = c('copy', 'csv', 'excel','pdf')))
       
     })
+    
+    # # download button on site finder
+    # output$downloadData <- downloadHandler(
+    #   filename = function() { 
+    #     paste("dataset-", Sys.Date(), ".csv", sep="")
+    #   },
+    #   content = function(file) {
+    #     write.csv(mtcars, file)
+    #   })
 }
 
