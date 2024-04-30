@@ -16,6 +16,7 @@ library(terra)
 library(ggspatial)
 library(here)
 library(basemaps)
+library(raster)
 
 # COMPILE CSS ----
 sass(

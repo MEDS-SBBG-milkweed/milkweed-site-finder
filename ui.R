@@ -95,13 +95,20 @@ body <- dashboardBody(
             # milkweed locations sidebar layout
             sidebarLayout(
               
+              
               sidebarPanel(
                 
                 width = 12,
                 # species type checkbox Group Buttons ----
                 checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
-                                     choiceValues = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                                     choiceNames = c("<em>Asclepias californica</em>", 
+                                                     "<em>Asclepias vestita</em>", 
+                                                     "<em>Asclepias eriocarpa</em>", 
+                                                     "<em>Asclepias erosa</em>"),
+                                     choiceValues = c("Asclepias californica", 
+                                                      "Asclepias vestita", 
+                                                      "Asclepias eriocarpa", 
+                                                      "Asclepias erosa"),
                                      # select = "Asclepias californica", 
                                      individual = TRUE,
                                      justified = FALSE,

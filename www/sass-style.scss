@@ -175,19 +175,49 @@ form.well {
   color:$light-green;
 }
 
-/* checkbox button styling when you are hovered over it*/
-.btn:hover {
-  background-color: $light-gray;
+/* Check Boxes */
+.btn {
+  &.checkbtn {
+    &.btn-default {
+      background-color: $light-gray; // Default non-active color
+      color: $gray;
+      border: 2px solid transparent;
+
+      &:hover, &:focus {
+        background-color: $light-gray;
+        border: 2px solid $yellow;
+      }
+
+      &:active, &.active {
+        background-color: $yellow !important; // Force yellow background
+        border: 2px solid $yellow !important; // Consistent border color when active
+      }
+
+      &:not(:active):focus {
+        border: 2px solid transparent; // Reset border when not active but focused
+      }
+    }
+  }
+}
+
+/* Radio Buttons */
+.btn.radiobtn.btn-default {
+  background-color: $light-gray; // Default non-active color
   color: $gray;
-  border: 2px solid $yellow;
-}
+  border: 2px solid transparent;
 
-/* checkbox button styling when you have clicked on it*/
-.btn-success {
-  background-color: $yellow;
-}
+  &:hover, &:focus {
+    background-color: $light-gray;
+    border: 2px solid $yellow;
+  }
 
-/* checkbox button styling when you have clicked on it*/
-.btn.active {
-  background-color: $yellow;
+  &:active, &.active {
+    background-color: $yellow !important; // Force yellow background
+    color: $gray;
+    border: 2px solid $yellow !important; // Consistent border color when active
+  }
+
+  &:not(:active):focus {
+    border: 2px solid transparent; // Reset border when not active but focused
+  }
 }
