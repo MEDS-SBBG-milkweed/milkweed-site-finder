@@ -175,30 +175,19 @@ form.well {
   color:$light-green;
 }
 
-/* checkbox button styling*/
+/* checkbox button styling when you are hovered over it*/
+.btn:hover {
+  background-color: $light-gray;
+  color: $gray;
+  border: 2px solid $yellow;
+}
+
+/* checkbox button styling when you have clicked on it*/
+.btn-success {
+  background-color: $yellow;
+}
+
+/* checkbox button styling when you have clicked on it*/
 .btn.active {
-  background: $yellow;
-  color: $gray;
-  border: $yellow;
-}
-
-/* checkbox button styling*/
-.btn:focus {
-  background: $yellow;
-  color: $gray;
-  border: $yellow;
-}
-
-/* checkbox button styling*/
-.btn:checked {
-  background: $yellow;
-  color: $gray;
-  border: $yellow;
-}
-
-/* download button styling*/
-.btn-default {
-    background-color: #f4f4f4;
-    color: #444;
-    border-color: #ddd;
+  background-color: $yellow;
 }
