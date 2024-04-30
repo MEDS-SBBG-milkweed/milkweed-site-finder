@@ -13,7 +13,7 @@ function(input, output, session) {
     output$survey_map_output <- renderLeaflet({
 
       # set colors for each species
-      pal <- colorFactor(palette = c("#F9761D", "#D6566B", "#822681", "#3D358B"), 
+      pal <- colorFactor(palette = c("#99DDFF", "#785EF0", "#DC267F", "#FE6100"), 
                     levels = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
                     domain = filtered_milkweed_df()$mlkwd_s)
  
@@ -23,10 +23,9 @@ function(input, output, session) {
           # add markers
           addCircleMarkers(data = filtered_milkweed_df(),
                            radius = 2,
-                           color = ~pal(filtered_milkweed_df()$mlkwd_s),
-                           fill = TRUE,
-                           fillColor = ~pal(eval(filtered_milkweed_df()$mlkwd_s)),
-                           opacity = 0.8) %>%
+                           color = ~pal(eval(filtered_milkweed_df()$mlkwd_s)),
+                           fill = TRUE
+                           ) %>%
           
           # add polygons
           addPolygons(data = lpnf_boundary,
@@ -57,17 +56,20 @@ function(input, output, session) {
     # build leaflet map for site accessibility raster layers ----
     output$accessibility_layer_output <- renderLeaflet({
 
+      pal_access <- leaflet::colorNumeric("OrRd",
+                                 domain = NULL, na.color = "transparent")
 
+      # initialize leaflet map
       leaflet() %>%
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add markers
-        addRasterImage(filtered_access_raster())
+        addRasterImage(filtered_access_raster(), colors = pal_access) %>%
         
-        # format legend
-        # leaflet::addLegend("bottomleft", pal = filtered_access_raster(), values = filtered_access_raster(),
-        #                    title = "filtered_access_raster()",
-        #                    opacity = 0.8) 
+        #format legend
+        leaflet::addLegend("bottomleft", pal = pal_access, values = filtered_access_raster()[,])
+                          #  title = ~paste(filtered_access_raster()[,]),
+                          # opacity = 0.8) 
 
     })
     
