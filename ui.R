@@ -2,8 +2,8 @@
 header <- dashboardHeader(
   
   # add title ----
-  title = "Milkweed Habitat in Los Padres National Forest",
-  titleWidth = 525
+  title = "Milkweed Habitat in the Los Padres National Forest",
+  titleWidth = 270
   
 ) # END dashboardHeader
 

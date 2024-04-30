@@ -85,6 +85,12 @@ a {
   font-size: 22px;
   font-weight: bold;
   color: $light-green;
+  white-space: normal; // Allow text to wrap onto the next line
+  height: auto; // Adjust height based on the text
+  background-color: #f9f9f9; // Set a background color if needed
+  padding: 5px; // Add some padding for visual spacing
+  line-height: 1.2; // Adjust line height to reduce vertical spacing
+
 }
 
 // class selectors
