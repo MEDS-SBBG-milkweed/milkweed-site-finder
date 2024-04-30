@@ -329,8 +329,7 @@ body <- dashboardBody(
                   DT::dataTableOutput("priority_species_table")
 
               ), # END input box
-              
-              downloadButton("download1")
+            
 
              ) # END fluidRow
             
