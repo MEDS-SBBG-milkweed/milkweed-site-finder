@@ -56,20 +56,16 @@ function(input, output, session) {
     # build leaflet map for site accessibility raster layers ----
     output$accessibility_layer_output <- renderLeaflet({
 
-      pal_access <- leaflet::colorNumeric("OrRd",
-                                 domain = NULL, na.color = "transparent")
+      pal_access <- leaflet::colorNumeric("plasma",
+                                 domain = NULL,
+                                 na.color = "transparent")
 
       # initialize leaflet map
       leaflet() %>%
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add markers
-        addRasterImage(filtered_access_raster(), colors = pal_access) %>%
-        
-        #format legend
-        leaflet::addLegend("bottomleft", pal = pal_access, values = filtered_access_raster()[,])
-                          #  title = ~paste(filtered_access_raster()[,]),
-                          # opacity = 0.8) 
+        addRasterImage(filtered_access_raster(), colors = pal_access)
 
     })
     
@@ -81,18 +77,22 @@ function(input, output, session) {
       
     })
     
-    # build leaflet map for site accessibility raster layers ----
+    # build leaflet map for site priority raster layers ----
     output$priority_species_output <- renderLeaflet({
       
+      pal_priority <- leaflet::colorNumeric(viridis_pal(option = "C", begin = 0, end = 1)(10),
+                                          domain = NULL,
+                                          na.color = "transparent")
+    
       leaflet() %>%
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add markers
-        addRasterImage(filtered_priority_raster())
+        addRasterImage(filtered_priority_raster(), colors = pal_priority)
       
     })
     
-    # build leaflet map for site accessibility raster layers ----
+    # data table for priority sites ----
     output$priority_species_table <- DT::renderDataTable({
 
         DT::datatable(

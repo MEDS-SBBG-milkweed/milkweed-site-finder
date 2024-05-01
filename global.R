@@ -17,6 +17,7 @@ library(ggspatial)
 library(here)
 library(basemaps)
 library(raster)
+library(scales)
 
 # COMPILE CSS ----
 sass(
@@ -214,22 +215,20 @@ index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif"
 
 # static total accessibility index output ----
 # leaflet output 
-# get values of prediction
-mapPredVals_index <- getRasterVals(index) # change for different types
 
-# define colors and legend  
-rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
+# define colors and legend
+legendPal_index <- colorNumeric("plasma",
+                                domain = NULL,
+                                na.color = "transparent")
 
-legendPal_index <- colorNumeric(rasCols, mapPredVals_index, na.color = 'transparent')
-rasPal_index <- colorNumeric(rasCols, mapPredVals_index, na.color = 'transparent')
+accessibility_index_leaflet <- leaflet() %>%
+  
+  addProviderTiles(providers$Esri.WorldTerrain) %>%
 
-accessibility_index_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
-  addLegend_decreasing("bottomleft", pal = legendPal_index, values = mapPredVals_index,
-                       labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "Accessibility Index") %>%
   # map model prediction raster and transfer polygon
-  addRasterImage(all, colors = rasPal_index, opacity = 0.7,
-                 method = "ngb") %>% 
+  addRasterImage(all, colors = legendPal_index, opacity = 0.7,
+                 method = "ngb") %>%
+  
   #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
