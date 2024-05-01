@@ -23,7 +23,7 @@ sidebar <- dashboardSidebar( width = 300,
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
                                menuItem(text = "Habitat Suitability Model", tabName = "habitatsuit", icon = icon("leaf")),
-                               menuItem(text = "Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
+                               menuItem(text = "Survey Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
                                menuItem(text = "Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
                                menuItem(text = "Data", tabName = "data", icon = icon("database"))
                                
