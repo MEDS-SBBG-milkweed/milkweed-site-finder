@@ -1,6 +1,12 @@
 # web-dashboard
-Repository containing materials to build web dashboard that hosts information for surveying milkweed species in the Los Padres National Forest for the Santa Barbara Botanic Gardens
 
+## Project Description
+The web-dashboard repository contains all of the R code in order to build the interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff.
+
+## Data
+All data products hosted in this dashboard can be found in the milkweed-mod repository. 
+
+## Repository Table of Contents
 ```
 |── data_processed
 │   ├── lpnf_boundary
