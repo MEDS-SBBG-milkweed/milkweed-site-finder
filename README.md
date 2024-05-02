@@ -4,7 +4,7 @@
 The web-dashboard repository contains all of the R code in order to build the interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff.
 
 ## Data
-All data products hosted in this dashboard can be found in the milkweed-mod repository. 
+All data products hosted in this dashboard can be found in the [milkweed-mod](https://github.com/milkweed-mod/milkweed-mod) repository within the milkweed-mod Github organization. 
 
 ## Repository Table of Contents
 ```
