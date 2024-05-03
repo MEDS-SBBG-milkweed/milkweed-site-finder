@@ -17,14 +17,11 @@ sidebar <- dashboardSidebar( width = 300,
                                tags$img(src = "SBBG_workcard-projects-1.jpg", 
                                         alt = "The logo of the santa barabara botanic garden with a white background and green image.",
                                         style = "max-width: 100%;")),
-                               # tags$h6(tags$em("Source:", tags$a(href = "https://sbbotanicgarden.org/", "SBBG")),
-                               #         style = "text-align: center;"),
-                               
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
-                               menuItem(text = "Habitat Suitability Model", tabName = "habitatsuit", icon = icon("leaf")),
+                               menuItem(text = "Milkweed Habitat Suitability Model", tabName = "habitatsuit", icon = icon("leaf")),
                                menuItem(text = "Survey Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
-                               menuItem(text = "Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
+                               menuItem(text = "Survey Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
                                menuItem(text = "Data", tabName = "data", icon = icon("database"))
                                
                              ) # END sidebarMenu
@@ -243,7 +240,7 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 12,
+              box(width = 6,
                   
                   # species type checkbox Group Buttons ----
                   radioGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
@@ -255,11 +252,29 @@ body <- dashboardBody(
                                        size = "normal",
                                        direction = "horizontal",
                                        checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                        no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                                                        no = icon("circle", lib = "font-awesome"))), #  END radioGroupButtons for accessibility layer
+              
+              ), # END input box
+              
+              # input box ----
+              box(width = 6,
+                  
+                  includeMarkdown("text/siteaccess-title.md")
               
               ) # END input box
               
             ), # END fluidRow
+            
+            fluidRow(
+              
+            # input box ----
+            box(width = 12,
+                
+                includeMarkdown("text/siteaccess-legend.md")
+                ) # END input box
+              
+            ), # END fluidRow
+          
             
             # fluidRow ----
             fluidRow(
@@ -318,7 +333,6 @@ body <- dashboardBody(
             ), # END fluidRow
   
     
-            
             # leaflet box ----
             box(width = 12,
                 
