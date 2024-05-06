@@ -90,11 +90,16 @@ function(input, output, session) {
 
         DT::datatable(
           priority_stack_df,
+          # server = FALSE,
           extensions = 'Buttons', 
-          options = list(scrollX=TRUE, lengthMenu = c(5,10,15),
-                         paging = TRUE, searching = TRUE,
-                         fixedColumns = TRUE, autoWidth = TRUE,
-                         ordering = TRUE, dom = 'tB',
+          options = list(scrollX=TRUE,
+                         scrollY=TRUE,
+                         paging = FALSE,
+                         searching = TRUE,
+                         fixedColumns = TRUE,
+                         autoWidth = TRUE,
+                         ordering = TRUE,
+                         dom = 'Bfrtip',
                          buttons = c('csv', 'excel','pdf')))
       
     })
