@@ -56,46 +56,36 @@ source("R/addLegend_decreasing.R")
 
 # LOAD Habitat Suitability Maps ----
 
+# Define colors and legend for habitat suitability maps
+rasCols <- c("#FFFFFF", "#EFCCCC", "#DF9999", "#D06666", "#C03333", "#B00000")
+
 # static californica output
 # leaflet output
 #Get values of prediction
 mapPredVals_californica <- getRasterVals(californica) # change for different types
-# 
-# #Define colors and legend  
-rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 
 legendPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
 rasPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
 
 californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
-  addLegend_decreasing("bottomleft", pal = legendPal_californica, values = mapPredVals_californica,
-                       labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "Predicted Suitability") %>%
-  # map model prediction raster and transfer polygon
-  # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
+  
   addRasterImage(californica, colors = rasPal_californica, opacity = 0.7,
                  method = "ngb") %>% 
-#add transfer polygon (user drawn area)
-addPolygons(data = lpnf_boundary, fill = FALSE,
-            weight = 2, color = "black", group = 'xfer')
+  
+  #add transfer polygon (user drawn area)
+  addPolygons(data = lpnf_boundary, fill = FALSE,
+              weight = 2, color = "black", group = 'xfer')
 
 # static eriocarpa output ----
 # leaflet output
 #Get values of prediction
 mapPredVals_eriocarpa <- getRasterVals(eriocarpa) # change for different types
-# 
-# #Define colors and legend  
-rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 
 legendPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
 rasPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
 
 eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
-  addLegend_decreasing("bottomleft", pal = legendPal_eriocarpa, values = mapPredVals_eriocarpa,
-                       labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "Predicted Suitability") %>%
-  # map model prediction raster and transfer polygon
-  # clearMarkers() %>% clearShapes() %>% removeImage('xferRas') %>%
+  
   addRasterImage(eriocarpa, colors = rasPal_eriocarpa, opacity = 0.7,
                  method = "ngb") %>% 
   #add transfer polygon (user drawn area)
@@ -107,16 +97,12 @@ eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain)
 # get values of prediction
 mapPredVals_vestita <- getRasterVals(vestita) # change for different types
 
-# define colors and legend  
-rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
 
 legendPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
 rasPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
 
 vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
-  addLegend_decreasing("bottomleft", pal = legendPal_vestita, values = mapPredVals_vestita,
-                       labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "Predicted Suitability") %>%
+
   # map model prediction raster and transfer polygon
   addRasterImage(vestita, colors = rasPal_vestita, opacity = 0.7,
                  method = "ngb") %>% 
@@ -129,19 +115,15 @@ vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %
 # get values of prediction
 mapPredVals_erosa <- getRasterVals(erosa) # change for different types
 
-# define colors and legend  
-rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
-
 legendPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
 rasPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
 
 erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
-  addLegend_decreasing("bottomleft", pal = legendPal_erosa, values = mapPredVals_erosa,
-                       labFormat = reverseLabel(), decreasing = TRUE,
-                       title = "Predicted Suitability") %>%
+
   # map model prediction raster and transfer polygon
   addRasterImage(erosa, colors = rasPal_erosa, opacity = 0.7,
                  method = "ngb") %>% 
+  
   #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
@@ -151,9 +133,6 @@ erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 # get values of prediction
 mapPredVals_all <- getRasterVals(all) # change for different types
 
-# define colors and legend  
-rasCols <- c("#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c")
-
 legendPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
 rasPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
 
@@ -161,9 +140,11 @@ all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_all, values = mapPredVals_all,
                        labFormat = reverseLabel(), decreasing = TRUE,
                        title = "Predicted Suitability") %>%
+  
   # map model prediction raster and transfer polygon
   addRasterImage(all, colors = rasPal_all, opacity = 0.7,
                  method = "ngb") %>% 
+  
   #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
