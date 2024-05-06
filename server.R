@@ -56,9 +56,12 @@ function(input, output, session) {
     # build leaflet map for site accessibility raster layers ----
     output$accessibility_layer_output <- renderLeaflet({
 
-      pal_access <- leaflet::colorNumeric("plasma",
-                                 domain = NULL,
-                                 na.color = "transparent")
+      pal_access <-leaflet::colorNumeric(palette = c("#0029B0", "#3354C0", "#667FD0", "#99A9DF", "#CCD4EF", "#FFFFFF"),
+                                         domain = NULL,
+                                         na.color = "transparent",
+                                         reverse = TRUE)
+      
+      #mapPredVals_eriocarpa <- getRasterVals(eriocarpa) # change for different types
 
       # initialize leaflet map
       leaflet() %>%
@@ -106,13 +109,5 @@ function(input, output, session) {
       
     })
     
-    # # download button on site finder
-    # output$downloadData <- downloadHandler(
-    #   filename = function() { 
-    #     paste("dataset-", Sys.Date(), ".csv", sep="")
-    #   },
-    #   content = function(file) {
-    #     write.csv(mtcars, file)
-    #   })
 }
 

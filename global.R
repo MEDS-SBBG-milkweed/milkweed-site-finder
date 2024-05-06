@@ -217,9 +217,10 @@ index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif"
 # leaflet output 
 
 # define colors and legend
-legendPal_index <- colorNumeric("plasma",
-                                domain = NULL,
-                                na.color = "transparent")
+legendPal_index <-colorNumeric(palette = c("#0029B0", "#3354C0", "#667FD0", "#99A9DF", "#CCD4EF", "#FFFFFF"),
+                                   domain = NULL,
+                                   na.color = "transparent",
+                                   reverse = TRUE)
 
 accessibility_index_leaflet <- leaflet() %>%
   
@@ -229,7 +230,7 @@ accessibility_index_leaflet <- leaflet() %>%
   addRasterImage(all, colors = legendPal_index, opacity = 0.7,
                  method = "ngb") %>%
   
-  #add transfer polygon (user drawn area)
+  # #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
