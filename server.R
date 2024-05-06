@@ -56,13 +56,6 @@ function(input, output, session) {
     # build leaflet map for site accessibility raster layers ----
     output$accessibility_layer_output <- renderLeaflet({
 
-      pal_access <-leaflet::colorNumeric(palette = c("#0029B0", "#3354C0", "#667FD0", "#99A9DF", "#CCD4EF", "#FFFFFF"),
-                                         domain = NULL,
-                                         na.color = "transparent",
-                                         reverse = TRUE)
-      
-      #mapPredVals_eriocarpa <- getRasterVals(eriocarpa) # change for different types
-
       # initialize leaflet map
       leaflet() %>%
         addProviderTiles(providers$Esri.WorldTerrain) %>%
@@ -83,14 +76,11 @@ function(input, output, session) {
     # build leaflet map for site priority raster layers ----
     output$priority_species_output <- renderLeaflet({
       
-      pal_priority <- leaflet::colorNumeric(viridis_pal(option = "C", begin = 0, end = 1)(10),
-                                          domain = NULL,
-                                          na.color = "transparent")
-    
+      # initialize leaflet
       leaflet() %>%
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
-        # add markers
+        # add rasterImage with designated color scale
         addRasterImage(filtered_priority_raster(), colors = pal_priority)
       
     })
@@ -105,7 +95,7 @@ function(input, output, session) {
                          paging = TRUE, searching = TRUE,
                          fixedColumns = TRUE, autoWidth = TRUE,
                          ordering = TRUE, dom = 'tB',
-                         buttons = c('copy', 'csv', 'excel','pdf')))
+                         buttons = c('csv', 'excel','pdf')))
       
     })
     

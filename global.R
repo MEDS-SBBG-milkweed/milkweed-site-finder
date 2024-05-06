@@ -198,17 +198,16 @@ index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif"
 # leaflet output 
 
 # define colors and legend
-legendPal_index <-colorNumeric(palette = c("#0029B0", "#3354C0", "#667FD0", "#99A9DF", "#CCD4EF", "#FFFFFF"),
+pal_access <- leaflet::colorNumeric(palette = c("#FFFFFF","#CCD4EF", "#99A9DF", "#667FD0", "#3354C0", "#0029B0"),
                                    domain = NULL,
-                                   na.color = "transparent",
-                                   reverse = TRUE)
+                                   na.color = "transparent")
 
 accessibility_index_leaflet <- leaflet() %>%
   
   addProviderTiles(providers$Esri.WorldTerrain) %>%
 
   # map model prediction raster and transfer polygon
-  addRasterImage(all, colors = legendPal_index, opacity = 0.7,
+  addRasterImage(all, colors = pal_access, opacity = 0.7,
                  method = "ngb") %>%
   
   # #add transfer polygon (user drawn area)
@@ -248,4 +247,9 @@ priority_stack <- stack(californica_priority, eriocarpa_priority, erosa_priority
 priority_stack_df <- raster::as.data.frame(priority_stack, xy=TRUE) %>%
   rename(Longitude = x, Latitude = y) %>%
   drop_na()
+
+# define color palette to be used for priority sites
+pal_priority <- leaflet::colorNumeric(palette = c("#FFFFFF", "#E1CCEF", "#C399DF", "#A666D0", "#8833C0", "#6A00B0"),
+                             domain = NULL,
+                             na.color = "transparent")
 
