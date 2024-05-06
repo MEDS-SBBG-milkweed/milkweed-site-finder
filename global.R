@@ -34,7 +34,7 @@ milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location
 
 
 # California National Forest boundaries
-lpnf_boundary <- st_read("data_processed/lpnf_boundary/lpnf_boundary_buffered/")
+lpnf_boundary <- st_read("data_processed/lpnf_boundary/")
 
 
 # LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----

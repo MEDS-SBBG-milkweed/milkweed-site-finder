@@ -121,8 +121,8 @@ body <- dashboardBody(
                   title = tags$strong("Milkweed Survey Locations from 2023 surveys:"),
                   
                   # leaflet output ----
-                  leafletOutput(outputId = "survey_map_output") |> 
-                    withSpinner(type = 1, color = "#4287f5")
+                  leafletOutput(outputId = "survey_map_output") %>%  
+                    withSpinner(type = 6, color = "#244E2A")
                   
               ) # END leaflet box
               
@@ -283,8 +283,8 @@ body <- dashboardBody(
               box(width = 6,
                   
                   # "model output here, with site access model applied to map of Los Padres NF" ----
-                  leafletOutput(outputId = "accessibility_layer_output") |> 
-                    withSpinner(type = 1, color = "#4287f5")
+                  leafletOutput(outputId = "accessibility_layer_output") %>%  
+                    withSpinner(type = 6, color = "#244E2A")
                   
               ), # END leaflet box
               
@@ -325,7 +325,7 @@ body <- dashboardBody(
                                     justified = FALSE,
                                     size = "normal",
                                     direction = "horizontal",
-                                    checkIcon = list(yes = icon("circle-dot", lib = "font-awesome"), 
+                                    checkIcon = list(yes = icon("circle-play", lib = "font-awesome"), 
                                                      no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
                   
               ) # END input box
@@ -337,8 +337,8 @@ body <- dashboardBody(
             box(width = 12,
                 
                 # "model output here, with site access model applied to map of Los Padres NF" ----
-                leafletOutput(outputId = "priority_species_output") |> 
-                  withSpinner(type = 1, color = "#4287f5")
+                leafletOutput(outputId = "priority_species_output") %>%  
+                  withSpinner(type = 6, color = "#244E2A")
                 
             ), # END leaflet box
   
@@ -348,7 +348,8 @@ body <- dashboardBody(
               # input box ----
               box(width = 12,
 
-                  DT::dataTableOutput("priority_species_table")
+                  DT::dataTableOutput("priority_species_table") %>% 
+                    withSpinner(type = 6, color = "#244E2A")
 
               ), # END input box
             
