@@ -97,17 +97,19 @@ function(input, output, session) {
     output$priority_species_table <- DT::renderDataTable({
 
         DT::datatable(
-          priority_stack_df,
+          priority_datatable,
           extensions = 'Buttons', 
           options = list(scrollX=TRUE,
-                         scrollY=TRUE,
+                         scrollY="300px",
                          paging = FALSE,
                          searching = TRUE,
                          fixedColumns = TRUE,
                          autoWidth = FALSE,
                          ordering = TRUE,
                          dom = 'Bfrtip',
-                         buttons = c('csv', 'excel','pdf')))
+                         buttons = c('csv', 'excel','pdf'))) %>%
+        formatRound(3:7, digits = 3) %>%
+        formatRound(1:2, digits = 5)
       
     })
     

@@ -247,9 +247,7 @@ names(vestita_priority) <- "Asclepias vestita"
 priority_stack <- stack(californica_priority, eriocarpa_priority, erosa_priority, vestita_priority)
 
 # extract data frames from each species priorty output
-priority_stack_df <- raster::as.data.frame(priority_stack, xy=TRUE) %>%
-  rename(Longitude = x, Latitude = y) %>%
-  drop_na()
+priority_datatable <- read_csv("data_processed/priority_sites_outputs/priority_datatable.csv")
 
 # define color palette to be used for priority sites
 pal_priority <- leaflet::colorNumeric(palette = c("#FFFFFF", "#E1CCEF", "#C399DF", "#A666D0", "#8833C0", "#6A00B0"),
