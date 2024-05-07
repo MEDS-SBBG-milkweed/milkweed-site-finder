@@ -91,7 +91,6 @@ function(input, output, session) {
         addPolygons(data = lpnf_boundary, fill = FALSE,
                     weight = 2, color = "black", group = 'xfer')
       
-      
     })
     
     # data table for priority sites ----
