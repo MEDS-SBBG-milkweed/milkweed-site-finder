@@ -61,7 +61,11 @@ function(input, output, session) {
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add markers
-        addRasterImage(filtered_access_raster(), colors = pal_access)
+        addRasterImage(filtered_access_raster(), colors = pal_access) %>% 
+        
+        #add boundary polygon 
+        addPolygons(data = lpnf_boundary, fill = FALSE,
+                    weight = 2, color = "black", group = 'xfer')
 
     })
     
@@ -69,8 +73,8 @@ function(input, output, session) {
     filtered_priority_raster <- reactive ({
       
       priority_stack %>% 
-        raster::subset(input$priority_species_input)
-      
+        raster::subset(input$priority_species_input) 
+        
     })
     
     # build leaflet map for site priority raster layers ----
@@ -81,7 +85,12 @@ function(input, output, session) {
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
         # add rasterImage with designated color scale
-        addRasterImage(filtered_priority_raster(), colors = pal_priority)
+        addRasterImage(filtered_priority_raster(), colors = pal_priority) %>% 
+        
+        #add boundary polygon 
+        addPolygons(data = lpnf_boundary, fill = FALSE,
+                    weight = 2, color = "black", group = 'xfer')
+      
       
     })
     
@@ -90,14 +99,13 @@ function(input, output, session) {
 
         DT::datatable(
           priority_stack_df,
-          # server = FALSE,
           extensions = 'Buttons', 
           options = list(scrollX=TRUE,
                          scrollY=TRUE,
                          paging = FALSE,
                          searching = TRUE,
                          fixedColumns = TRUE,
-                         autoWidth = TRUE,
+                         autoWidth = FALSE,
                          ordering = TRUE,
                          dom = 'Bfrtip',
                          buttons = c('csv', 'excel','pdf')))

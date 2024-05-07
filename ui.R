@@ -8,7 +8,7 @@ header <- dashboardHeader(
 ) # END dashboardHeader
 
 #........................dashboardSidebar........................
-sidebar <- dashboardSidebar( width = 310,
+sidebar <- dashboardSidebar( width = 300,
                              
                              # sidebarMenu ----
                              sidebarMenu(
@@ -19,7 +19,7 @@ sidebar <- dashboardSidebar( width = 310,
                                         style = "max-width: 100%;")),
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
-                               menuItem(text = "Milkweed Habitat Suitability Models", tabName = "habitatsuit", icon = icon("leaf")),
+                               menuItem(text = "Milkweed Habitat Suitability", tabName = "habitatsuit", icon = icon("leaf")),
                                menuItem(text = "Survey Site: Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
                                menuItem(text = "Survey Site: Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
                                menuItem(text = "Data", tabName = "data", icon = icon("database"))
@@ -58,7 +58,7 @@ body <- dashboardBody(
                   tags$h6(tags$em(tags$h6(href = "https://www.nps.gov/articles/000/milkweed-and-monarchs.htm", "Yehyun Kim, Friends of Acadia.")),
                           style = "text-align: left;"), # END image of milkweed
                   
-                  includeMarkdown("text/background-info.md")
+                  includeMarkdown("text/background_info.md")
                   
               ) # END background info box
               
@@ -85,7 +85,7 @@ body <- dashboardBody(
             # milkweed locations info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview-milkweed-locations.md")
+                includeMarkdown("text/overview_milkweed_locations.md")
                 
             ), # END milkweed locations info box
             
@@ -136,7 +136,7 @@ body <- dashboardBody(
             # habitat suitability info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview-habitat-suitability.md")
+                includeMarkdown("text/overview_habitat_suitability.md")
                 
             ), # END habitat suitability info box
             
@@ -232,7 +232,7 @@ body <- dashboardBody(
             # site access info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview-site-accessibility.md")
+                includeMarkdown("text/overview_site_accessibility.md")
                 
             ), # END habitat suitability info box
             
@@ -259,7 +259,7 @@ body <- dashboardBody(
               # input box ----
               box(width = 6,
                   
-                  includeMarkdown("text/siteaccess-title.md")
+                  includeMarkdown("text/siteaccess_title.md")
               
               ) # END input box
               
@@ -270,7 +270,7 @@ body <- dashboardBody(
             # input box ----
             box(width = 12,
                 
-                includeMarkdown("text/siteaccess-legend.md")
+                includeMarkdown("text/siteaccess_legend.md")
                 ) # END input box
               
             ), # END fluidRow
@@ -306,7 +306,7 @@ body <- dashboardBody(
             # sitefinder info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview-site-finder.md")
+                includeMarkdown("text/overview_site_finder.md")
                 
             ), # END sitefinder info box
               
@@ -364,7 +364,7 @@ body <- dashboardBody(
             # data info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview-data.md")
+                includeMarkdown("text/overview_data.md")
                 
             ) # END data info box
             
