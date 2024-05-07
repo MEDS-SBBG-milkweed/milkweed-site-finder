@@ -1,4 +1,4 @@
-# <i class="fa-solid fa-universal-access"></i>     Survey Site Accessibility 
+# <i class="fa-solid fa-universal-access"></i>     Survey Site: Accessibility 
 
 
 In this section site accessibility for the Los Padres National Forest will be visualized. The different areas of the forest will be given a score between 0 and 1. A score of 1 will indicate that a location, and area within the forest is accessible to the SBBG team, and a score of 0 will indicate that a location is not very accessible within the forest.  You can visualize overall accessibility of the forest and see the accessibility score for each cell of the map. Additionally, from the drop down menu you can choose if you would like to overlay a map of known roads or trails within the forest. 

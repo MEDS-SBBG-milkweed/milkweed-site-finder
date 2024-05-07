@@ -8,7 +8,7 @@ header <- dashboardHeader(
 ) # END dashboardHeader
 
 #........................dashboardSidebar........................
-sidebar <- dashboardSidebar( width = 300,
+sidebar <- dashboardSidebar( width = 310,
                              
                              # sidebarMenu ----
                              sidebarMenu(
@@ -19,9 +19,9 @@ sidebar <- dashboardSidebar( width = 300,
                                         style = "max-width: 100%;")),
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
-                               menuItem(text = "Milkweed Habitat Suitability Model", tabName = "habitatsuit", icon = icon("leaf")),
-                               menuItem(text = "Survey Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
-                               menuItem(text = "Survey Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
+                               menuItem(text = "Milkweed Habitat Suitability Models", tabName = "habitatsuit", icon = icon("leaf")),
+                               menuItem(text = "Survey Site: Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
+                               menuItem(text = "Survey Site: Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
                                menuItem(text = "Data", tabName = "data", icon = icon("database"))
                                
                              ) # END sidebarMenu
