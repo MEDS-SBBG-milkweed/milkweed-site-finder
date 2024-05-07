@@ -85,8 +85,8 @@ body <- dashboardBody(
             # milkweed locations info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview_milkweed_locations.md")
-                
+                includeMarkdown("text/overview_milkweed_locations.md"),
+              
             ), # END milkweed locations info box
             
             # milkweed locations sidebar layout
@@ -136,7 +136,13 @@ body <- dashboardBody(
             # habitat suitability info box ----
             box(width = NULL,
                 
-                includeMarkdown("text/overview_habitat_suitability.md")
+                includeMarkdown("text/overview_habitat_suitability.md"),
+                
+                # insert image of milkweed
+                tags$img(src = "suitability_legend.png", 
+                         alt = "Image depicting color gradient of white to red for legend. White depicting the least likely for habitat suitability",
+                         style = "max-width: 100%;")
+                
                 
             ), # END habitat suitability info box
             
@@ -268,10 +274,14 @@ body <- dashboardBody(
             fluidRow(
               
             # input box ----
-            box(width = 12,
+            box(width = NULL,
                 
-                includeMarkdown("text/siteaccess_legend.md")
-                ) # END input box
+                # insert image of accessibility legend which lives in www folder
+                tags$img(src = "accessibility_legend.png", 
+                         alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility",
+                         style = "max-width: 100%;")
+                
+                )# END input box
               
             ), # END fluidRow
           
@@ -327,6 +337,11 @@ body <- dashboardBody(
                                     direction = "horizontal",
                                     checkIcon = list(yes = icon("circle-play", lib = "font-awesome"), 
                                                      no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
+                  
+                  # insert image of accessibility legend which lives in www folder
+                  tags$img(src = "priority_legend.png", 
+                           alt = "Image depicting color gradient of white to purple for legend. White depicting the lowest priority score for surveying priority.",
+                           style = "max-width: 100%;")
                   
               ) # END input box
               

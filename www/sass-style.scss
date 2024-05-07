@@ -41,6 +41,7 @@ $gray: #3B3B3D;
 $yellow: #F1E709;
 $white: #FFFFFF;
 $light-gray: #ECECEC;
+$orange: #F05E16;
 
 // element selectors
 
@@ -74,10 +75,21 @@ p {
   font-family: 'SBBG-body-thin';
 }
 
+em {
+  font-family: 'SBBG-body-thin';
+  color: $gray;
+}
+
+.navbar a {
+  font-family: 'SBBG-body-thin';
+  font-size: 20px;
+  color: $light-green;
+}
+
 a {
   font-family: 'SBBG-body-thin';
-  font-size: 17px;
-  color: $light-green;
+  color: $orange;
+  text-decoration: underline;
 }
 
 .main-header .logo {
