@@ -26,6 +26,9 @@ sass(
   options = sass_options(output_style = "compressed") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable
 )
 
+# Spinner Options
+options(spinner.type = 6, spinner.color = "#244E2A")
+
 # LOAD IN DATA FOR LEAFLET SURVEY LOCATIONS ----
 # survey data
 milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location_centroids/all_species_points.shp") %>% 

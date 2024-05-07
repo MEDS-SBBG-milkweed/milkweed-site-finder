@@ -122,7 +122,7 @@ body <- dashboardBody(
                   
                   # leaflet output ----
                   leafletOutput(outputId = "survey_map_output") %>%  
-                    withSpinner(type = 6, color = "#244E2A")
+                    withSpinner()
                   
               ) # END leaflet box
               
@@ -294,7 +294,7 @@ body <- dashboardBody(
                   
                   # "model output here, with site access model applied to map of Los Padres NF" ----
                   leafletOutput(outputId = "accessibility_layer_output") %>%  
-                    withSpinner(type = 6, color = "#244E2A")
+                    withSpinner()
                   
               ), # END leaflet box
               
@@ -353,7 +353,7 @@ body <- dashboardBody(
                 
                 # "model output here, with site access model applied to map of Los Padres NF" ----
                 leafletOutput(outputId = "priority_species_output") %>%  
-                  withSpinner(type = 6, color = "#244E2A")
+                  withSpinner()
                 
             ), # END leaflet box
   
@@ -364,7 +364,7 @@ body <- dashboardBody(
               box(width = 12,
 
                   DT::dataTableOutput("priority_species_table") %>% 
-                    withSpinner(type = 6, color = "#244E2A")
+                    withSpinner()
 
               ), # END input box
             
