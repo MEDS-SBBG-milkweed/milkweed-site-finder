@@ -14,7 +14,7 @@ function(input, output, session) {
 
       # set colors for each species
       pal <- colorFactor(palette = c("#99DDFF", "#785EF0", "#DC267F", "#FE6100"), 
-                    levels = c("Asclepias californica", "Asclepias vestita", "Asclepias eriocarpa", "Asclepias erosa"),
+                    levels = c("Asclepias californica", "Asclepias eriocarpa", "Asclepias erosa", "Asclepias vestita"),
                     domain = filtered_milkweed_df()$mlkwd_s)
  
         leaflet() %>% 
@@ -22,9 +22,12 @@ function(input, output, session) {
           
           # add markers
           addCircleMarkers(data = filtered_milkweed_df(),
-                           radius = 2,
-                           color = ~pal(eval(filtered_milkweed_df()$mlkwd_s)),
-                           fill = TRUE
+                           radius = 4,
+                           weight = 1,
+                           fillColor = ~pal(eval(filtered_milkweed_df()$mlkwd_s)),
+                           color = "black",
+                           opacity = 1,
+                           fillOpacity = 0.8
                            ) %>%
           
           # add polygons

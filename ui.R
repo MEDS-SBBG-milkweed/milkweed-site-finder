@@ -83,50 +83,40 @@ body <- dashboardBody(
     tabItem(tabName = "milkweedloc",
             
             # milkweed locations info box ----
-            box(width = NULL,
+            box(width = 12,
                 
                 includeMarkdown("text/overview_milkweed_locations.md"),
               
             ), # END milkweed locations info box
             
-            # milkweed locations sidebar layout
-            sidebarLayout(
-              
-              
-              sidebarPanel(
-                
-                width = 12,
-                # species type checkbox Group Buttons ----
-                checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choiceNames = c("<em>Asclepias californica</em>", 
-                                                     "<em>Asclepias vestita</em>", 
-                                                     "<em>Asclepias eriocarpa</em>", 
-                                                     "<em>Asclepias erosa</em>"),
-                                     choiceValues = c("Asclepias californica", 
-                                                      "Asclepias vestita", 
-                                                      "Asclepias eriocarpa", 
-                                                      "Asclepias erosa"),
-                                     # select = "Asclepias californica", 
-                                     individual = TRUE,
-                                     justified = FALSE,
-                                     size = "normal",
-                                     direction = "horizontal",
-                                     checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                      no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
-              ),
               
               # leaflet box ----
               box(width = 12,
                   
-                  title = tags$strong("Milkweed Survey Locations from 2023 surveys:"),
-                  
+                  # species type checkbox Group Buttons ----
+                  checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
+                                       choiceNames = c("<em>Asclepias californica</em>", 
+                                                       "<em>Asclepias eriocarpa</em>", 
+                                                       "<em>Asclepias erosa</em>",
+                                                       "<em>Asclepias vestita</em>"),
+                                       choiceValues = c("Asclepias californica", 
+                                                        "Asclepias eriocarpa", 
+                                                        "Asclepias erosa", 
+                                                        "Asclepias vestita"),
+                                       select = "Asclepias californica", 
+                                       individual = TRUE,
+                                       justified = FALSE,
+                                       size = "normal",
+                                       direction = "horizontal",
+                                       checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                                        no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
                   # leaflet output ----
                   leafletOutput(outputId = "survey_map_output") %>%  
                     withSpinner()
                   
               ) # END leaflet box
               
-            )
+          
             
     ), # END milkweed locations tabItem
     
@@ -154,7 +144,7 @@ body <- dashboardBody(
               # leaflet box 1 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias californica:"),
+                  title = HTML("<b><i>Asclepias californica:</i></b>"),
                   
                   #leaflet output for californica ----
                   californica_leaflet
@@ -166,7 +156,7 @@ body <- dashboardBody(
               # leaflet box 2 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias eriocarpa:"),
+                  title = HTML("<b><i>Asclepias eriocarpa:</i></b>"),
                   
                   #leaflet output for californica ----
                   eriocarpa_leaflet
@@ -183,7 +173,7 @@ body <- dashboardBody(
               # leaflet box 3 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias vestita:"),
+                  title = HTML("<b><i>Asclepias vestita:</i></b>"),
                   
                   #leaflet output for californica ----
                   vestita_leaflet
@@ -194,7 +184,7 @@ body <- dashboardBody(
               # leaflet box 4 ----
               box(width = 6,
                   
-                  title = tags$em("Asclepias erosa:"),
+                  title = HTML("<b><i>Asclepias erosa:</i></b>"),
                   
                   #leaflet output for californica ----
                   erosa_leaflet
@@ -218,7 +208,7 @@ body <- dashboardBody(
             # leaflet box 4 ----
             box(width = 12,
                 
-                title = tags$em("Asclepias sp:"),
+                title = HTML("<b><i>Asclepias sp.:</i></b>"),
                 
                 #leaflet output for all of the species ----
                 all_leaflet
@@ -246,52 +236,69 @@ body <- dashboardBody(
             fluidRow(
               
               # input box ----
-              box(width = 6,
+              box(width = 12,
                   
-                  # species type checkbox Group Buttons ----
-                  radioGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
-                                       choiceNames = c("Distance From Trails", "Distance From Roads", "Vegetation Density", "Land Ownership", "Slope"),
-                                       choiceValues = c("Trails", "Roads", "Canopy", "Land", "Slope"),
-                                       selected = "Roads", 
-                                       individual = TRUE,
-                                       justified = FALSE,
-                                       size = "normal",
-                                       direction = "horizontal",
-                                       checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                        no = icon("circle", lib = "font-awesome"))), #  END radioGroupButtons for accessibility layer
-              
+                  # insert image of accessibility legend which lives in www folder
+                  tags$img(src = "accessibility_legend.png", 
+                           alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility",
+                           style = "max-width: 100%;")
+              #     
+              # ), # END input box
+              # 
+              # # input box ----
+              # box(width = 6,
+                  
+                  # # species type checkbox Group Buttons ----
+                  # radioGroupButtons(inputId = "accessibility_layer_input", label = "Select which layer of the accessibility index you would like to examine for the map on the left of the screen:",
+                  #                   choiceNames = c("Distance From Trails", "Distance From Roads", "Vegetation Density", "Land Ownership", "Slope"),
+                  #                   choiceValues = c("Trails", "Roads", "Canopy", "Land", "Slope"),
+                  #                   selected = "Roads", 
+                  #                   individual = TRUE,
+                  #                   justified = FALSE,
+                  #                   size = "normal",
+                  #                   direction = "horizontal",
+                  #                   checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                  #                                    no = icon("circle", lib = "font-awesome")),
+                  #                   width = "50%"), #  END radioGroupButtons for accessibility layer
+                  
               ), # END input box
-              
-              # input box ----
-              box(width = 6,
-                  
-                  includeMarkdown("text/siteaccess_title.md")
-              
-              ) # END input box
               
             ), # END fluidRow
             
-            fluidRow(
+            # fluidRow(
               
-            # input box ----
-            box(width = NULL,
-                
-                # insert image of accessibility legend which lives in www folder
-                tags$img(src = "accessibility_legend.png", 
-                         alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility",
-                         style = "max-width: 100%;")
-                
-                )# END input box
+            # # input box ----
+            # box(width = 6,
+            #     
+            #     # insert image of accessibility legend which lives in www folder
+            #     tags$img(src = "accessibility_legend.png", 
+            #              alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility",
+            #              style = "max-width: 100%;")
+            #     
+            #     )# END input box
               
-            ), # END fluidRow
+            # ), # END fluidRow
           
             
             # fluidRow ----
             fluidRow(
-              
+              align = "center",
               # leaflet box 1 with accessibility index ----
               box(width = 6,
-                  
+                  title = tags$strong("Select which layer of the accessibility index you would like to examine:"),
+                  # species type checkbox Group Buttons ----
+                  radioGroupButtons(inputId = "accessibility_layer_input",
+                                    choiceNames = c("Distance From Trails", "Distance From Roads", "Vegetation Density", "Land Ownership", "Slope"),
+                                    choiceValues = c("Trails", "Roads", "Canopy", "Land", "Slope"),
+                                    selected = "Roads", 
+                                    individual = TRUE,
+                                    justified = FALSE,
+                                    size = "normal",
+                                    direction = "horizontal",
+                                    checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                                     no = icon("circle", lib = "font-awesome")),
+                                    width = "100%"), #  END radioGroupButtons for accessibility layer
+    
                   # "model output here, with site access model applied to map of Los Padres NF" ----
                   leafletOutput(outputId = "accessibility_layer_output") %>%  
                     withSpinner()
@@ -300,7 +307,7 @@ body <- dashboardBody(
               
               # leaflet box 2 with static index loaded
               box(width = 6,
-                  
+                  title = tags$strong("Total Accessibility Index:"),
                   # site accessibility index applied to map of Los Padres NF
                   accessibility_index_leaflet
                   
@@ -325,18 +332,6 @@ body <- dashboardBody(
               
               # input box ----
               box(width = 12,
-    
-                  # species type checkbox Group Buttons ----
-                  radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
-                                       choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
-                                       choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
-                                    selected = "Asclepias.californica", 
-                                    individual = TRUE,
-                                    justified = FALSE,
-                                    size = "normal",
-                                    direction = "horizontal",
-                                    checkIcon = list(yes = icon("circle-play", lib = "font-awesome"), 
-                                                     no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
                   
                   # insert image of accessibility legend which lives in www folder
                   tags$img(src = "priority_legend.png", 
@@ -350,6 +345,17 @@ body <- dashboardBody(
     
             # leaflet box ----
             box(width = 12,
+                # species type checkbox Group Buttons ----
+                radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
+                                  choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
+                                  choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
+                                  selected = "Asclepias.californica", 
+                                  individual = TRUE,
+                                  justified = FALSE,
+                                  size = "normal",
+                                  direction = "horizontal",
+                                  checkIcon = list(yes = icon("circle-check", lib = "font-awesome", class = "fa-solid fa-circle-check", style = "color: #3B3B3D"), 
+                                                   no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
                 
                 # "model output here, with site access model applied to map of Los Padres NF" ----
                 leafletOutput(outputId = "priority_species_output") %>%  
