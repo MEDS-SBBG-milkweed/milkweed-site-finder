@@ -80,12 +80,6 @@ em {
   color: $gray;
 }
 
-.navbar a {
-  font-family: 'SBBG-body-thin';
-  font-size: 22px;
-  color: $light-green;
-}
-
 a {
   font-family: 'SBBG-body-thin';
   color: $orange;
@@ -154,6 +148,7 @@ a {
                               background-color: $dark-green;
                               text-decoration: underline;
                               }
+                              
 /* toggle button when hovered  */                    
          .skin-blue .main-header .navbar .sidebar-toggle:hover{
                               background-color: $dark-green;
