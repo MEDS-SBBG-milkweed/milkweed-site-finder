@@ -129,26 +129,34 @@ a {
         .skin-blue .main-sidebar {
                               background-color: $dark-green;
                               }
-
+                              
 /* active selected tab in the sidebarmenu */
-        .skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
-                              background-color: $dark-green;
-                              text-decoration: underline;
-                              }
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+    background-color: $dark-green;
+    text-decoration: underline;
+}
 
 /* other links in the sidebarmenu */
-        .skin-blue .main-sidebar .sidebar .sidebar-menu a{
-                              background-color: $dark-green;
-                              color: $light-green;
-                              font-family: 'SBBG-title';
-                              font-size: 40px;
-                              }
+.skin-blue .main-sidebar .sidebar .sidebar-menu a{
+    background-color: $dark-green;
+    color: $light-green;
+    font-family: 'SBBG-title';
+    font-size: 18px;
 
-/* other links in the sidebarmenu when hovered */
-         .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
-                              background-color: $dark-green;
-                              text-decoration: underline;
-                              }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* Add text-decoration underline for non-active links when selected */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a:not(.active):focus {
+    text-decoration: underline;
+}
+
+/* Remove text-decoration underline for non-active links */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a:not(.active):not(:hover):not(:focus) {
+    text-decoration: none;
+}
                               
 /* toggle button when hovered  */                    
          .skin-blue .main-header .navbar .sidebar-toggle:hover{
