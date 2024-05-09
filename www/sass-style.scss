@@ -130,33 +130,31 @@ a {
                               background-color: $dark-green;
                               }
                               
-/* active selected tab in the sidebarmenu */
-.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
-    background-color: $dark-green;
-    text-decoration: underline;
-}
-
-/* other links in the sidebarmenu */
-.skin-blue .main-sidebar .sidebar .sidebar-menu a{
+/* Base styles for all links in the sidebar menu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a {
     background-color: $dark-green;
     color: $light-green;
     font-family: 'SBBG-title';
     font-size: 18px;
-
-    &:hover {
-        text-decoration: underline;
-    }
+    text-decoration: none; // Default state with no text-decoration
 }
 
-/* Add text-decoration underline for non-active links when selected */
-.skin-blue .main-sidebar .sidebar .sidebar-menu a:not(.active):focus {
+/* Hover and focus effects for all links */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a:hover,
+.skin-blue .main-sidebar .sidebar .sidebar-menu a:focus {
     text-decoration: underline;
 }
 
-/* Remove text-decoration underline for non-active links */
-.skin-blue .main-sidebar .sidebar .sidebar-menu a:not(.active):not(:hover):not(:focus) {
-    text-decoration: none;
+/* Specific style for active links */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active > a {
+    text-decoration: underline; // Ensure underline for active links
 }
+
+/* Overriding style if needed for active link when not focussed */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active > a:not(:focus):not(:hover) {
+    text-decoration: underline;
+}
+
                               
 /* toggle button when hovered  */                    
          .skin-blue .main-header .navbar .sidebar-toggle:hover{

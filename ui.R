@@ -110,8 +110,10 @@ body <- dashboardBody(
                                        justified = FALSE,
                                        size = "normal",
                                        direction = "horizontal",
-                                       checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
-                                                        no = icon("circle", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                                       checkIcon = list(yes = icon("square-check", lib = "font-awesome", 
+                                                                   class = "fa-solid fa-square-check", 
+                                                                   style = "color: #3B3B3D"), 
+                                                        no = icon("square", lib = "font-awesome"))), #  END checkboxGroupInput for species type
                   # leaflet output ----
                   leafletOutput(outputId = "survey_map_output") %>%  
                     withSpinner()
@@ -196,13 +198,6 @@ body <- dashboardBody(
               
             ), # END FluidRow2
             
-            # habitat suitability info box ----
-            box(width = NULL,
-                
-                # replace this with text that describes what all the plots together
-                includeMarkdown("text/habitat_suitability_all.md")
-                
-            ),
             
             # fluidRow 3 ----
             fluidRow(
@@ -210,7 +205,9 @@ body <- dashboardBody(
             # leaflet box 4 ----
             box(width = 12,
                 
-                title = HTML("<b><i>Asclepias sp.:</i></b>"),
+                title = HTML("<b>Milkweed Maximum Suitability</b>"),
+                
+                includeMarkdown("text/habitat_suitability_all.md"),
                 
                 #leaflet output for all of the species ----
                 all_leaflet
@@ -297,7 +294,9 @@ body <- dashboardBody(
                                     justified = FALSE,
                                     size = "normal",
                                     direction = "horizontal",
-                                    checkIcon = list(yes = icon("circle-check", lib = "font-awesome"), 
+                                    checkIcon = list(yes = icon("circle-check", lib = "font-awesome", 
+                                                                class = "fa-solid fa-circle-check", 
+                                                                style = "color: #3B3B3D"), 
                                                      no = icon("circle", lib = "font-awesome")),
                                     width = "100%"), #  END radioGroupButtons for accessibility layer
     
@@ -356,7 +355,9 @@ body <- dashboardBody(
                                   justified = FALSE,
                                   size = "normal",
                                   direction = "horizontal",
-                                  checkIcon = list(yes = icon("circle-check", lib = "font-awesome", class = "fa-solid fa-circle-check", style = "color: #3B3B3D"), 
+                                  checkIcon = list(yes = icon("circle-check", lib = "font-awesome", 
+                                                              class = "fa-solid fa-circle-check", 
+                                                              style = "color: #3B3B3D"), 
                                                    no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
                 
                 # "model output here, with site access model applied to map of Los Padres NF" ----
