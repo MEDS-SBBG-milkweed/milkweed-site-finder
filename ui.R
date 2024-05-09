@@ -20,8 +20,8 @@ sidebar <- dashboardSidebar( width = 300,
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
                                menuItem(text = "Milkweed Habitat Suitability", tabName = "habitatsuit", icon = icon("leaf")),
-                               menuItem(text = "Survey Site: Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
-                               menuItem(text = "Survey Site: Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
+                               menuItem(text = "Survey Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
+                               menuItem(text = "Survey Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
                                menuItem(text = "Data", tabName = "data", icon = icon("database"))
                                
                              ) # END sidebarMenu
@@ -51,6 +51,8 @@ body <- dashboardBody(
                   
                   title = tags$h1("Welcome to the Milkweed Site Finder Dashboard"),
                   
+                  includeMarkdown("text/background_info.md"),
+                  
                   # insert image of milkweed
                   tags$img(src = "monarch_milkweed.jpeg", 
                            alt = "Imqage of a monarch butterfly on a milkweed plant.",
@@ -58,7 +60,7 @@ body <- dashboardBody(
                   tags$h6(tags$em(tags$h6(href = "https://www.nps.gov/articles/000/milkweed-and-monarchs.htm", "Yehyun Kim, Friends of Acadia.")),
                           style = "text-align: left;"), # END image of milkweed
                   
-                  includeMarkdown("text/background_info.md")
+                  includeMarkdown("text/background_context.md")
                   
               ) # END background info box
               

@@ -1,1 +1,1 @@
-The map below shows the suitability of 
+The map below shows the maximum suitability in each location for all of the milkweed species. For example, if one location has a predicted suitability of 0.9 for *Asclepias californica* and a predicted suitability of 0.3 for *A. eriocarpa*, and even lower scores for *A. erosa* and *A. vestita*, that location would show up with a score of 0.9 in this map.
