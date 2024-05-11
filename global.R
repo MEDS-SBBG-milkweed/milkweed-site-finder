@@ -19,25 +19,26 @@ library(basemaps)
 library(raster)
 library(scales)
 
-# COMPILE CSS ----
+# COMPILE CSS for styling ----
 sass(
   input = sass_file("www/sass-style.scss"),
   output = "www/sass-style.css",
   options = sass_options(output_style = "compressed") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable
 )
 
-# Spinner Options
+# Set Spinner Options
 options(spinner.type = 6, spinner.color = "#244E2A")
+
+# LOAD IN DATA FOR Los Padres National Forest Boundary ----
+
+# California National Forest boundaries
+lpnf_boundary <- st_read("data_processed/lpnf_boundary/")
 
 # LOAD IN DATA FOR LEAFLET SURVEY LOCATIONS ----
 # survey data
 milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location_centroids/all_species_points.shp") %>% 
   filter(mlkwd_s != "Asclepias sp.") %>% 
   sf::st_transform('+proj=longlat +datum=WGS84')
-
-
-# California National Forest boundaries
-lpnf_boundary <- st_read("data_processed/lpnf_boundary/")
 
 
 # LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----
@@ -56,19 +57,18 @@ all <- rast("data_processed/sdm_outputs/max_suitable_sdm.tif")
 source("R/addLegend_decreasing.R")
 
 
-
 # LOAD Habitat Suitability Maps ----
 
 # Define colors and legend for habitat suitability maps
-rasCols <- c("#FFFFFF", "#EFCCCC", "#DF9999", "#D06666", "#C03333", "#B00000")
+pal_habitat <- c("#FFFFFF", "#EFCCCC", "#DF9999", "#D06666", "#C03333", "#B00000")
 
 # static californica output
 # leaflet output
 #Get values of prediction
 mapPredVals_californica <- getRasterVals(californica) # change for different types
 
-legendPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
-rasPal_californica <- colorNumeric(rasCols, mapPredVals_californica, na.color = 'transparent')
+legendPal_californica <- colorNumeric(pal_habitat, mapPredVals_californica, na.color = 'transparent')
+rasPal_californica <- colorNumeric(pal_habitat, mapPredVals_californica, na.color = 'transparent')
 
 californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   
@@ -84,8 +84,8 @@ californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrai
 #Get values of prediction
 mapPredVals_eriocarpa <- getRasterVals(eriocarpa) # change for different types
 
-legendPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
-rasPal_eriocarpa <- colorNumeric(rasCols, mapPredVals_eriocarpa, na.color = 'transparent')
+legendPal_eriocarpa <- colorNumeric(pal_habitat, mapPredVals_eriocarpa, na.color = 'transparent')
+rasPal_eriocarpa <- colorNumeric(pal_habitat, mapPredVals_eriocarpa, na.color = 'transparent')
 
 eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   
@@ -101,8 +101,8 @@ eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain)
 mapPredVals_vestita <- getRasterVals(vestita) # change for different types
 
 
-legendPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
-rasPal_vestita <- colorNumeric(rasCols, mapPredVals_vestita, na.color = 'transparent')
+legendPal_vestita <- colorNumeric(pal_habitat, mapPredVals_vestita, na.color = 'transparent')
+rasPal_vestita <- colorNumeric(pal_habitat, mapPredVals_vestita, na.color = 'transparent')
 
 vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 
@@ -118,8 +118,8 @@ vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %
 # get values of prediction
 mapPredVals_erosa <- getRasterVals(erosa) # change for different types
 
-legendPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
-rasPal_erosa <- colorNumeric(rasCols, mapPredVals_erosa, na.color = 'transparent')
+legendPal_erosa <- colorNumeric(pal_habitat, mapPredVals_erosa, na.color = 'transparent')
+rasPal_erosa <- colorNumeric(pal_habitat, mapPredVals_erosa, na.color = 'transparent')
 
 erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 
@@ -136,8 +136,8 @@ erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 # get values of prediction
 mapPredVals_all <- getRasterVals(all) # change for different types
 
-legendPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
-rasPal_all <- colorNumeric(rasCols, mapPredVals_all, na.color = 'transparent')
+legendPal_all <- colorNumeric(pal_habitat, mapPredVals_all, na.color = 'transparent')
+rasPal_all <- colorNumeric(pal_habitat, mapPredVals_all, na.color = 'transparent')
 
 all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_all, values = mapPredVals_all,
@@ -200,7 +200,7 @@ index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif"
 # static total accessibility index output ----
 # leaflet output 
 
-# define colors and legend
+# define colors and legend for site accessibility
 pal_access <- leaflet::colorNumeric(palette = c("#FFFFFF","#CCD4EF", "#99A9DF", "#667FD0", "#3354C0", "#0029B0"),
                                    domain = NULL,
                                    na.color = "transparent")
