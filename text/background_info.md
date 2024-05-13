@@ -1,4 +1,3 @@
-**Welcome to the SBBG’s milkweed site finder dashboard!**
 
 Milkweed site finder is an app that lets you visualize the Santa Barbara Botanic Garden’s milkweed field survey data.
 
