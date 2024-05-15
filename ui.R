@@ -1,24 +1,30 @@
 #........................dashboardHeader.........................
 header <- dashboardHeader(
   
-  # add title ----
-  title = "Milkweed Habitat in the Los Padres National Forest",
-  titleWidth = 270
-  
+  title = div(
+    span(
+      tags$a(href = "https://sbbotanicgarden.org/",
+             tags$img(src = "SBBG_logo.png", 
+                      alt = "The logo of the santa barabara botanic garden with a white background and green image.",
+                      width = "100%"))
+      # "Milkweed Habitat in the Los Padres National Forest"
+    ),
+    align = "left",
+    width = "100%",
+    style = "padding-right:0px;"
+  ),
+  titleWidth = 280
+
 ) # END dashboardHeader
 
 #........................dashboardSidebar........................
-sidebar <- dashboardSidebar(width = 300,
+sidebar <- dashboardSidebar(width = 280,
+                            
+                            tags$style(".left-side, .main-sidebar {padding-top: 125px}"),
                              
                              # sidebarMenu ----
                              sidebarMenu(
-                               
-                               # add SBBG logo to sidebar and link to SBBG website homepage
-                               tags$a(href = "https://sbbotanicgarden.org/",
-                                      tags$img(src = "SBBG_workcard-projects-1.jpg", 
-                                               alt = "The logo of the santa barabara botanic garden with a white background and green image.",
-                                               style = "max-width: 100%;")),
-                               
+                                      
                                # add tabs to sidebar menu
                                menuItem(text = "Home", tabName = "home", icon = icon("house-user")),
                                menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
