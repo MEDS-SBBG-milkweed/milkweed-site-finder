@@ -22,7 +22,7 @@ header <- dashboardHeader(
 #........................dashboardSidebar........................
 sidebar <- dashboardSidebar(width = 280,
                             
-                            tags$style(".left-side, .main-sidebar {padding-top: 180px}"),
+                            tags$style(".left-side, .main-sidebar {padding-top: 125px}"),
                              
                              # sidebarMenu ----
                              sidebarMenu(
