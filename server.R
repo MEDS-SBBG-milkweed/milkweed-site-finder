@@ -1,14 +1,16 @@
 # 
 function(input, output, session) {
-
-    # filter survey data ----
-    filtered_milkweed_df <- reactive ({
-
-      milkweed_survey_data |>
-        filter(mlkwd_s %in% c(input$species_type_input))
-
-    })
+  
+  # change_window_title(session, "Milkweed Site Finder")
+  
+  # filter survey data ----
+  filtered_milkweed_df <- reactive ({
     
+    milkweed_survey_data |>
+      filter(mlkwd_s %in% c(input$species_type_input))
+    
+  })
+  
     # build leaflet map for survey locations ----
     output$survey_map_output <- renderLeaflet({
 
@@ -101,18 +103,19 @@ function(input, output, session) {
 
         DT::datatable(
           priority_datatable,
-          extensions = 'Buttons', 
-          options = list(scrollX=TRUE,
-                         scrollY="300px",
-                         paging = FALSE,
-                         searching = TRUE,
-                         fixedColumns = TRUE,
-                         autoWidth = FALSE,
-                         ordering = TRUE,
-                         dom = 'Bfrtip',
-                         buttons = c('csv', 'excel','pdf'))) %>%
+          extensions = c('Buttons'), 
+          options = list(
+            scrollX=TRUE,
+            scrollY="300px",
+            paging = FALSE,
+            searching = TRUE,
+            fixedColumns = TRUE,
+            autoWidth = FALSE,
+            ordering = TRUE,
+            dom = 'Bfrtip',
+            buttons = list(list(extend = 'csv', filename= 'Milkweed Site Finder Locations')))) %>%
         formatRound(3:7, digits = 3) %>%
-        formatRound(1:2, digits = 5)
+        formatRound(1:2, digits = 5) 
       
     })
     

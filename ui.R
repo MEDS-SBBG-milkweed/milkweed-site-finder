@@ -2,13 +2,15 @@
 header <- dashboardHeader(
   
   title = div(
-    span(
-      tags$a(href = "https://sbbotanicgarden.org/",
-             tags$img(src = "SBBG_logo.png", 
-                      alt = "The logo of the santa barabara botanic garden with a white background and green image.",
-                      width = "100%"))
-
+    tags$a(
+      href = "https://sbbotanicgarden.org/",
+      tags$img(
+        src = "SBBG_logo.png",
+        alt = "The logo of the Santa Barbara Botanic Garden with a white background and green image.",
+        width = "100%"
+      )
     ),
+    span("Milkweed Site Finder", style = "position: absolute; left: -9999px;"),
     align = "left",
     width = "100%",
     style = "padding-right:0px;"
@@ -20,7 +22,7 @@ header <- dashboardHeader(
 #........................dashboardSidebar........................
 sidebar <- dashboardSidebar(width = 280,
                             
-                            tags$style(".left-side, .main-sidebar {padding-top: 125px}"),
+                            tags$style(".left-side, .main-sidebar {padding-top: 180px}"),
                              
                              # sidebarMenu ----
                              sidebarMenu(
