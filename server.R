@@ -113,7 +113,7 @@ function(input, output, session) {
             autoWidth = FALSE,
             ordering = TRUE,
             dom = 'Bfrtip',
-            buttons = list(list(extend = 'csv', filename= 'Milkweed Site Finder Locations')))) %>%
+            buttons = list(list(extend = 'csv', filename = 'Milkweed Site Finder Locations')))) %>%
         formatRound(3:7, digits = 3) %>%
         formatRound(1:2, digits = 5) 
       
