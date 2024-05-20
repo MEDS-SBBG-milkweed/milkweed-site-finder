@@ -7,7 +7,7 @@ header <- dashboardHeader(
              tags$img(src = "SBBG_logo.png", 
                       alt = "The logo of the santa barabara botanic garden with a white background and green image.",
                       width = "100%"))
-      # "Milkweed Habitat in the Los Padres National Forest"
+
     ),
     align = "left",
     width = "100%",

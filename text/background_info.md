@@ -1,8 +1,7 @@
 
-Milkweed site finder is an app that lets you visualize the Santa Barbara Botanic Garden’s milkweed field survey data.
 
-From the left navigation panel, you'll be able to access the maps, models, and visualizations concerning the [Los Padres National Forest](https://www.fs.usda.gov/lpnf)  and its early-season milkweed habitat in connection with monarch butterfly habitat restoration efforts. 
+Milkweed Site Finder is an app that assists the SBBG's restoration efforts by identifying the highest priority locations to survey
 
+From the left navigation panel, you’ll find details on where milkweed has been identified, which habitats are most suitable for milkweed, how accessible sites are, and which sites should be prioritized within the [Los Padres National Forest](https://www.fs.usda.gov/lpnf). 
 
-It has been made with Shiny in R – our source code is publicly available on [GitHub](https://github.com/milkweed-mod/milkweed_site_finder).
-
+This dashboard was made with [Shiny in R](https://shiny.posit.co/) – all source code is publicly available on [GitHub](https://github.com/milkweed-mod/milkweed-site-finder). 
