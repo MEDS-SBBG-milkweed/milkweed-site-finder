@@ -1,3 +1,4 @@
+
 #........................dashboardHeader.........................
 header <- dashboardHeader(
   
@@ -389,5 +390,5 @@ body <- dashboardBody(
   
 ) # END dashboardBody
 
-#..................combine all in dashboardPage..................
-dashboardPage(header, sidebar, body)
+#..................combine all in dashboardPage and set dashboard title in open tobs..................
+dashboardPage(title = "Milkweed Site Finder", header, sidebar, body)

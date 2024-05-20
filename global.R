@@ -29,6 +29,7 @@ sass(
 # Set Spinner Options
 options(spinner.type = 6, spinner.color = "#244E2A")
 
+
 # LOAD IN DATA FOR Los Padres National Forest Boundary ----
 
 # California National Forest boundaries
