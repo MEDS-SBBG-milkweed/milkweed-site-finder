@@ -1,4 +1,4 @@
-# web-dashboard
+# milkweed-site-finder
 
 ## Project Description
 The web-dashboard repository contains all of the R code in order to build the interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff.
