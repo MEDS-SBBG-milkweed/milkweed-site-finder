@@ -73,7 +73,7 @@ rasPal_californica <- colorNumeric(pal_habitat, mapPredVals_californica, na.colo
 
 californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   
-  addRasterImage(californica, colors = rasPal_californica, opacity = 0.7,
+  addRasterImage(californica, colors = rasPal_californica,
                  method = "ngb") %>% 
   
   #add transfer polygon (user drawn area)
@@ -90,7 +90,7 @@ rasPal_eriocarpa <- colorNumeric(pal_habitat, mapPredVals_eriocarpa, na.color = 
 
 eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   
-  addRasterImage(eriocarpa, colors = rasPal_eriocarpa, opacity = 0.7,
+  addRasterImage(eriocarpa, colors = rasPal_eriocarpa,
                  method = "ngb") %>% 
   #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
@@ -108,7 +108,7 @@ rasPal_vestita <- colorNumeric(pal_habitat, mapPredVals_vestita, na.color = 'tra
 vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 
   # map model prediction raster and transfer polygon
-  addRasterImage(vestita, colors = rasPal_vestita, opacity = 0.7,
+  addRasterImage(vestita, colors = rasPal_vestita,
                  method = "ngb") %>% 
   #add transfer polygon (user drawn area)
   addPolygons(data = lpnf_boundary, fill = FALSE,
@@ -125,7 +125,7 @@ rasPal_erosa <- colorNumeric(pal_habitat, mapPredVals_erosa, na.color = 'transpa
 erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 
   # map model prediction raster and transfer polygon
-  addRasterImage(erosa, colors = rasPal_erosa, opacity = 0.7,
+  addRasterImage(erosa, colors = rasPal_erosa,
                  method = "ngb") %>% 
   
   #add transfer polygon (user drawn area)
@@ -146,7 +146,7 @@ all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
                        title = "Predicted Suitability") %>%
   
   # map model prediction raster and transfer polygon
-  addRasterImage(all, colors = rasPal_all, opacity = 0.7,
+  addRasterImage(all, colors = rasPal_all,
                  method = "ngb") %>% 
   
   #add transfer polygon (user drawn area)
@@ -211,7 +211,7 @@ accessibility_index_leaflet <- leaflet() %>%
   addProviderTiles(providers$Esri.WorldTerrain) %>%
 
   # map model prediction raster and transfer polygon
-  addRasterImage(all, colors = pal_access, opacity = 0.7,
+  addRasterImage(index, colors = pal_access,
                  method = "ngb") %>%
   
   # #add transfer polygon (user drawn area)
