@@ -97,44 +97,42 @@ body <- dashboardBody(
     # milkweed locations tabItem ----
     tabItem(tabName = "milkweedloc",
             
-            # milkweed locations info box ----
-            box(width = 12,
-                
-                includeMarkdown("text/overview_milkweed_locations.md"),
-                
-            ), # END milkweed locations info box
+            #fluidRow ----
+            fluidRow(
             
-            
-            # leaflet box ----
-            box(width = 12,
-                
-                # species type checkbox Group Buttons ----
-                checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
-                                     choiceNames = c("<em>Asclepias californica</em>", 
-                                                     "<em>Asclepias eriocarpa</em>", 
-                                                     "<em>Asclepias erosa</em>",
-                                                     "<em>Asclepias vestita</em>"),
-                                     choiceValues = c("Asclepias californica", 
-                                                      "Asclepias eriocarpa", 
-                                                      "Asclepias erosa", 
-                                                      "Asclepias vestita"),
-                                     select = "Asclepias californica", 
-                                     individual = TRUE,
-                                     justified = FALSE,
-                                     size = "normal",
-                                     direction = "horizontal",
-                                     checkIcon = list(yes = icon("square-check", lib = "font-awesome", 
-                                                                 class = "fa-solid fa-square-check", 
-                                                                 style = "color: #3B3B3D"), 
-                                                      no = icon("square", lib = "font-awesome"))), #  END checkboxGroupInput for species type
-                # leaflet output ----
-                leafletOutput(outputId = "survey_map_output") %>%  
+              # milkweed locations info box ----
+              box(width = 12,
                   
-                  # add loading spinner
-                  withSpinner()
-                
-            ) # END leaflet box
-            
+                  includeMarkdown("text/overview_milkweed_locations.md"),
+                  
+                  # species type checkbox Group Buttons ----
+                  checkboxGroupButtons(inputId = "species_type_input", label = "Select milkweed species:",
+                                       choiceNames = c("<em>Asclepias californica</em>", 
+                                                       "<em>Asclepias eriocarpa</em>", 
+                                                       "<em>Asclepias erosa</em>",
+                                                       "<em>Asclepias vestita</em>"),
+                                       choiceValues = c("Asclepias californica", 
+                                                        "Asclepias eriocarpa", 
+                                                        "Asclepias erosa", 
+                                                        "Asclepias vestita"),
+                                       select = "Asclepias californica", 
+                                       individual = TRUE,
+                                       justified = FALSE,
+                                       size = "normal",
+                                       direction = "horizontal",
+                                       checkIcon = list(yes = icon("square-check", lib = "font-awesome", 
+                                                                   class = "fa-solid fa-square-check", 
+                                                                   style = "color: #3B3B3D"), 
+                                                        no = icon("square", lib = "font-awesome"))), #  END checkboxGroupInput for species type
+                  # leaflet output ----
+                  leafletOutput(outputId = "survey_map_output") %>%  
+                    
+                    # add loading spinner
+                    withSpinner()
+                  
+              ), # END milkweed locations info box
+              
+            )  # END fluidRow
             
     ), # END milkweed locations tabItem
     

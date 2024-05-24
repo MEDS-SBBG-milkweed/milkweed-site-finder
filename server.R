@@ -7,7 +7,7 @@ function(input, output, session) {
   filtered_milkweed_df <- reactive ({
     
     milkweed_survey_data |>
-      filter(mlkwd_s %in% c(input$species_type_input))
+      filter(milkweed_sp %in% c(input$species_type_input))
     
   })
   
@@ -17,7 +17,7 @@ function(input, output, session) {
       # set colors for each species
       pal <- colorFactor(palette = c("#99DDFF", "#785EF0", "#DC267F", "#FE6100"), 
                     levels = c("Asclepias californica", "Asclepias eriocarpa", "Asclepias erosa", "Asclepias vestita"),
-                    domain = filtered_milkweed_df()$mlkwd_s)
+                    domain = filtered_milkweed_df()$milkweed_sp)
  
         leaflet() %>% 
           addProviderTiles(providers$Esri.WorldTerrain) %>%
@@ -26,7 +26,7 @@ function(input, output, session) {
           addCircleMarkers(data = filtered_milkweed_df(),
                            radius = 4,
                            weight = 1,
-                           fillColor = ~pal(eval(filtered_milkweed_df()$mlkwd_s)),
+                           fillColor = ~pal(eval(filtered_milkweed_df()$milkweed_sp)),
                            color = "black",
                            opacity = 1,
                            fillOpacity = 0.8
@@ -39,7 +39,7 @@ function(input, output, session) {
                       weight = 2) %>%
           
           # format legend
-          leaflet::addLegend("topright", pal = pal, values = filtered_milkweed_df()$mlkwd_s,
+          leaflet::addLegend("topright", pal = pal, values = filtered_milkweed_df()$milkweed_sp,
                              title = "Milkweed Species",
                              opacity = 0.8) %>% 
           

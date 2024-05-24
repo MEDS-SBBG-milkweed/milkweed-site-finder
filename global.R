@@ -37,8 +37,8 @@ lpnf_boundary <- st_read("data_processed/lpnf_boundary/")
 
 # LOAD IN DATA FOR LEAFLET SURVEY LOCATIONS ----
 # survey data
-milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location_centroids/all_species_points.shp") %>% 
-  filter(mlkwd_s != "Asclepias sp.") %>% 
+milkweed_survey_data <- read_rds("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/all_species_points.rda") %>% 
+  filter(milkweed_sp != "Asclepias sp.") %>%
   sf::st_transform('+proj=longlat +datum=WGS84')
 
 
