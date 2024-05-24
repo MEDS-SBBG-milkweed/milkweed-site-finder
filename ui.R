@@ -147,7 +147,7 @@ body <- dashboardBody(
                 includeMarkdown("text/overview_habitat_suitability.md"),
                 
                 # insert image of milkweed
-                tags$img(src = "suitability_legend.png", 
+                tags$img(src = "legends/suitability_legend.png", 
                          alt = "Image depicting color gradient of white to red for legend. White depicting the least likely for habitat suitability",
                          style = "max-width: 100%;")
                 
@@ -247,7 +247,7 @@ body <- dashboardBody(
                   includeMarkdown("text/overview_site_accessibility.md"),
                   
                   # insert image of accessibility legend which lives in www folder
-                  tags$img(src = "accessibility_legend.png", 
+                  tags$img(src = "legends/accessibility_legend.png", 
                            alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility",
                            style = "max-width: 100%;")
                   
