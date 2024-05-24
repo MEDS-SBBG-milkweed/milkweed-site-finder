@@ -44,15 +44,15 @@ milkweed_survey_data <- st_read("data_processed/survey_locations/survey_location
 
 # LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----
 # Asclepias californica model
-californica <- rast("data_processed/sdm_outputs/californica_sdm.tif")
+californica <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/californica_sdm.tif")
 # Asclepias eriocarpa model
-eriocarpa <- rast("data_processed/sdm_outputs/eriocarpa_sdm.tif")
+eriocarpa <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/eriocarpa_sdm.tif")
 # Asclepias erosa model
-erosa <- rast("data_processed/sdm_outputs/erosa_sdm.tif")
+erosa <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/erosa_sdm.tif")
 # Asclepias vestita model
-vestita <- rast("data_processed/sdm_outputs/vestita_sdm.tif")
+vestita <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/vestita_sdm.tif")
 # Asclepias species model
-all <- rast("data_processed/sdm_outputs/max_suitable_sdm.tif")
+all <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/max_suitable_sdm.tif")
 
 # load in legend functionality for leaflet models
 source("R/addLegend_decreasing.R")
