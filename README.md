@@ -8,7 +8,7 @@ milkweed-site-finder README starts below
 
 ## Table of Contents
 
-Project Description
+[Project Description](##project-description)
 
 Data
 
