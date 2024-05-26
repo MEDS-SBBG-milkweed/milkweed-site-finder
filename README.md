@@ -2,7 +2,7 @@
 
  # **Identifying Priority Survey Sites for Early-Season Milkweed Conservation**
 
-![image of milkweed mod logo which includes california, milkweed, and a butterfly drawing done by Sam Muir]()
+![image of milkweed mod logo which includes california, milkweed, and a butterfly drawing done by Sam Muir](https://github.com/MEDS-SBBG-milkweed/milkweed-site-finder/blob/main/figs/MilkweedMod.jpeg)
 
 ## Table of Contents
 
