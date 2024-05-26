@@ -1,3 +1,5 @@
+#........................load packages........................
+
 # load packages
 library(shiny)
 library(leaflet)
@@ -19,38 +21,49 @@ library(basemaps)
 library(raster)
 library(scales)
 
+#........................styling........................
+
 # COMPILE CSS for styling ----
 sass(
   input = sass_file("www/sass-style.scss"),
   output = "www/sass-style.css",
-  options = sass_options(output_style = "compressed") # OPTIONAL, but speeds up page load time by removing white-space & line-breaks that make css files more human-readable
+  # removes white-space & line-breaks that make css files more human-readable
+  options = sass_options(output_style = "compressed")
 )
 
 # Set Spinner Options
 options(spinner.type = 6, spinner.color = "#244E2A")
 
+#........................Los Padres National Forest (LPNF) boundary data........................
 
-# LOAD IN DATA FOR Los Padres National Forest Boundary ----
-
-# California National Forest boundaries
+# load in data for LPNF boundary ----
 lpnf_boundary <- st_read("data_processed/lpnf_boundary/")
 
-# LOAD IN DATA FOR LEAFLET SURVEY LOCATIONS ----
-# survey data
+
+#.......................survey locations data........................
+
+# load in data for milkweed survey locations
 milkweed_survey_data <- read_rds("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/all_species_points.rda") %>% 
   filter(milkweed_sp != "Asclepias sp.") %>%
   sf::st_transform('+proj=longlat +datum=WGS84')
 
 
-# LOAD IN DATA FOR HABITAT SUITABILITY MODEL OUTPUTS ----
+#........................Habitat Suitability Model data........................
+
+# load in data for habitat suitability model outputs ----
+
 # Asclepias californica model
 californica <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/californica_sdm.tif")
+
 # Asclepias eriocarpa model
 eriocarpa <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/eriocarpa_sdm.tif")
+
 # Asclepias erosa model
 erosa <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/erosa_sdm.tif")
+
 # Asclepias vestita model
 vestita <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/vestita_sdm.tif")
+
 # Asclepias species model
 all <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/max_suitable_sdm.tif")
 
@@ -58,9 +71,11 @@ all <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/m
 source("R/addLegend_decreasing.R")
 
 
-# LOAD Habitat Suitability Maps ----
+#........................Habitat Suitability Model Maps........................
 
-# Define colors and legend for habitat suitability maps
+# load habitat suitability maps ----
+
+# define colors and legend for habitat suitability maps
 pal_habitat <- c("#FFFFFF", "#EFCCCC", "#DF9999", "#D06666", "#C03333", "#B00000")
 
 # static californica output ----
@@ -163,8 +178,9 @@ all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
               weight = 2, color = "black", group = 'xfer')
 
 
+#........................Site Accessibility Data........................
 
-# LOAD IN DATA FOR Site Accessibility ----
+# load in data for Site Accessibility ----
 
 # load total site accessibility data ----
 index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif") %>% 
@@ -197,6 +213,9 @@ Canopy <- rast("data_processed/site_accessibility_outputs/canopy_rescaled.tif") 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+
+#........................Site Accessibility Raster Stack........................
+
 # rename raster layers so they retain their names within the raster stack
 names(Canopy) <- "Canopy"
 names(Land) <- "Land"
@@ -207,14 +226,15 @@ names(Slope) <- "Slope"
 # create raster stack to iterate through for site accessibility layers
 stack <- stack(Roads, Trails, Slope, Canopy, Land)
 
-# static total accessibility index output ----
-# leaflet output 
+#........................Total Site Accessibility Map........................
 
 # define colors and legend for site accessibility
 pal_access <- leaflet::colorNumeric(palette = c("#FFFFFF","#CCD4EF", "#99A9DF", "#667FD0", "#3354C0", "#0029B0"),
                                    domain = NULL,
                                    na.color = "transparent")
 
+# static total accessibility index output ----
+# leaflet output 
 # initialize leaflet 
 accessibility_index_leaflet <- leaflet() %>%
   
@@ -229,7 +249,9 @@ accessibility_index_leaflet <- leaflet() %>%
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
-# LOAD IN DATA for Site Finder Priority Outputs ----
+
+#........................High Priority Site Data........................
+# load in data for Site Finder Priority Outputs ----
 
 # load in Asclepias californica priority raster
 californica_priority <- rast("data_processed/priority_sites_outputs/californica_priority.tif") %>% 
@@ -251,6 +273,8 @@ vestita_priority <- rast("data_processed/priority_sites_outputs/vestita_priority
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
+#........................High Priority Site Raster Stack........................
+
 # rename raster layers so they retain their names within the raster stack
 names(californica_priority) <- "Asclepias californica"
 names(eriocarpa_priority) <- "Asclepias eriocarpa"
@@ -260,8 +284,12 @@ names(vestita_priority) <- "Asclepias vestita"
 # create raster stack to iterate through for priority outputs
 priority_stack <- stack(californica_priority, eriocarpa_priority, erosa_priority, vestita_priority)
 
+#........................High Priority Site Data Table........................
+
 # extract data frames from each species priorty output
 priority_datatable <- read_csv("data_processed/priority_sites_outputs/priority_datatable.csv")
+
+#........................High Priority Site Maps........................
 
 # define color palette to be used for priority sites
 pal_priority <- leaflet::colorNumeric(palette = c("#FFFFFF", "#E1CCEF", "#C399DF", "#A666D0", "#8833C0", "#6A00B0"),
