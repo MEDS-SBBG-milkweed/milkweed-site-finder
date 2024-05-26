@@ -43,7 +43,7 @@ sidebar <- dashboardSidebar(width = 280,
 #..........................dashboardBody.........................
 body <- dashboardBody(
   
-  # link stylesheet
+  # add CSS styling
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "sass-style.css"),
   ),
@@ -55,14 +55,16 @@ body <- dashboardBody(
     tabItem(tabName = "home",
             
             
-            # first fluid row ----
+            # home fluidRow 1----
             fluidRow(
               
-              # background info box ----
+              # home background info box ----
               box(width = 12,
                   
+                  # add title to home page
                   title = tags$h1("Welcome to the Milkweed Site Finder Dashboard"),
                   
+                  # add markdown file that includes project background info
                   includeMarkdown("text/background_info.md"),
                   
                   # insert image of milkweed
@@ -72,37 +74,40 @@ body <- dashboardBody(
                   tags$h6(tags$em(tags$h6(href = "https://www.nps.gov/articles/000/milkweed-and-monarchs.htm", "Yehyun Kim, Friends of Acadia.")),
                           style = "text-align: left;"), # END image of milkweed
                   
-                  # add markdown file that includes content for the background of the project
+                  # add markdown file that includes background context
                   includeMarkdown("text/background_context.md")
                   
-              ) # END background info box
+              ) # END home background info box
               
-            ), # END first fluid row
+            ), # END home fluidRow 1
             
-            # second fluidRow ----
+            # home fluidRow 2 ----
             fluidRow(
               
               # disclaimer box ----
               box(width = 12,
                   
+                  # add disclaimer icon
                   title = tagList(icon("triangle-exclamation")),
+                  # add markdown file that includes disclaimer
                   includeMarkdown("text/disclaimer.md")
                   
               ) # END disclaimer box
               
-            ) # END second fluidRow
+            ) # END home fluidRow 2
             
     ), # END welcome tabItem
     
     # milkweed locations tabItem ----
     tabItem(tabName = "milkweedloc",
             
-            #fluidRow ----
+            # milkweedloc fluidRow 1----
             fluidRow(
-            
+              
               # milkweed locations info box ----
               box(width = 12,
                   
+                  # add markdown file that includes overview of milkweed locations
                   includeMarkdown("text/overview_milkweed_locations.md"),
                   
                   # species type checkbox Group Buttons ----
@@ -124,15 +129,16 @@ body <- dashboardBody(
                                                                    class = "fa-solid fa-square-check", 
                                                                    style = "color: #3B3B3D"), 
                                                         no = icon("square", lib = "font-awesome"))), #  END checkboxGroupInput for species type
-                  # leaflet output ----
+                  
+                  # add leaflet output for survey locations ----
                   leafletOutput(outputId = "survey_map_output") %>%  
                     
-                    # add loading spinner
+                    # add loading spinner to leaflet output
                     withSpinner()
                   
               ), # END milkweed locations info box
               
-            )  # END fluidRow
+            )  # END milkweedloc fluidRow 1
             
     ), # END milkweed locations tabItem
     
@@ -142,18 +148,18 @@ body <- dashboardBody(
             # habitat suitability info box ----
             box(width = NULL,
                 
+                # add markdown file that includes overview of habitat suitability 
                 includeMarkdown("text/overview_habitat_suitability.md"),
                 
-                # insert image of milkweed
+                # insert image of habitat suitability legend
                 tags$img(src = "legends/suitability_legend.png", 
-                         alt = "Image depicting color gradient of white to red for legend. White depicting the least likely for habitat suitability",
+                         alt = "Image depicting color gradient of white to red for legend. White depicting the least likely for habitat suitability and red depicting the most likely for habitat suitability",
                          style = "max-width: 100%;")
-                
                 
             ), # END habitat suitability info box
             
             
-            # fluidRow 1 ----
+            # habitatsuit fluidRow 1 ----
             fluidRow(
               
               # californica model output ----
@@ -162,56 +168,53 @@ body <- dashboardBody(
                   
                   title = HTML("<b><i>Asclepias californica:</i></b>"),
                   
-                  #leaflet output for californica ----
+                  # leaflet output for californica ----
                   californica_leaflet
-                  
                   
               ), # END leaflet box 1
               
-              # californica model output ----
+              # eriocarpa model output ----
               # leaflet box 2 ----
               box(width = 6,
                   
                   title = HTML("<b><i>Asclepias eriocarpa:</i></b>"),
                   
-                  #leaflet output for californica ----
+                  # leaflet output for eriocarpa ----
                   eriocarpa_leaflet
-                  
                   
               ), # END leaflet box 2
               
-            ), # END FluidRow 1
+            ), # END habitatsuit fluidRow 1
             
-            # FluidRow 2 ----
+            # habitatsuit fluidRow 2 ----
             fluidRow(
               
-              # californica model output ----
+              # vestita model output ----
               # leaflet box 3 ----
               box(width = 6,
                   
                   title = HTML("<b><i>Asclepias vestita:</i></b>"),
                   
-                  #leaflet output for californica ----
+                  # leaflet output for vestita ----
                   vestita_leaflet
                   
               ), # END leaflet box 3
               
-              # californica model output ----
+              # erosa model output ----
               # leaflet box 4 ----
               box(width = 6,
                   
                   title = HTML("<b><i>Asclepias erosa:</i></b>"),
                   
-                  #leaflet output for californica ----
+                  # leaflet output for erosa ----
                   erosa_leaflet
-                  
                   
               ) # END leaflet box 4
               
-            ), # END FluidRow2
+            ), # END habitatsuit fluidRow 2
             
             
-            # fluidRow 3 ----
+            # habitatsuit fluidRow 3 ----
             fluidRow(
               
               # leaflet box 4 ----
@@ -219,41 +222,40 @@ body <- dashboardBody(
                   
                   title = HTML("<b>Milkweed Maximum Suitability</b>"),
                   
+                  # add markdown file that includes description of habitat suitability all
                   includeMarkdown("text/habitat_suitability_all.md"),
                   
-                  #leaflet output for all of the species ----
+                  # leaflet output for max habitat suitability for all of the species ----
                   all_leaflet
-                  
                   
               ) # END leaflet box 4
               
-            ) # END fluid row3
-            
+            ) # END habitatsuit fluidRow 3
             
     ), # END habitat suitability tabItem
-    
     
     # site access tabItem ----
     tabItem(tabName = "siteaccess",
             
-            #fluid row
+            # siteaccess fluidRow 1
             fluidRow(
               
               # site access info box ----
               box(width = 12,
                   
+                  # add markdown file that includes an overview of site accessibility
                   includeMarkdown("text/overview_site_accessibility.md"),
                   
                   # insert image of accessibility legend which lives in www folder
                   tags$img(src = "legends/accessibility_legend.png", 
-                           alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility",
+                           alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility, and dark blue depicting the most accessible",
                            style = "max-width: 100%;")
                   
               ) # END site access info box
               
-            ), # END fluidRow
+            ), # END siteaccess fluidRow 1
             
-            # fluidRow ----
+            # siteaccess fluidRow 2 ----
             fluidRow(
               align = "center",
               
@@ -277,105 +279,105 @@ body <- dashboardBody(
                                                      no = icon("circle", lib = "font-awesome")),
                                     width = "100%"), #  END radioGroupButtons for accessibility layer
                   
-          # "model output here, with site access model applied to map of Los Padres NF" ----
-          leafletOutput(outputId = "accessibility_layer_output") %>%  
+                  # leaflet output for user selected site accessibility layer ----
+                  leafletOutput(outputId = "accessibility_layer_output") %>%  
+                    
+                    # add loading spinner
+                    withSpinner()
+                  
+              ), # END leaflet box
+              
+              # leaflet box 2 with total index loaded
+              box(width = 6,
+                  
+                  title = tags$strong("Total Accessibility Index:"),
+                  
+                  # leaflet output for total site accessibility index
+                  accessibility_index_leaflet
+                  
+              ), # END box with static leaflet
+              
+            ) # END siteaccess fluidRow 1
             
-            # add loading spinner
-            withSpinner()
-          
-      ), # END leaflet box
-      
-      # leaflet box 2 with total index loaded
-      box(width = 6,
-          
-          title = tags$strong("Total Accessibility Index:"),
-          
-          # site accessibility index applied to map of Los Padres NF
-          accessibility_index_leaflet
-          
-      ), # END box with static leaflet
-      
-    ) # END fluidRow
+    ), # END site access locations tabItem
     
-  ), # END site access locations tabItem
-  
-  # sitefinder tabItem ----
-  tabItem(tabName = "sitefinder",
-          
-         # fluidRow
-         fluidRow(
-          
-           # sitefinder info box ----
-          box(width = 12,
-              
-              includeMarkdown("text/overview_site_finder.md"),
-              
-              # insert image of priority legend which lives in www folder
-              tags$img(src = "legends/priority_legend.png", 
-                       alt = "Image depicting color gradient of white to purple for legend. White depicting the lowest priority score for surveying priority.",
-                       style = "max-width: 100%;")
-              
-          ) # END sitefinder info box
-           
-          ), # END fluidRow
-          
-          
-          # leaflet box ----
-          box(width = 12,
-              # species type checkbox Group Buttons ----
-              radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
-                                choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
-                                choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
-                                selected = "Asclepias.californica", 
-                                individual = TRUE,
-                                justified = FALSE,
-                                size = "normal",
-                                direction = "horizontal",
-                                checkIcon = list(yes = icon("circle-check", lib = "font-awesome", 
-                                                            class = "fa-solid fa-circle-check", 
-                                                            style = "color: #3B3B3D"), 
-                                                 no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
-              
-              # "model output here, with site access model applied to map of Los Padres NF" ----
-              leafletOutput(outputId = "priority_species_output") %>%  
-                
-                # add loading spinner
-                withSpinner()
-              
-          ), # END leaflet box
-          
-          # fluidRow ----
-          fluidRow(
+    # sitefinder tabItem ----
+    tabItem(tabName = "sitefinder",
             
-            # input box ----
+            # sitefinder fluidRow 1 ----
+            fluidRow(
+              
+              # sitefinder info box ----
+              box(width = 12,
+                  
+                  includeMarkdown("text/overview_site_finder.md"),
+                  
+                  # insert image of priority legend which lives in www folder
+                  tags$img(src = "legends/priority_legend.png", 
+                           alt = "Image depicting color gradient of white to purple for legend. White depicting the lowest priority score for surveying priority.",
+                           style = "max-width: 100%;")
+                  
+              ) # END sitefinder info box
+              
+            ), # END sitefinder fluidRow 1 
+            
+            
+            # leaflet box ----
             box(width = 12,
+                # species type checkbox Group Buttons ----
+                radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
+                                  choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
+                                  choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
+                                  selected = "Asclepias.californica", 
+                                  individual = TRUE,
+                                  justified = FALSE,
+                                  size = "normal",
+                                  direction = "horizontal",
+                                  checkIcon = list(yes = icon("circle-check", lib = "font-awesome", 
+                                                              class = "fa-solid fa-circle-check", 
+                                                              style = "color: #3B3B3D"), 
+                                                   no = icon("circle", lib = "font-awesome"))), #  END radioGroupButton for species type
                 
-                DT::dataTableOutput("priority_species_table") %>% 
+                # leaflet output of user selected species high priority output ----
+                leafletOutput(outputId = "priority_species_output") %>%  
                   
                   # add loading spinner
                   withSpinner()
                 
-            ), # END input box
+            ), # END leaflet box
             
+            # sitefinder fluidRow 2----
+            fluidRow(
+              
+              # input box ----
+              box(width = 12,
+                  
+                  # add data table that summarizes priority information
+                  DT::dataTableOutput("priority_species_table") %>% 
+                    
+                    # add loading spinner
+                    withSpinner()
+                  
+              ), # END input box
+              
+            ) # END sitefinder fluidRow 2
             
-          ) # END fluidRow
-          
-  ), # END sitefinder locations tabItem
+    ), # END sitefinder locations tabItem
+    
+    # data tabItem ----
+    tabItem(tabName = "data",
+            
+            # data info box ----
+            box(width = NULL,
+                
+                includeMarkdown("text/overview_data.md")
+                
+            ) # END data info box
+            
+    ) # END data tabItem
+    
+  ) # END tabItems
   
-  # data tabItem ----
-  tabItem(tabName = "data",
-          
-          # data info box ----
-          box(width = NULL,
-              
-              includeMarkdown("text/overview_data.md")
-              
-          ) # END data info box
-          
-  ) # END data tabItem
-  
-) # END tabItems
-
 ) # END dashboardBody
 
 #..................combine all in dashboardPage and set dashboard title in open tobs..................
