@@ -48,7 +48,7 @@ The **high-priority survey sites** page of the RShiny dashboard contains informa
 
 The **Data** page of the RShiny dashboard contains a general description, citation, and licensing information for the data used to create this project. 
 
-[insert data here]
+![data dashboard page](https://github.com/MEDS-SBBG-milkweed/milkweed-site-finder/blob/main/figs/data.png)
 
 ## Repository Structure
 ```
