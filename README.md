@@ -10,19 +10,20 @@ milkweed-site-finder README starts below
 
 [Project Description](##project-description)
 
-Data
+[Data](##data)
 
-Usage
+[Usage](##usage)
 
-Repository Structure
+[Repository Structure](##repository-structure)
 
-Authors
+[Authors](##authors)
 
-Client
+[Client](##client)
 
 ## Project Description
 The milkweed-site-finder repository contains all of the R code in order to build the Rshiny interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff for identifying high priority survey locations for early-season milkweed in the Los Padres National Forest (LPNF). For additional information regarding the milkweed-site-finder use please visit the technical documentation for this project
- Data
+ 
+## Data
 All data products hosted in this dashboard can be found in the [milkweed-mod](https://github.com/milkweed-mod/milkweed-mod) repository within the milkweed-mod Github organization. 
 
 ## Usage
