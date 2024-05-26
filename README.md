@@ -1,5 +1,3 @@
-milkweed-site-finder README starts below
-
 # milkweed-site-finder
 
  **Identifying Priority Survey Sites for Early-Season Milkweed Conservation**
