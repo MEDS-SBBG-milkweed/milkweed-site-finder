@@ -63,99 +63,113 @@ source("R/addLegend_decreasing.R")
 # Define colors and legend for habitat suitability maps
 pal_habitat <- c("#FFFFFF", "#EFCCCC", "#DF9999", "#D06666", "#C03333", "#B00000")
 
-# static californica output
+# static californica output ----
 # leaflet output
-#Get values of prediction
-mapPredVals_californica <- getRasterVals(californica) # change for different types
+# get values of predictions for californica
+mapPredVals_californica <- getRasterVals(californica) 
 
-legendPal_californica <- colorNumeric(pal_habitat, mapPredVals_californica, na.color = 'transparent')
+# set color palette of raster values to pal_habitat
 rasPal_californica <- colorNumeric(pal_habitat, mapPredVals_californica, na.color = 'transparent')
 
+# initialize leaflet with World Terrain basemap from Esri
 californica_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   
+  # add habitat suitability model raster
   addRasterImage(californica, colors = rasPal_californica,
                  method = "ngb") %>% 
   
-  #add transfer polygon (user drawn area)
+  # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
 # static eriocarpa output ----
 # leaflet output
-#Get values of prediction
-mapPredVals_eriocarpa <- getRasterVals(eriocarpa) # change for different types
+# get values of predictions for eriocarpa
+mapPredVals_eriocarpa <- getRasterVals(eriocarpa) 
 
-legendPal_eriocarpa <- colorNumeric(pal_habitat, mapPredVals_eriocarpa, na.color = 'transparent')
+# set color palette of raster values to pal_habitat
 rasPal_eriocarpa <- colorNumeric(pal_habitat, mapPredVals_eriocarpa, na.color = 'transparent')
 
+# initialize leaflet with World Terrain basemap from Esri
 eriocarpa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   
+  # add habitat suitability model raster
   addRasterImage(eriocarpa, colors = rasPal_eriocarpa,
                  method = "ngb") %>% 
-  #add transfer polygon (user drawn area)
+  
+  # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
 # static vestita output ----
 # leaflet output 
-# get values of prediction
-mapPredVals_vestita <- getRasterVals(vestita) # change for different types
+# get values of predictions for vestita
+mapPredVals_vestita <- getRasterVals(vestita) 
 
-
-legendPal_vestita <- colorNumeric(pal_habitat, mapPredVals_vestita, na.color = 'transparent')
+# set color palette of raster values to pal_habitat
 rasPal_vestita <- colorNumeric(pal_habitat, mapPredVals_vestita, na.color = 'transparent')
 
+# initialize leaflet with World Terrain basemap from Esri
 vestita_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 
-  # map model prediction raster and transfer polygon
+  # add habitat suitability model raster
   addRasterImage(vestita, colors = rasPal_vestita,
                  method = "ngb") %>% 
-  #add transfer polygon (user drawn area)
+  
+  # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
 # static erosa output ----
 # leaflet output 
-# get values of prediction
-mapPredVals_erosa <- getRasterVals(erosa) # change for different types
+# get values of predictions for erosa
+mapPredVals_erosa <- getRasterVals(erosa)
 
-legendPal_erosa <- colorNumeric(pal_habitat, mapPredVals_erosa, na.color = 'transparent')
+# set color palette of raster values to pal_habitat
 rasPal_erosa <- colorNumeric(pal_habitat, mapPredVals_erosa, na.color = 'transparent')
 
+# initialize leaflet with World Terrain basemap from Esri
 erosa_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 
-  # map model prediction raster and transfer polygon
+  # add habitat suitability model raster
   addRasterImage(erosa, colors = rasPal_erosa,
                  method = "ngb") %>% 
   
-  #add transfer polygon (user drawn area)
+  # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
 # static all suitable output ----
 # leaflet output 
-# get values of prediction
-mapPredVals_all <- getRasterVals(all) # change for different types
+# get values of predictions for the max suitability
+mapPredVals_all <- getRasterVals(all)
 
+# set legend and raster color palettes to pal_habitat
 legendPal_all <- colorNumeric(pal_habitat, mapPredVals_all, na.color = 'transparent')
 rasPal_all <- colorNumeric(pal_habitat, mapPredVals_all, na.color = 'transparent')
 
+# initialize leaflet with World Terrain basemap from Esri
 all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
   addLegend_decreasing("bottomleft", pal = legendPal_all, values = mapPredVals_all,
                        labFormat = reverseLabel(), decreasing = TRUE,
                        title = "Predicted Suitability") %>%
   
-  # map model prediction raster and transfer polygon
+  # add habitat suitability model raster
   addRasterImage(all, colors = rasPal_all,
                  method = "ngb") %>% 
   
-  #add transfer polygon (user drawn area)
+  # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
 
 
 # LOAD IN DATA FOR Site Accessibility ----
+
+# load total site accessibility data ----
+index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif") %>% 
+  project('+proj=longlat +datum=WGS84') %>% 
+  raster()
 
 # load roads data ----
 Roads <- rast("data_processed/site_accessibility_outputs/roads_rescaled.tif") %>% 
@@ -190,13 +204,8 @@ names(Roads) <- "Roads"
 names(Trails) <- "Trails"
 names(Slope) <- "Slope"
 
-# create raster stack to iterate through
+# create raster stack to iterate through for site accessibility layers
 stack <- stack(Roads, Trails, Slope, Canopy, Land)
-
-# load total site accessibility data ----
-index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif") %>% 
-  project('+proj=longlat +datum=WGS84') %>% 
-  raster()
 
 # static total accessibility index output ----
 # leaflet output 
@@ -206,34 +215,38 @@ pal_access <- leaflet::colorNumeric(palette = c("#FFFFFF","#CCD4EF", "#99A9DF", 
                                    domain = NULL,
                                    na.color = "transparent")
 
+# initialize leaflet 
 accessibility_index_leaflet <- leaflet() %>%
   
+  # add Esri Wrold terrain basemap
   addProviderTiles(providers$Esri.WorldTerrain) %>%
 
-  # map model prediction raster and transfer polygon
+  # add site accessibility index raster
   addRasterImage(index, colors = pal_access,
                  method = "ngb") %>%
   
-  # #add transfer polygon (user drawn area)
+  # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
               weight = 2, color = "black", group = 'xfer')
 
-
-
 # LOAD IN DATA for Site Finder Priority Outputs ----
-# Asclepias californica model
+
+# load in Asclepias californica priority raster
 californica_priority <- rast("data_processed/priority_sites_outputs/californica_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
-# Asclepias eriocarpa model
+
+# load in Asclepias eriocarpa priority raster
 eriocarpa_priority <- rast("data_processed/priority_sites_outputs/eriocarpa_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
-# Asclepias erosa model
+
+# load in Asclepias erosa priority raster
 erosa_priority <- rast("data_processed/priority_sites_outputs/erosa_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
-# Asclepias vestita model
+
+# load in Asclepias vestita priority raster
 vestita_priority <- rast("data_processed/priority_sites_outputs/vestita_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
@@ -244,7 +257,7 @@ names(eriocarpa_priority) <- "Asclepias eriocarpa"
 names(erosa_priority) <- "Asclepias erosa"
 names(vestita_priority) <- "Asclepias vestita"
 
-# create raster stack to iterate through
+# create raster stack to iterate through for priority outputs
 priority_stack <- stack(californica_priority, eriocarpa_priority, erosa_priority, vestita_priority)
 
 # extract data frames from each species priorty output
