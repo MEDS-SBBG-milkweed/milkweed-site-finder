@@ -1,8 +1,8 @@
 # milkweed-site-finder
 
- **Identifying Priority Survey Sites for Early-Season Milkweed Conservation**
+ # **Identifying Priority Survey Sites for Early-Season Milkweed Conservation**
 
-[Insert image of hex sticker here]
+![image of milkweed mod logo which includes california, milkweed, and a butterfly drawing done by Sam Muir]()
 
 ## Table of Contents
 
