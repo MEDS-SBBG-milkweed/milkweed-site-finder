@@ -52,13 +52,81 @@ The Data page of the RShiny dashboard contains a general description, citation, 
 
 ## Repository Structure
 ```
-
-
-
-
-
-
-
+├── data_processed
+│   ├── lpnf_boundary
+│   │   ├── lpnf_boundary.dbf
+│   │   ├── lpnf_boundary.prj
+│   │   ├── lpnf_boundary.shp
+│   │   └── lpnf_boundary.shx
+│   ├── priority_sites_outputs
+│   │   ├── all_priority.tif
+│   │   ├── californica_priority.tif
+│   │   ├── eriocarpa_priority.tif
+│   │   ├── erosa_priority.tif
+│   │   ├── priority_datatable.csv
+│   │   └── vestita_priority.tif
+│   ├── site_accessibility_outputs
+│   │   ├── access_index_final.tif
+│   │   ├── canopy_rescaled.tif
+│   │   ├── ownership_rescaled.tif
+│   │   ├── roads_rescaled.tif
+│   │   ├── slope_rescaled.tif
+│   │   └── trails_rescaled.tif
+│   └── survey_locations
+│       └── survey_location_centroids
+│           ├── all_species_points.dbf
+│           ├── all_species_points.prj
+│           ├── all_species_points.shp
+│           └── all_species_points.shx
+├── figs  # folder containing figures used in README.md
+│   ├── data.png
+│   ├── habitat_suitability_models.png
+│   ├── high_priority.png
+│   ├── home.png
+│   ├── milkweed_locations.png
+│   ├── MilkweedMod.jpeg
+│   └── survey_site_accessibility.png
+├── global.R
+├── milkweed-site-finder.Rproj
+├── R
+│   └── addLegend_decreasing.R  # function to create legend in leaflet
+├── README.md
+├── rsconnect  # folder for app deployment
+│   └── shinyapps.io
+│       └── mwidas
+│           └── milkweed-site-finder.dcf
+├── server.R
+├── session_info.txt  # session_info and operating system information
+├── text  # folder containing all markdown files used and where text is stored
+│   ├── background_context.md
+│   ├── background_info.md
+│   ├── disclaimer.md
+│   ├── habitat_suitability_all.md
+│   ├── overview_data.md
+│   ├── overview_habitat_suitability.md
+│   ├── overview_milkweed_locations.md
+│   ├── overview_site_accessibility.md
+│   ├── overview_site_finder.md
+│   ├── siteaccess_legend.md
+│   └── siteaccess_title.md
+├── ui.R
+└── www  # graphics folder
+    ├── fonts
+    │   ├── 5cfb33b712cbdaf9310b.woff2
+    │   ├── ab9aea6faeaea5115410.woff2
+    │   ├── bace964bccc02d90d74e.woff2
+    │   ├── da1fdeda6d5756ee6227.ttf
+    │   ├── ebec98131cf900cb698e.woff2
+    │   └── edfac2e6370304cd74ae.woff2
+    ├── green-logo-zoom.png
+    ├── legends  # folder where legend files are stored
+    │   ├── accessibility_legend.png
+    │   ├── priority_legend.png
+    │   └── suitability_legend.png
+    ├── monarch_milkweed.jpeg
+    ├── sass-style.css
+    ├── sass-style.scss  # sass file for styling 
+    └── SBBG_logo.png
 ```
 
 
