@@ -33,7 +33,7 @@ sidebar <- dashboardSidebar(width = 280,
                               menuItem(text = "Milkweed Locations", tabName = "milkweedloc", icon = icon("location-dot")),
                               menuItem(text = "Milkweed Habitat Suitability", tabName = "habitatsuit", icon = icon("leaf")),
                               menuItem(text = "Survey Site Accessibility", tabName = "siteaccess", icon = icon("universal-access")),
-                              menuItem(text = "Survey Site Finder", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
+                              menuItem(text = "High-Priority Survey Sites", tabName = "sitefinder", icon = icon("magnifying-glass-location")),
                               menuItem(text = "Data", tabName = "data", icon = icon("database"))
                               
                             ) # END sidebarMenu
