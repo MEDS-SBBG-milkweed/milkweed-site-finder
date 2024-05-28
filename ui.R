@@ -167,7 +167,7 @@ body <- dashboardBody(
                 includeMarkdown("text/overview_habitat_suitability.md"),
                 
                 # insert image of habitat suitability legend
-                tags$img(src = "legends/suitability_legend.png", 
+                tags$img(src = "https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/suitability_legend.png", 
                          alt = "Image depicting color gradient of white to red for legend. White depicting the least likely for habitat suitability and red depicting the most likely for habitat suitability",
                          style = "max-width: 100%;")
                 
@@ -262,7 +262,7 @@ body <- dashboardBody(
                   includeMarkdown("text/overview_site_accessibility.md"),
                   
                   # insert image of accessibility legend which lives in www folder
-                  tags$img(src = "legends/accessibility_legend.png", 
+                  tags$img(src = "https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/accessibility_legend.png", 
                            alt = "Image depicting color gradient of white to blue for legend. White depicting the least likely for survey site accessibility, and dark blue depicting the most accessible",
                            style = "max-width: 100%;")
                   
@@ -328,7 +328,7 @@ body <- dashboardBody(
                   includeMarkdown("text/overview_site_finder.md"),
                   
                   # insert image of priority legend which lives in www folder
-                  tags$img(src = "legends/priority_legend.png", 
+                  tags$img(src = "https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/priority_legend.png", 
                            alt = "Image depicting color gradient of white to purple for legend. White depicting the lowest priority score for surveying priority.",
                            style = "max-width: 100%;")
                   
