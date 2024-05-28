@@ -4,4 +4,6 @@ On this page, you can examine habitat suitability modeled across the Los Padres 
 
 The grid of four maps below shows the areas in the LPNF that our model predicts to be suitable for each of the four species of early-season milkweed. 
 
+**Legend for Predicted Habitat Suitability:**
+
 
