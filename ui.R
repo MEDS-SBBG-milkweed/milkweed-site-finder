@@ -94,7 +94,22 @@ body <- dashboardBody(
                   
               ) # END disclaimer box
               
-            ) # END home fluidRow 2
+            ), # END home fluidRow 2
+            
+            # home fluidRow 3 ----
+            fluidRow(
+              
+              # authors box ----
+              box(width = 12,
+                  
+                  # add disclaimer icon
+                  title = tagList(icon("pen")),
+                  # add markdown file that includes disclaimer
+                  includeMarkdown("text/authors.md")
+                  
+              ) # END authors box
+              
+            ) # END home fluidRow 3
             
     ), # END welcome tabItem
     
