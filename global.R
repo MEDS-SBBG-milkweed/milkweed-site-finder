@@ -37,7 +37,7 @@ options(spinner.type = 6, spinner.color = "#244E2A")
 #........................Los Padres National Forest (LPNF) boundary data........................
 
 # load in data for LPNF boundary ----
-lpnf_boundary <- st_read("data_processed/lpnf_boundary/")
+lpnf_boundary <- read_rds("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/lpnf_boundary.rda")
 
 
 #.......................survey locations data........................
@@ -287,7 +287,7 @@ priority_stack <- stack(californica_priority, eriocarpa_priority, erosa_priority
 #........................High Priority Site Data Table........................
 
 # extract data frames from each species priorty output
-priority_datatable <- read_csv("data_processed/priority_sites_outputs/priority_datatable.csv")
+priority_datatable <- read_csv("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/priority_datatable.csv")
 
 #........................High Priority Site Maps........................
 
