@@ -183,33 +183,33 @@ all_leaflet <- leaflet() %>% addProviderTiles(providers$Esri.WorldTerrain) %>%
 # load in data for Site Accessibility ----
 
 # load total site accessibility data ----
-index <- rast("data_processed/site_accessibility_outputs/access_index_final.tif") %>% 
+index <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/access_index_final.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load roads data ----
-Roads <- rast("data_processed/site_accessibility_outputs/roads_rescaled.tif") %>% 
+Roads <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/roads_rescaled.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load trails data ----
-Trails <- rast("data_processed/site_accessibility_outputs/trails_rescaled.tif") %>%
+Trails <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/trails_rescaled.tif") %>%
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load slope data ----
-Slope <- rast("data_processed/site_accessibility_outputs/slope_rescaled.tif") %>% 
+Slope <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/slope_rescaled.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load land ownership data ----
-Land <- rast("data_processed/site_accessibility_outputs/ownership_rescaled.tif") %>%
+Land <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/ownership_rescaled.tif") %>%
   project('+proj=longlat +datum=WGS84') %>% 
   raster() %>% 
   mask(lpnf_boundary)
 
 # load canopy cover data ----
-Canopy <- rast("data_processed/site_accessibility_outputs/canopy_rescaled.tif") %>% 
+Canopy <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/canopy_rescaled.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
@@ -254,22 +254,22 @@ accessibility_index_leaflet <- leaflet() %>%
 # load in data for Site Finder Priority Outputs ----
 
 # load in Asclepias californica priority raster
-californica_priority <- rast("data_processed/priority_sites_outputs/californica_priority.tif") %>% 
+californica_priority <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/californica_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load in Asclepias eriocarpa priority raster
-eriocarpa_priority <- rast("data_processed/priority_sites_outputs/eriocarpa_priority.tif") %>% 
+eriocarpa_priority <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/eriocarpa_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load in Asclepias erosa priority raster
-erosa_priority <- rast("data_processed/priority_sites_outputs/erosa_priority.tif") %>% 
+erosa_priority <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/erosa_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
 # load in Asclepias vestita priority raster
-vestita_priority <- rast("data_processed/priority_sites_outputs/vestita_priority.tif") %>% 
+vestita_priority <- rast("https://raw.githubusercontent.com/MEDS-SBBG-milkweed/milkweed-mod/main/outputs/dashboard/vestita_priority.tif") %>% 
   project('+proj=longlat +datum=WGS84') %>% 
   raster()
 
