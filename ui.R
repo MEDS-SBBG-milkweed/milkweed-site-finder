@@ -341,8 +341,8 @@ body <- dashboardBody(
             box(width = 12,
                 # species type checkbox Group Buttons ----
                 radioGroupButtons(inputId = "priority_species_input", label = "Select milkweed species:",
-                                  choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias vestita</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>"),
-                                  choiceValues = c("Asclepias.californica", "Asclepias.vestita", "Asclepias.eriocarpa", "Asclepias.erosa"),
+                                  choiceNames = c("<em>Asclepias californica</em>", "<em>Asclepias eriocarpa</em>", "<em>Asclepias erosa</em>", "<em>Asclepias vestita</em>"),
+                                  choiceValues = c("Asclepias.californica", "Asclepias.eriocarpa", "Asclepias.erosa", "Asclepias.vestita"),
                                   selected = "Asclepias.californica", 
                                   individual = TRUE,
                                   justified = FALSE,
