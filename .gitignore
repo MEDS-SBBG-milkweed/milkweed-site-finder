@@ -48,5 +48,3 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
-# 
-www/.sass_cache_keys
