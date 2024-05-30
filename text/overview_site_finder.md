@@ -7,4 +7,4 @@ The table below shows the priority scores for each species at each location (lat
 The search bar allows you to filter the results by visit status, priority level, or location. 
 The download buttons allow you to download those filtered (or unfiltered) results in your desired format. 
 
-
+Legend for High-Priority Survey Sites:
