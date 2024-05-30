@@ -13,3 +13,4 @@ For example, a score of 1 will indicate that the location within the forest is v
 
 You can select which one of these layers you want to visualize in the map on the **left**, and the map on the **right** shows the total survey site accessibility index, which is the product of all of the layers. 
 
+Legend for Survey Site Accessibility:
