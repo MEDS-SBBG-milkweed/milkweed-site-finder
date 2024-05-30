@@ -1,6 +1,8 @@
 # 
 function(input, output, session) {
   
+  # change_window_title(session, "Milkweed Site Finder")
+  
   # filter survey data ----
   filtered_milkweed_df <- reactive ({
     
@@ -12,18 +14,15 @@ function(input, output, session) {
     # build leaflet map for survey locations ----
     output$survey_map_output <- renderLeaflet({
 
-      # set colors for each species, colors will be assigned in the order they are provided as related between palette and levels
+      # set colors for each species
       pal <- colorFactor(palette = c("#99DDFF", "#785EF0", "#DC267F", "#FE6100"), 
                     levels = c("Asclepias californica", "Asclepias eriocarpa", "Asclepias erosa", "Asclepias vestita"),
                     domain = filtered_milkweed_df()$milkweed_sp)
  
-        # initialize leaflet
         leaflet() %>% 
-          
-          # add Esri World terrain basemap
           addProviderTiles(providers$Esri.WorldTerrain) %>%
           
-          # add markers for each species selected
+          # add markers
           addCircleMarkers(data = filtered_milkweed_df(),
                            radius = 4,
                            weight = 1,
@@ -33,18 +32,18 @@ function(input, output, session) {
                            fillOpacity = 0.8
                            ) %>%
           
-          # add lpnf boundary polygon
+          # add polygons
           addPolygons(data = lpnf_boundary,
                       fill = FALSE,
                       color = "black",
                       weight = 2) %>%
           
-          # format legend to show species and the associated color when selected
+          # format legend
           leaflet::addLegend("topright", pal = pal, values = filtered_milkweed_df()$milkweed_sp,
                              title = "Milkweed Species",
                              opacity = 0.8) %>% 
           
-           # set view over LPNF
+           # set view over LPNF # default appears to be best option so far
            setView(lng = -119.547729, lat = 34.556335, zoom = 6.5) %>% 
         
           addScaleBar()
@@ -62,16 +61,14 @@ function(input, output, session) {
     # build leaflet map for site accessibility raster layers ----
     output$accessibility_layer_output <- renderLeaflet({
 
-      # initialize leaflet 
+      # initialize leaflet map
       leaflet() %>%
-        
-        # add Esri World terrain basemap
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
-        # add raster layer that is selected by the user
+        # add markers
         addRasterImage(filtered_access_raster(), colors = pal_access) %>% 
         
-        # add lpnf boundary polygon 
+        #add boundary polygon 
         addPolygons(data = lpnf_boundary, fill = FALSE,
                     weight = 2, color = "black", group = 'xfer')
 
@@ -90,14 +87,12 @@ function(input, output, session) {
       
       # initialize leaflet
       leaflet() %>%
-        
-        # add Esri World terrain basemap
         addProviderTiles(providers$Esri.WorldTerrain) %>%
         
-        # add raster layer that is selected by the user
+        # add rasterImage with designated color scale
         addRasterImage(filtered_priority_raster(), colors = pal_priority) %>% 
         
-        # add lpnf boundary polygon 
+        #add boundary polygon 
         addPolygons(data = lpnf_boundary, fill = FALSE,
                     weight = 2, color = "black", group = 'xfer')
       
@@ -118,7 +113,7 @@ function(input, output, session) {
             autoWidth = FALSE,
             ordering = TRUE,
             dom = 'Bfrtip',
-            buttons = c('csv', 'excel'))) %>%
+            buttons = list(list(extend = 'csv', filename = 'Milkweed Site Finder Locations')))) %>%
         formatRound(3:7, digits = 3) %>%
         formatRound(1:2, digits = 5) 
       
