@@ -127,7 +127,6 @@ The **Data** page of the RShiny dashboard contains a general description, citati
     │   ├── da1fdeda6d5756ee6227.ttf
     │   ├── ebec98131cf900cb698e.woff2
     │   └── edfac2e6370304cd74ae.woff2
-    ├── green-logo-zoom.png
     ├── monarch_milkweed.jpeg
     ├── sass-style.css
     ├── sass-style.scss  # sass file for styling 
