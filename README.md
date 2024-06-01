@@ -12,7 +12,7 @@ MilkweedMod
 
 <h2 align="center">
 
-<img src = "https://github.com/MEDS-SBBG-milkweed/.github/assets/98177666/b98e752a-194c-4e54-8623-15ef18f8409b" alt="Banner" width="200">
+<img src = "https://github.com/MEDS-SBBG-milkweed/.github/assets/98177666/b98e752a-194c-4e54-8623-15ef18f8409b" alt="Banner" width="300">
 
 <h2 align="center">
 
@@ -38,7 +38,7 @@ MilkweedMod
 The milkweed-site-finder repository contains all of the R code in order to build the Rshiny interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff for identifying high priority survey locations for early-season milkweed in the Los Padres National Forest (LPNF). For additional information regarding the milkweed-site-finder use please visit the technical documentation for this project
  
 ## Data
-All data products hosted in this dashboard can be found in the [milkweed-mod](https://github.com/milkweed-mod/milkweed-mod) repository within the MEDS-SBBG-milkweed Github organization. 
+All data products hosted in this dashboard can be found in the [milkweed-mod](https://github.com/milkweed-mod/milkweed-mod) repository within the [MEDS-SBBG-milkweed](https://github.com/MEDS-SBBG-milkweed) GitHub organization. 
 
 ## Usage
 
