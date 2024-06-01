@@ -104,6 +104,7 @@ The **Data** page of the RShiny dashboard contains a general description, citati
 │   ├── MilkweedMod.jpeg
 │   └── survey_site_accessibility.png
 ├── global.R
+├── LICENSE
 ├── milkweed-site-finder.Rproj
 ├── R
 │   └── addLegend_decreasing.R  # function to create legend in leaflet
