@@ -6,7 +6,7 @@ MilkweedMod
 
 <h2 align="center">
 
-**Identifying Priority Survey Sites for Early-Season Milkweed Conservation**
+Identifying Priority Survey Sites for Early-Season Milkweed Conservation
 
 </h2>
 
