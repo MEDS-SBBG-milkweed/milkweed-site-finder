@@ -30,12 +30,14 @@ MilkweedMod
 
 [Repository Structure](#repository-structure)
 
+[Disclaimer](#disclaimer)
+
 [Authors](#authors)
 
 [Client](#client)
 
 ## Project Description
-The milkweed-site-finder repository contains all of the R code in order to build the Rshiny interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff for identifying high priority survey locations for early-season milkweed in the Los Padres National Forest (LPNF). For additional information regarding the Milkweed Site Finder Dashboard please visit the [technical documentation](https://bren.ucsb.edu/projects/identifying-priority-survey-sites-early-season-milkweed-conservation) for this project.
+The milkweed-site-finder repository contains all of the R code in order to build the Rshiny interactive web dashboard to facilitate field survey planning for the Santa Barbara Botanic Garden staff for identifying high priority survey locations for early-season milkweed in the Los Padres National Forest (LPNF). For additional information regarding the Milkweed Site Finder Dashboard please visit the [Bren project page and technical documentation](https://bren.ucsb.edu/projects/identifying-priority-survey-sites-early-season-milkweed-conservation). for this project.
  
 ## Data
 All data products hosted in this dashboard can be found in the [milkweed-mod](https://github.com/milkweed-mod/milkweed-mod) repository within the [MEDS-SBBG-milkweed](https://github.com/MEDS-SBBG-milkweed) GitHub organization. 
@@ -138,6 +140,12 @@ The **Data** page of the RShiny dashboard contains a general description, citati
     ├── sass-style.scss  # sass file for styling 
     └── SBBG_logo.png
 ```
+
+## Disclaimer
+
+**Plant and seed collection on Forest Service land is not permissible without a plant collection permit from the Los Padres National Forest.**
+
+This project was completed as a part of the [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) program at the Bren School of Environmental Science & Management at the University of California, Santa Barbara. 
 
 ## Authors
 
