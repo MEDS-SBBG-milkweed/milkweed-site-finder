@@ -247,7 +247,8 @@ accessibility_index_leaflet <- leaflet() %>%
   
   # add lpnf boundary polygon
   addPolygons(data = lpnf_boundary, fill = FALSE,
-              weight = 2, color = "black", group = 'xfer')
+              weight = 2, color = "black", group = 'xfer') %>%
+  addScaleBar(position = "bottomright")
 
 
 #........................High Priority Site Data........................
