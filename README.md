@@ -12,7 +12,7 @@ MilkweedMod
 
 <h2 align="center">
 
-<img src = "https://github.com/MEDS-SBBG-milkweed/.github/assets/98177666/b98e752a-194c-4e54-8623-15ef18f8409b" alt="Banner" width="300">
+<img src = "https://github.com/MEDS-SBBG-milkweed/.github/assets/98177666/b98e752a-194c-4e54-8623-15ef18f8409b" alt="MilkweedMod capstone group hexsticker. Dark green background with a white outline of California, filled in with illustrated milkweed plants and an orange monarch butterfly accompanying the text Milkweed Mod" width="300">
 
 <h2 align="center">
 
