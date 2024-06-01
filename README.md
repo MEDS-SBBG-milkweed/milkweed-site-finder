@@ -147,7 +147,9 @@ The **Data** page of the RShiny dashboard contains a general description, citati
 Dr. Sarah Cusser, Terrestrial Invertebrate Conservation Ecologist
 
 Santa Barbara Botanic Garden
+
 1212 Mission Canyon Rd.
+
 Santa Barbara, CA 93105
 
 
