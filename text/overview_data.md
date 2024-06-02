@@ -21,9 +21,7 @@ Many data products and outputs archived from this project contain or relate to s
 
 **Brief description:** Classification of land ownership, excluding lands under private ownership, in California(.shp)
 
-**Citation:**
-
-California Department of Forestry and Fire Protection; California State Geoportal, hosted on CAL FIRE Portal (via gis.data.ca.gov) 
+**Citation:** California Department of Forestry and Fire Protection; California State Geoportal, hosted on CAL FIRE Portal (via gis.data.ca.gov) 
 
 <https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-land-ownership/about> 
 
