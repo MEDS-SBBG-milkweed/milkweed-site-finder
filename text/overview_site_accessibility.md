@@ -1,9 +1,9 @@
 # <i class="fa-solid fa-universal-access"></i>     Survey Site Accessibility 
 
 
-Here you can visualize the survey site accessibility of each location in the LPNF. We developed this index to create a relative measure of how physically accessible each location is for the SBBG team.
+On this page, you can visualize the survey site accessibility of each location in the Los Padres National Forest (LPNF). We developed this index to create a relative measure of how physically accessible each location is for the Santa Barbara Botanic Garden (SBBG) team.
 
-For example, a score of 1 will indicate that the location within the forest is very accessible to the SBBG team, and a score of 0 will indicate that a location is inaccessible within the forest. The layers that contribute to this index are as follows:
+For example, a score of 0 will indicate that a location is inaccessible within the forest, and a score of 1 will indicate that the location within the forest is very accessible to the SBBG team. The layers that contribute to this index are as follows:
 
 - Distance from trails: 0 is farthest from a trail, 1 is closest to a trail
 - Distance from roads: 0 is farthest from a road, 1 is closest to a road
