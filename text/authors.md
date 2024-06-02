@@ -1,4 +1,4 @@
-This project was created as a Master of Environmental Data Science Capstone Project for the Santa Barbara Botanic Gardens by: 
+This project was created as a [Master of Environmental Data Science Capstone Project](https://bren.ucsb.edu/projects/identifying-priority-survey-sites-early-season-milkweed-conservation) for the Santa Barbara Botanic Gardens by: 
 
  Amanda Herbst {[Github](https://github.com/amandaherbst) | [Website](amandaherbst.github.io) | [LinkedIn](https://www.linkedin.com/in/amanda-herbst/)}
 
