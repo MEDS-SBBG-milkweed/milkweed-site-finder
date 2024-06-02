@@ -13,4 +13,6 @@ For example, a score of 0 will indicate that a location is inaccessible within t
 
 You can select which one of these layers you want to visualize in the map on the **left**, and the map on the **right** shows the total survey site accessibility index, which is the product of all of the layers. 
 
+In order to visualize a layer of the survey site accessibility index across the LPNF, you will select the layer of choice, by clicking on the layer button. You are only able to select one button at a time. Note: a button will always be selected on this page.
+
 Legend for Survey Site Accessibility:
