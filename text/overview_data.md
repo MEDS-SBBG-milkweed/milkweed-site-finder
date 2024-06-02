@@ -25,11 +25,7 @@ Many data products and outputs archived from this project contain or relate to s
 
 <https://gis.data.ca.gov/datasets/CALFIRE-Forestry::california-land-ownership/about> 
 
-**Licenses:**
-
-The State of California and the Department of Forestry and Fire Protection make no representations or warranties regarding the accuracy of data or maps. Neither the State nor the Department shall be liable under any circumstances for any direct, special, incidental, or consequential damages with respect to any claim by any user or third party on account of, or arising from, the use of data or maps.
-
-For more information about this product, date or terms of use, contact calfire.egis\@fire.ca.gov.
+**Licenses:** The State of California and the Department of Forestry and Fire Protection make no representations or warranties regarding the accuracy of data or maps. Neither the State nor the Department shall be liable under any circumstances for any direct, special, incidental, or consequential damages with respect to any claim by any user or third party on account of, or arising from, the use of data or maps. For more information about this product, date or terms of use, contact calfire.egis\@fire.ca.gov.
 
 
 
