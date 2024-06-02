@@ -367,6 +367,8 @@ body <- dashboardBody(
               # input box ----
               box(width = 12,
                   
+                  includeMarkdown("text/high_priority_table.md"),
+                  
                   # add data table that summarizes priority information
                   DT::dataTableOutput("priority_species_table") %>% 
                     
