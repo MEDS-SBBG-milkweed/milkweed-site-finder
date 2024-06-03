@@ -17,7 +17,6 @@ library(sf)
 library(terra)
 library(ggspatial)
 library(here)
-library(basemaps)
 library(raster)
 library(scales)
 
