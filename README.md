@@ -95,7 +95,8 @@ The **Data** page of the RShiny dashboard contains a general description, citati
 
 ## Repository Structure
 ```
-├── figs  # folder containing figures used in README.md
+├── .gitignore 
+├── figs                      # folder containing figures used in README.md
 │   ├── data.png
 │   ├── habitat_suitability_models.png
 │   ├── high_priority.png
@@ -107,28 +108,28 @@ The **Data** page of the RShiny dashboard contains a general description, citati
 ├── LICENSE
 ├── milkweed-site-finder.Rproj
 ├── R
-│   └── addLegend_decreasing.R  # function to create legend in leaflet
+│   └── addLegend_decreasing.R        # function to create legend in leaflet
 ├── README.md
-├── rsconnect  # folder for app deployment
+├── rsconnect                         # folder for app deployment
 │   └── shinyapps.io
-│       └── mwidas
+│       └── mwidas                    # this will change to username of account
 │           └── milkweed-site-finder.dcf
 ├── server.R
-├── session_info.txt  # session_info and operating system information
-├── text  # folder containing all markdown files used and where text is stored
+├── session_info.txt      # session_info and operating system information
+├── text    # folder containing all markdown files used and where text is stored
+│   ├── authors.md
 │   ├── background_context.md
 │   ├── background_info.md
 │   ├── disclaimer.md
 │   ├── habitat_suitability_all.md
+│   ├── high_priority_table.md
 │   ├── overview_data.md
 │   ├── overview_habitat_suitability.md
 │   ├── overview_milkweed_locations.md
 │   ├── overview_site_accessibility.md
 │   ├── overview_site_finder.md
-│   ├── siteaccess_legend.md
-│   └── siteaccess_title.md
 ├── ui.R
-└── www  # graphics folder
+└── www                                 # graphics folder
     ├── fonts
     │   ├── 5cfb33b712cbdaf9310b.woff2
     │   ├── ab9aea6faeaea5115410.woff2
@@ -138,7 +139,7 @@ The **Data** page of the RShiny dashboard contains a general description, citati
     │   └── edfac2e6370304cd74ae.woff2
     ├── monarch_milkweed.jpeg
     ├── sass-style.css
-    ├── sass-style.scss  # sass file for styling 
+    ├── sass-style.scss                # sass file for styling 
     └── SBBG_logo.png
 ```
 
